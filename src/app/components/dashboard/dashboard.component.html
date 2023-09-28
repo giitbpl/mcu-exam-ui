@@ -1,0 +1,84 @@
+<!-- <mat-drawer-container class="w-100 h-100">
+  <mat-drawer #drawer class="example-sidenav w-20  bg-dark" mode="push">
+  <p>Auto-resizing sidenav</p> 
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p> 
+     <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button> 
+    <mat-card class="example-card w-20">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Shiba Inu</mat-card-title>
+        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      </mat-card-header>
+       <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> 
+      <mat-card-content>
+        <mat-list>
+          <div mat-subheader>Folders</div>
+          <mat-list-item >
+            <mat-icon matListItemIcon>folder</mat-icon>
+            <a href=""  matListItemTitle>folders</a>
+             <div matListItemLine>{{folder.updated | date}}</div> 
+          </mat-list-item>
+          <mat-divider></mat-divider>
+           <div mat-subheader>Notes</div>
+          <mat-list-item *ngFor="let note of notes">
+            <mat-icon matListItemIcon>note</mat-icon>
+            <div matListItemTitle>{{note.name}}</div>
+             <div matListItemLine>{{note.updated | date}}</div> 
+          </mat-list-item> 
+        </mat-list>
+      </mat-card-content>
+     <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions> 
+    </mat-card>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+
+    <mat-toolbar class="bg-primary">
+      <button type="button" class=" btn btn-secondry" mat-button (click)="drawer.toggle()">
+        <i class="bi bi-list"></i>
+      </button>
+      <span class="example-spacer"></span>
+      <span class="ps-3 text-white">MCU Super Admin</span>
+       <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button> 
+    </mat-toolbar>
+  </div>
+
+</mat-drawer-container> -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="dashboard" routerLinkActive="active">Super Admin</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" routerLink="user" routerLinkActive="active">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" routerLink="logs" routerLinkActive="active">Logs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link s" aria-current="page" routerLink="export" routerLinkActive="active">Export</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li> -->
+     
+        
+      </ul>
+     
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

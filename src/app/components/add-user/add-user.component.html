@@ -1,0 +1,66 @@
+<!-- <h1 mat-dialog-title>Hi</h1> -->
+<div mat-dialog-content>
+    <h2>New Users</h2>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                    <form [formGroup]="myform">
+
+                    <div class="form-floating ">
+                        <input type="email" formControlName="email" class="form-control" id="email"
+                            placeholder="name@example.com">
+                        <label for="email">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" formControlName="name" id="name" placeholder="Name">
+                        <label for="name">Name</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" formControlName="pwd" id="pwd" placeholder="password">
+                        <label for="name">Password</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" formControlName="repwd" id="repwd"
+                            placeholder="retype password">
+                        <label for="name">Retype Password</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" formControlName="ipadress" id="ipaddress"
+                            placeholder="client ip address">
+                        <label for="name">IPAddress</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" formControlName="macaddress" id="macaddress"
+                            placeholder="client pc mac address">
+                        <label for="macaddress">MAC Address</label>
+                    </div>
+                    <!-- <div class="form-floating">
+                <input type="text" class="form-control" formControlName="status" id="status" placeholder="status">
+                <label for="name">Status</label>
+            </div> -->
+
+                    <div class="form-floating">
+                        <select class="form-select" id="role" aria-label="Floating label select example"
+                            formControlName="role">
+                            <!-- <option selected>Select Role</option> -->
+                            <option value="1">Super User</option>
+                            <option value="2">Administrator</option>
+                            <option value="3">Normal User</option>
+                        </select>
+                        <label for="role">Select Role</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" formControlName="comcode" id="comcode"
+                            placeholder="Computer Code">
+                        <label for="name">Computer Code</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div mat-dialog-actions>
+    <button class="btn btn-success" (click)="save()">Save</button>
+    <button [mat-dialog-close]="" class="btn btn-danger" cdkFocusInitial>Close</button>
+</div>

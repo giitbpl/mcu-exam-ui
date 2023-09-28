@@ -1,0 +1,27 @@
+<!-- <h1 class="visually-hidden">Heroes examples</h1> -->
+
+<div class=" text-center mt-2 border border-dark r" >
+  <!-- <img class="d-block mx-auto mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+  <h1 class="display-5 fw-bold text-body-emphasis">Upload new Data</h1>
+  <div class="col-lg-6 mx-auto ">
+    <p class="lead mb-4">You can also copy your excel files into <span class="text-danger fw-bold">{{dirname}}</span> directory</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <input type="file" class="form-control"  (change)="onChange($event)" accept="*.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" >
+      <button type="button" class="btn btn-primary btn-lg px-4 gap-3" (click)="process()">upload</button>
+      <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button> -->
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6">
+    <!-- <mat-selection-list #shoes [multiple]="false">
+      <mat-list-option *ngFor="let shoe of typesOfShoes" [value]="shoe">
+        {{shoe}}
+      </mat-list-option>
+    </mat-selection-list> -->
+    
+  </div>
+  <div class="col-6">
+
+  </div>
+</div>

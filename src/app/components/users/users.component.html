@@ -1,0 +1,35 @@
+<div class="container mt-5">
+
+    <button type="button" class="btn btn-danger" (click)="add()">Add User</button>
+    <table datatable [dtOptions]="dtOptions" class="row-border hover table" *ngIf="loaddata==true">
+        <thead>
+            <tr>
+                <th>UID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>IPAddress</th>
+                <th>Status</th>
+                <th>Role</th>
+                <th>Computer Code</th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody *ngFor="let user of userlist">
+            <tr>
+                <td>{{user.uid}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.ipaddress}}</td>
+                <td>{{user.status}}</td>
+                <td>{{user.role}}</td>
+                <td>{{user.comcode}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger" (click)="del(user.uid)">Delete</button>
+                    <button type="button" class="btn btn-info" (click)="edit(user.uid)">Edit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
