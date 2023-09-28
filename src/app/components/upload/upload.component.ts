@@ -10,13 +10,16 @@ import { ExportService } from 'src/app/services/export.service';
 export class UploadComponent {
   public dirname: string = "";
   file: any; // Variable to store file
-
+  filelist: any; // Variable to store filename
   constructor(private exportService: ExportService, private snackBar: MatSnackBar) {
     exportService.getExportDirectoryName().subscribe((response: any) => {
       console.log(response);
 
       this.dirname = response.data;
     })
+    exportService.getAllFileNames().subscribe((response: any) => {
+      this.filelist = response.data;
+    });
   }
   onChange(event: any) {
     this.file = event.target.files[0];
@@ -27,8 +30,7 @@ export class UploadComponent {
       this.snackBar.open('please select excel file first', "close");
 
     }
-    else if (this.file.type !="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-    {
+    else if (this.file.type != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
       this.snackBar.open('this file is not a excel file', "close");
 
     }
