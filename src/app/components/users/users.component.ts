@@ -42,6 +42,10 @@ add()
     const dialogRef = this.dialog.open(AddUserComponent,{
       disableClose: true,
       width: '800px',
+      height:"auto",
+      position: {
+        top: "10px"
+      },
       // height: '100%',
       hasBackdrop: false,
 

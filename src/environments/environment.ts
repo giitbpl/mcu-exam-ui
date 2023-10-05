@@ -1,11 +1,7 @@
-// fetch('assets/config/config.json')
-//     .then((response)=>{ 
-//         response.json()
-//     }).then((json) => 
-//     console.log(json)
-
-//     );
 export const environment=
 {
-    BaseUrl: 'http://localhost:3000/'
+    BaseUrl: 'http://localhost:3001/',
+    // BaseUrl: 'http://192.168.1.200:3000/',
+    // BaseUrl: 'http://172.24.240.89:3000/',
+    // BaseUrl: BaseUrlfromconfig
 }

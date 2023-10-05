@@ -1,0 +1,117 @@
+<!-- <h1 class="visually-hidden">Heroes examples</h1> -->
+<div class="row container-fluid text-center">
+  <div class="col-12 mb-4 mt-4 shadow-sm rounded-3">
+    <div class="card h-100" >
+      <h1 class="card-header  display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 1)</span> Backup Your Data <span class="text-danger">(Recommended)</span></h1>
+
+      <!-- <h5 class="card-header">Featured</h5> -->
+      <div class="card-body ">
+        <p class="lead mb-4">please download your data before upload a new data 
+          <!-- <br> <span
+            class="text-danger fw-bold">{{dirname}}</span> -->
+          </p>
+       
+      
+      </div>
+      <div class="card-footer text-body-secondary">
+        <button type="button" class="btn btn-primary" (click)="backup()">Backup Now</button>
+
+      </div>
+    </div>
+ 
+</div>
+  <div class="col-12 mb-4  shadow-sm rounded-3">
+    <div class="card h-100" >
+      <h1 class="card-header display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 2)</span> Upload
+        new Data</h1>
+
+      <!-- <h5 class="card-header">Featured</h5> -->
+      <div class="card-body">
+        <p class="lead mb-4">You can also copy your excel files into<br> <span
+            class="text-danger fw-bold">{{dirname | uppercase }}</span>
+          directory .it will also show on the file list on Step-2</p>
+        <h4 class="text-dark fw-bold">OR</h4>
+        <p class="lead mb-4">You can also upload the file</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <input type="file" class="form-control" (change)="onChange($event)"
+            accept="*.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+          <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button> -->
+        </div>
+      </div>
+      <div class="card-footer text-body-secondary">
+        <button type="button" class="btn btn-primary" (click)="process()">Upload</button>
+
+      </div>
+    </div>
+ 
+</div>
+  <div class="col-12 mb-4  shadow-sm rounded-3">
+    <div class="card">
+      <h1 class="card-header display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 3)</span> Please select a file
+      </h1>
+  
+      <!-- <h5 class="card-header">Featured</h5> -->
+      <div class="card-body">
+        <p class="lead mb-4">Files are fetch from the <br> <span
+          class="text-danger fw-bold">{{dirname | uppercase}} </span>Directory
+       </p>
+        <!-- <ul class="list-group" *ngFor="let f of filelist">
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="{{f}}" #fileselect id="firstRadio">
+            <label class="form-check-label" for="firstRadio">{{f}}</label>
+          </li>
+    
+        </ul> -->
+        <select class="form-select" #n>
+          <option value="{{f}}" *ngFor="let f of filelist">{{f}}</option>
+            
+          </select>
+        <!-- {{n.value}} -->
+      </div>
+      <div class="card-footer text-body-secondary">
+        <button class="btn btn-primary mt-3" type="button" (click)="loadSheet(n.value)" [disabled]="!filelistflag">Process</button>
+        
+      </div>
+    </div>
+
+
+   
+  </div>
+  <div class="col-12 mb-4  shadow-sm rounded-3">
+    <div class="card">
+      <h1 class="card-header display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 4)</span> Please select a Sheet
+      </h1>
+  
+      <!-- <h5 class="card-header">Featured</h5> -->
+      <div class="card-body">
+        <form [formGroup]="myform">
+
+          <select class="form-select" #sheetname (change)="sheetrowcount(sheetname.value,n.value)">
+          <option value="{{s}}" *ngFor="let s of sheetlist">{{s}}</option>
+            
+          </select>
+          Record Count {{rowcount}}
+          <!-- <ul class="list-group" *ngFor="let f of filelist">
+            <li class="list-group-item">
+              <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="{{f}}" id="firstRadio" formControlName="fileselectlist">
+              <label class="form-check-label" for="firstRadio">{{f}}</label>
+            </li>
+            
+          </ul> -->
+        </form>
+      </div>
+      <div class="card-footer text-body-secondary">
+        <!-- 2 days ago -->
+        <button class="btn btn-primary mt-3" [disabled]="!sheetlistflag" (click)="verify(n.value,sheetname.value)">Verify</button>
+        <button class="btn btn-primary mt-3" [disabled]="!sheetvarify" (click)="import(n.value,sheetname.value)">Import</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="container-fluid">
+  <table>
+
+  </table>
+</div>
+<!-- {{myform.value | json}} -->

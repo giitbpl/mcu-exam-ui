@@ -1,0 +1,54 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <div class="card" style="width: 18rem;">
+                <!-- <img src="assets/images/database.png"  class="card-img-top img-thumbnail" alt="..."> -->
+                <div class="card-body">
+                    <h5 class="card-title fs-4 text-primary">Import Data</h5>
+                    <p class="card-text">Press start to import excel data into database</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">File name <span class="fw-bold">{{filename}}</span></li>
+                    <li class="list-group-item">Sheet Name <span class="fw-bold">{{sheetname}}</span></li>
+                    <li class="list-group-item">Records <span class="fw-bold">{{value}}/{{rowcount}}</span></li>
+                </ul>
+                <div class="card-body">
+                    <Button class="btn btn-success " [disabled]="processState" (click)="start()">Import</Button>
+                    <Button class="btn btn-success " [disabled]="!processState" (click)="stop()">Stop</Button>
+                    <Button class="btn btn-danger " [disabled]="processState" mat-dialog-close>Close</Button>
+                    <!-- <a href="#" class="card-link">Another link</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-6 bg-dark">
+            <!-- <img src="assets/images/database.png" class="card-img-top img-thumbnail" alt="..."> -->
+            <!-- <mat-progress-bar class="example-margin" [color]="'primary'" [mode]="'determinate'" [value]="value">
+            </mat-progress-bar> -->
+            <section class="h-100">
+                <header class="container h-100">
+                  <div class="d-flex align-items-center justify-content-center h-100">
+                    <div class="d-flex flex-column">
+                      <!-- <h1 class="text align-self-center p-2" *ngIf="showprogress ">{{value*100/rowcount}}%</h1> -->
+                      <section *ngIf="showprogress ">
+                        <div class="content">
+                            <h2>{{value*100/rowcount}}%</h2>
+                            <h2>{{value*100/rowcount}}%</h2>
+                        </div>
+                    </section>
+                      <!-- <h4 class="text align-self-center p-2">item 2</h4> -->
+                      <!-- <button class="btn btn-danger align-self-center p-2" type="button" name="button">item 3</button> -->
+                    </div>
+                  </div>
+                </header>
+              </section>
+        </div>
+
+
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <mat-progress-bar class="example-margin" [color]="'primary'" [mode]="'determinate'" value="{{value*100/rowcount}}">
+            </mat-progress-bar>
+        </div>
+    </div>
+</div>

@@ -22,11 +22,13 @@ import { DataTablesModule } from 'angular-datatables';
 // import { DataTablesModule } from "angular-datatables";
 import {MatDialogModule} from '@angular/material/dialog';
 import { AddUserComponent } from './components/add-user/add-user.component';
-import { UploadComponent } from './components/upload/upload.component';
+import { ImportComponent } from './components/import/import.component';
 import {ProgressBarMode, MatProgressBarModule} from '@angular/material/progress-bar';
 import { ProgressdialogComponent } from './components/progressdialog/progressdialog.component';
 import { AppInterceptorInterceptor } from './app-interceptor.interceptor';
+import { ImportdialogComponent } from './components/importdialog/importdialog.component';
 // import {MatListModule} from '@angular/material/list';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -36,8 +38,9 @@ import { AppInterceptorInterceptor } from './app-interceptor.interceptor';
     UsersComponent,
     LogsComponent,
     AddUserComponent,
-    UploadComponent,
-    ProgressdialogComponent
+    ImportComponent,
+    ProgressdialogComponent,
+    ImportdialogComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +59,7 @@ import { AppInterceptorInterceptor } from './app-interceptor.interceptor';
     MatDialogModule,
     // ProgressBarMode,
     MatProgressBarModule,
+    MatTabsModule,
     // FormModule
     BackButtonDisableModule.forRoot({
       preserveScroll: false,

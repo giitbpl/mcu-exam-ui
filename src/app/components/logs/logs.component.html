@@ -1,1 +1,26 @@
-<p>logs works!</p>
+<div class="container">
+    <mat-tab-group>
+        
+        <mat-tab class="overflow-scroll">
+            <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon">info</mat-icon>
+                Activity Logs
+            </ng-template>
+           <div class=" bg-dark text-white ">
+            {{activity_logs}}
+           </div>
+        </mat-tab>
+        
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon text-danger">error</mat-icon>
+            Error Logs
+          </ng-template>
+          <div class="w-100 h-100 bg-dark text-white overflow-auto">
+            {{error_logs}}
+           </div>
+        </mat-tab>
+       
+      </mat-tab-group>
+      
+</div>

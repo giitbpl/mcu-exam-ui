@@ -1,3 +1,4 @@
 {
-    "serverip": "http://localhost:3000"
+    "serverip": "http://localhost:3000/",
+    "useraddmenu":"true"
 }
