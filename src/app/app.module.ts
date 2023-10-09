@@ -29,6 +29,7 @@ import { AppInterceptorInterceptor } from './app-interceptor.interceptor';
 import { ImportdialogComponent } from './components/importdialog/importdialog.component';
 // import {MatListModule} from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
+import { ChangePwdComponent } from './components/change-pwd/change-pwd.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     AddUserComponent,
     ImportComponent,
     ProgressdialogComponent,
-    ImportdialogComponent
+    ImportdialogComponent,
+    ChangePwdComponent
   ],
   imports: [
     BrowserModule,

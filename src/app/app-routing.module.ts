@@ -5,6 +5,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UsersComponent } from './components/users/users.component';
 import { ImportComponent } from './components/import/import.component';
 import { LogsComponent } from './components/logs/logs.component';
+import { ChangePwdComponent } from './components/change-pwd/change-pwd.component';
 
 const routes: Routes = [
   { path: '', component:LoginComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
     { path: 'user', component:UsersComponent},
     { path: 'import', component:ImportComponent},
     { path: 'logs', component:LogsComponent},
+    { path: 'chpwd', component:ChangePwdComponent},
 
   ]},
 ];

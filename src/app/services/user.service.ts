@@ -17,4 +17,16 @@ export class UserService {
   {
     return this.http.post(environment.BaseUrl+"admin/register", userdata);
   }
+  getUserByUid(uid:any)
+  {
+    return this.http.get(environment.BaseUrl+"admin/getuserbyuid");
+  }
+  getUserDetailByToken(token:any)
+  {
+    return this.http.post(environment.BaseUrl+"admin/token", {
+      "token": token
+    });
+
+  }
+
 }

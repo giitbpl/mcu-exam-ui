@@ -15,4 +15,7 @@ export class JwtTokenService {
   saveToken(token: any) {
     sessionStorage.setItem("token", token);
   }
+  deleteToken() {
+    sessionStorage.clear();
+  }
 }

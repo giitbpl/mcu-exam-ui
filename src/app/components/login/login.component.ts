@@ -31,12 +31,12 @@ export class LoginComponent {
         console.log(data);
         if (data.error == "false") {
           this.jwt.saveToken(data.token);
-
+          // sessionStorage.setItem("",
           this.router.navigate(['/dashboard']);
         }
         else if (data.error == "true") {
 
-          this.snackBar.open('invalid username and password', "close");
+          this.snackBar.open(data.message, "close");
         }
         else {
           this.snackBar.open('database error', "close");

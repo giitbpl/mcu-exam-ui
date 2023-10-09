@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 // import { UserService } from 'src/app/services/upload.service';
 import { AddUserComponent } from '../add-user/add-user.component';
 import { UserService } from 'src/app/services/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -13,7 +15,7 @@ export class UsersComponent {
   public dtOptions: DataTables.Settings = {};
   userlist:any;
   loaddata:any=false;
-constructor(private userService: UserService,public dialog: MatDialog)
+constructor(private userService: UserService,public dialog: MatDialog,private snakebar: MatSnackBar,private route:Router)
 {
   // this.dtOptions={
 
@@ -23,9 +25,18 @@ constructor(private userService: UserService,public dialog: MatDialog)
   };
     userService.getAllUsers().subscribe((users:any) =>{
       console.log(users);
-      
-      this.userlist=users.data;
-      this.loaddata=true;
+      if(users.error=="true" && users.code==1001)
+      {
+          snakebar.open(users.message,"close").afterDismissed().subscribe(() =>{
+            route.navigate(["/"]);
+          });
+      }
+      else
+      {
+        this.userlist=users.data;
+        this.loaddata=true;
+      }
+    
     });
 }
 del(uid:any)

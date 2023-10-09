@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { JwtTokenService } from 'src/app/services/jwt-token.service';
+import { UserService } from 'src/app/services/user.service';
+import { ChangePwdComponent } from '../change-pwd/change-pwd.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 // import { DataTablesModule } from 'angular-datatables';
 
 @Component({
@@ -9,5 +15,33 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
   showFiller = false;
+  userRole: any;
+  constructor(private snakebar:MatSnackBar, private jwt: JwtTokenService, private userservice: UserService, private router: Router, private dialog: MatDialog) {
+    let token = jwt.getToken();
+    userservice.getUserDetailByToken(token).subscribe((result: any) => {
+      if(result.error=="true")
+      {
+          snakebar.open(result.message);
+      }
+      else
+      {
+        console.log(result);
+        this.userRole = result.data.role;
 
+      }
+    })
+
+  }
+  logout() {
+    this.jwt.deleteToken();
+    this.router.navigate(["/"]);
+
+  }
+  chpwd() {
+    // let dilogref=this.dialog.open(ChangePwdComponent,{
+    //   hasBackdrop:false,
+    //   // closeOnNavigation:false,
+    //   // clos
+    // });
+  }
 }

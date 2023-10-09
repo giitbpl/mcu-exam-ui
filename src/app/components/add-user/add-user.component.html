@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" formControlName="name" id="name"
+                                <input type="password" class="form-control" formControlName="name" id="name"
                                     placeholder="Name">
                                 <label for="name">Name</label>
                                 <div *ngIf="myform.controls['name'].invalid && (myform.controls['name'].dirty || myform.controls['name'].touched)"
@@ -50,12 +50,23 @@
                                 <input type="text" class="form-control" formControlName="pwd" id="pwd"
                                     placeholder="password">
                                 <label for="name">Password</label>
+                                <!-- {{myform.controls["pwd"].value.length}} -->
                                 <div *ngIf="myform.controls['pwd'].invalid && (myform.controls['pwd'].dirty || myform.controls['pwd'].touched)"
                                 class="text-danger">
 
-                                <div *ngIf="myform.controls['pwd'].errors?.['required']">
+                                <div  *ngIf="myform.controls['pwd'].errors?.['required']">
                                     Password is required.
                                 </div>
+                                
+                                <div  *ngIf="myform.controls['pwd'].errors?.['minlength']">
+                                    Password is not less then 8 character.
+                                </div>
+                                <div  *ngIf="myform.controls['pwd'].errors?.['maxlength']">
+                                    Password is not grater then 20 character.
+                                </div>
+                                <!-- <div *ngIf="myform.controls['pwd'].errors?.['pattern']">
+                                   Password must have one uppercase character ,one lowercase character,one number and one symbol
+                                </div> -->
                              
 
                             </div>
@@ -63,7 +74,7 @@
                         </div>
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" formControlName="repwd" id="repwd"
+                                <input type="password" class="form-control" formControlName="repwd" id="repwd"
                                     placeholder="retype password">
                                 <label for="name">Confirm Password</label>
                                 <div *ngIf="myform.controls['repwd'].invalid && (myform.controls['repwd'].dirty || myform.controls['repwd'].touched)"
@@ -172,6 +183,6 @@
 <div mat-dialog-actions>
     <button class="btn btn-success" (click)="save()">Save</button>
     <button [mat-dialog-close]="" class="btn btn-danger" cdkFocusInitial>Close</button>
-    {{myform.valid}}
+    <!-- {{myform.valid}} -->
 </div>
 </div>

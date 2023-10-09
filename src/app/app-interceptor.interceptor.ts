@@ -16,14 +16,24 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable()
 export class AppInterceptorInterceptor implements HttpInterceptor {
 
-  constructor(public dialog: MatDialog, private jwttoken: JwtTokenService,private snakebar:MatSnackBar) {
+  constructor(public dialog: MatDialog, private jwttoken: JwtTokenService, private snakebar: MatSnackBar) {
 
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     console.log(`Requesting `);
-    var dialogref:any=null;
+    // req.headers.set('clientip', ""+sessionStorage.getItem('ip'));
+    var dialogref: any = null;
+  // if(req.url.indexOf("getip")>=1)
+  // {
+  //     console.log(req.headers);
+      
+  // }
+  // else
+  // {
+
+  // }
     if (req.url.indexOf("import/import") == -1) {
 
       dialogref = this.dialog.open(ProgressdialogComponent, {
@@ -37,23 +47,23 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
     const authReq = req.clone({
       setHeaders: {
 
-        "Authorization": token
+        "Authorization": token,
+        // "ip": this.
       }
     });
     return next.handle(authReq).pipe(
       tap({
         next: (event: any) => {
-          console.log("status=",event.status);
-          console.log("type=",event.type);
+          console.log("status=", event.status);
+          console.log("type=", event.type);
           // console.log("type=",event.type);
           if (event instanceof HttpResponse) {
 
-          
+
             if (event.type == HttpEventType.Response) {
               // alert('Unauthorized access!')
               // this.modalRef.dismiss(true);
-              if(dialogref!=null)
-              {
+              if (dialogref != null) {
                 dialogref.close();
 
               }
@@ -62,15 +72,13 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
           return event;
         },
         error: (error) => {
-          console.log("error intercept=",error);
-          console.log("error status=",error.status);
-          if(dialogref!=null)
-          {
+          console.log("error intercept=", error);
+          console.log("error status=", error.status);
+          if (dialogref != null) {
             dialogref.close();
 
           }
-          if(error.status===0)
-          {
+          if (error.status === 0) {
             this.snakebar.open("server error :Cannot connect to server");
           }
           // this.modalRef.close();

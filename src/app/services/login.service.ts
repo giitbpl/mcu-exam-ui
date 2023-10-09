@@ -14,4 +14,8 @@ export class LoginService {
    {
     return this.http.post(environment.BaseUrl+"admin/login", data);
    }
+   logout()
+   {
+    
+   }
 }

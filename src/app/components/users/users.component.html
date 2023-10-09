@@ -21,11 +21,14 @@
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.ipaddress}}</td>
-                <td>{{user.status}}</td>
-                <td>{{user.role}}</td>
+                <td>{{(user.status==1)?"Enable":"Disable"}}</td>
+                <!-- <td *ngIf="user.role==1">Super user </td>
+                <td *ngIf="user.role==2">Administrator </td>
+                <td *ngIf="user.role==3">Normal User</td> -->
+                <td>{{(user.role===1)?"Super user":(user.role===2)?"Administrator":"Normal user"}}</td>
                 <td>{{user.comcode}}</td>
                 <td>
-                    <button type="button" class="btn btn-danger" (click)="del(user.uid)">Delete</button>
+                    <!-- <button type="button" class="btn btn-danger" (click)="del(user.uid)">Delete</button> -->
                     <button type="button" class="btn btn-info" (click)="edit(user.uid)">Edit</button>
                 </td>
             </tr>

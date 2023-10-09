@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, HostListener, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { lastValueFrom } from 'rxjs';
@@ -20,6 +20,11 @@ export class ImportdialogComponent {
     this.filename = data.filename;
     this.sheetname = data.sheetname;
     this.rowcount = data.rowcount;
+  }
+  @HostListener('window:unload', [ '$event' ])
+  unloadHandler(event:any) {
+    // ...
+    alert("bye");
   }
   async start() {
     this.processState=true;

@@ -23,3 +23,13 @@
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
   }
+  .dropdown-menu-right {
+
+    right: 0 !important;
+    left: auto !important;
+ }
+ .dropdown-menu-right a:hover
+ {
+  color: black;
+  /* background-color: black; */
+ }

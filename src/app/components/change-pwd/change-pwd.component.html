@@ -1,0 +1,104 @@
+<!-- <h1 mat-dialog-title>Hi</h1> -->
+<div class="container w-50 mt-5" >
+    <div>
+        <h2>Change Password</h2>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="myform">
+
+
+                        <div class="row pt-3">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" formControlName="oldpwd" id="oldpwd"
+                                        placeholder="OLD password">
+                                    <label for="oldpwd">Old Password</label>
+                                    <div *ngIf="myform.controls['pwd'].invalid && (myform.controls['pwd'].dirty || myform.controls['pwd'].touched)"
+                                    class="text-danger">
+
+                                    <div *ngIf="myform.controls['pwd'].errors?.['required']">
+                                        Password is required.
+                                    </div>
+
+                                    <div *ngIf="myform.controls['pwd'].errors?.['minlength']">
+                                        Password is not less then 8 character.
+                                    </div>
+                                    <div *ngIf="myform.controls['pwd'].errors?.['maxlength']">
+                                        Password is not grater then 20 character.
+                                    </div>
+                                    <!-- <div *ngIf="myform.controls['pwd'].errors?.['pattern']">
+                               Password must have one uppercase character ,one lowercase character,one number and one symbol
+                            </div> -->
+
+
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" formControlName="pwd" id="pwd"
+                                        placeholder="password">
+                                    <label for="name">New Password</label>
+                                    <!-- {{myform.controls["pwd"].value.length}} -->
+                                    <div *ngIf="myform.controls['pwd'].invalid && (myform.controls['pwd'].dirty || myform.controls['pwd'].touched)"
+                                        class="text-danger">
+
+                                        <div *ngIf="myform.controls['pwd'].errors?.['required']">
+                                            Password is required.
+                                        </div>
+
+                                        <div *ngIf="myform.controls['pwd'].errors?.['minlength']">
+                                            Password is not less then 8 character.
+                                        </div>
+                                        <div *ngIf="myform.controls['pwd'].errors?.['maxlength']">
+                                            Password is not grater then 20 character.
+                                        </div>
+                                        <!-- <div *ngIf="myform.controls['pwd'].errors?.['pattern']">
+                                   Password must have one uppercase character ,one lowercase character,one number and one symbol
+                                </div> -->
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="password" class="form-control" formControlName="repwd" id="repwd"
+                                        placeholder="retype password">
+                                    <label for="name">Confirm Password</label>
+                                    <div *ngIf="myform.controls['repwd'].invalid && (myform.controls['repwd'].dirty || myform.controls['repwd'].touched)"
+                                        class="text-danger">
+
+                                        <div *ngIf="myform.controls['repwd'].errors?.['required']">
+                                            Confirm password is required.
+                                        </div>
+                                        <div *ngIf="myform.controls['repwd'].errors?.['confirmedValidator']">
+                                            Password and Confirm password is not match.
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div >
+        <button class="btn btn-success" (click)="save()">Save</button>
+        <!-- <button class="btn btn-danger" cdkFocusInitial>Close</button> -->
+        <!-- {{myform.valid}} -->
+    </div>
+</div>
