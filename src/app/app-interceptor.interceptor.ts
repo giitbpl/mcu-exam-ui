@@ -43,11 +43,13 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
       });
     }
     let token: any = this.jwttoken.getToken()
+    console.log("token=>",token);
+    
     // const authReq = req.clone({ headers: req.headers.set('Authorization', token) });
     const authReq = req.clone({
       setHeaders: {
 
-        "Authorization": token,
+        "Authorization":"Bearer "+ token,
         // "ip": this.
       }
     });

@@ -1,26 +1,19 @@
-<div class="container">
-    <mat-tab-group>
-        
-        <mat-tab class="overflow-scroll">
-            <ng-template mat-tab-label>
-                <mat-icon class="example-tab-icon">info</mat-icon>
-                Activity Logs
-            </ng-template>
-           <div class=" bg-dark text-white ">
-            {{activity_logs}}
-           </div>
-        </mat-tab>
-        
-        <mat-tab>
-          <ng-template mat-tab-label>
-            <mat-icon class="example-tab-icon text-danger">error</mat-icon>
-            Error Logs
-          </ng-template>
-          <div class="w-100 h-100 bg-dark text-white overflow-auto">
-            {{error_logs}}
-           </div>
-        </mat-tab>
-       
-      </mat-tab-group>
-      
+<!-- <app-log-table [loglist]="logdata" *ngIf="loaddata"></app-log-table> -->
+<div class="container-fluid">
+
+  <table datatable [dtOptions]="dtOptions" class="table table-striped table-hover table-sm">
+
+    <tfoot>
+      <tr>
+        <th><input type="text" placeholder="Search UID" name="search-uid"/></th>
+        <th><input type="text" placeholder="Search IP Address" name="search-first-name"/></th>
+        <th><input type="text" placeholder="Search URL" name="search-last-name"/></th>
+        <th><input type="text" placeholder="Search Method" name="search-last-name"/></th>
+        <th><input type="text" placeholder="Search Status" name="search-last-name"/></th>
+        <th><input type="text" placeholder="Search Date" name="search-last-name"/></th>
+        <!-- <th><input type="text" placeholder="Search last name" name="search-last-name"/></th> -->
+      </tr>
+    </tfoot>  
+  </table>
+
 </div>

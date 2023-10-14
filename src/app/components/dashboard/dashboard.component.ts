@@ -5,6 +5,7 @@ import { JwtTokenService } from 'src/app/services/jwt-token.service';
 import { UserService } from 'src/app/services/user.service';
 import { ChangePwdComponent } from '../change-pwd/change-pwd.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoginService } from 'src/app/services/login.service';
 // import { DataTablesModule } from 'angular-datatables';
 
 @Component({
@@ -16,7 +17,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class DashboardComponent {
   showFiller = false;
   userRole: any;
-  constructor(private snakebar:MatSnackBar, private jwt: JwtTokenService, private userservice: UserService, private router: Router, private dialog: MatDialog) {
+  constructor(private snakebar:MatSnackBar, private jwt: JwtTokenService,private loginservice:LoginService, private userservice: UserService, private router: Router, private dialog: MatDialog) {
     let token = jwt.getToken();
     userservice.getUserDetailByToken(token).subscribe((result: any) => {
       if(result.error=="true")
@@ -33,8 +34,11 @@ export class DashboardComponent {
 
   }
   logout() {
-    this.jwt.deleteToken();
-    this.router.navigate(["/"]);
+    this.loginservice.logout().subscribe((response:any) => {
+
+      this.jwt.deleteToken();
+      this.router.navigate(["/"]);
+    });
 
   }
   chpwd() {

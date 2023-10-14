@@ -12,6 +12,6 @@ export class LogsService {
    }
    getInfoLog()
    {
-    return this.http.get(environment.BaseUrl +"logs/info/all");
+    return this.http.get(environment.BaseUrl +"logs/all");
    }
 }

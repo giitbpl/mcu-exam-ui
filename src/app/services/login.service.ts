@@ -16,6 +16,7 @@ export class LoginService {
    }
    logout()
    {
-    
+    return this.http.get(environment.BaseUrl+"admin/logout");
+
    }
 }

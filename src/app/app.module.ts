@@ -30,7 +30,11 @@ import { ImportdialogComponent } from './components/importdialog/importdialog.co
 // import {MatListModule} from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ChangePwdComponent } from './components/change-pwd/change-pwd.component';
-
+import {MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+// import { LogTableComponent } from './components/log-table/log-table.component';
+import { DatePipe, UpperCasePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +46,8 @@ import { ChangePwdComponent } from './components/change-pwd/change-pwd.component
     ImportComponent,
     ProgressdialogComponent,
     ImportdialogComponent,
-    ChangePwdComponent
+    ChangePwdComponent,
+    // LogTableComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +64,9 @@ import { ChangePwdComponent } from './components/change-pwd/change-pwd.component
     MatListModule,
     DataTablesModule,
     MatDialogModule,
+    MatTableModule,
+    MatInputModule,
+    MatFormFieldModule,
     // ProgressBarMode,
     MatProgressBarModule,
     MatTabsModule,
@@ -70,7 +78,8 @@ import { ChangePwdComponent } from './components/change-pwd/change-pwd.component
 
   ],
   providers: [
-
+    UpperCasePipe,
+    DatePipe,
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
     {provide: HTTP_INTERCEPTORS, useClass: AppInterceptorInterceptor, multi:true}
 
