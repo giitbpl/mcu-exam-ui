@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import * as CryptoJS from 'crypto-js';
+import { UtilityService } from 'src/app/services/utility.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-user',
@@ -12,7 +15,10 @@ export class AddUserComponent {
   // repwd= new FormControl('', [Validators.required]);
   // passwordPattern= /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
   // passwordPattern= /(?=.?[A-Z]) (?=.?[a-z]) (?=.?[0-9]) (?=.?[#?!@$%^&*-]) .{8,20}/;
-constructor(private formBuilder: FormBuilder,private userservice: UserService)
+constructor(private formBuilder: FormBuilder,
+  private userservice: UserService,
+  private utilityService: UtilityService,
+  private snakebar:MatSnackBar)
 {
 
 }
@@ -36,8 +42,25 @@ constructor(private formBuilder: FormBuilder,private userservice: UserService)
   save() {
     // this.myform.controls['name'].setErrors({required: true});
     if(this.myform.valid==true) {
-      this.userservice.registerUser(this.myform.value).subscribe((data) => {
+      // this.myform.controls["pwd"].clearValidators();
+      // this.myform.patchValue({
+      //   pwd: CryptoJS.SHA256(this.myform.controls["pwd"].value).toString(),
+
+      // });
+      console.log(this.myform.value);
+      this.utilityService.enableForm(this.myform,false);
+      this.userservice.registerUser(this.myform.value).subscribe((data:any) => {
         console.log(data);
+        if (data.error=="false")
+        {
+              this.snakebar.open(data.message).afterDismissed().subscribe(data => {
+                window.location.reload();
+              });
+        }
+        else
+        {
+          this.snakebar.open(data.message);
+        }
         
       });
     }      

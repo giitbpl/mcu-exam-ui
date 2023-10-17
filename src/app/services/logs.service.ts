@@ -14,4 +14,10 @@ export class LogsService {
    {
     return this.http.get(environment.BaseUrl +"logs/all");
    }
+   deleteLogs(duration:any)
+   {
+    return this.http.post(environment.BaseUrl +"logs/del",{
+      "duration":duration
+    });
+   }
 }

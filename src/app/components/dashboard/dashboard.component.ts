@@ -17,18 +17,22 @@ import { LoginService } from 'src/app/services/login.service';
 export class DashboardComponent {
   showFiller = false;
   userRole: any;
+  username: string;
   constructor(private snakebar:MatSnackBar, private jwt: JwtTokenService,private loginservice:LoginService, private userservice: UserService, private router: Router, private dialog: MatDialog) {
     let token = jwt.getToken();
     userservice.getUserDetailByToken(token).subscribe((result: any) => {
+      console.log(result);
+      
       if(result.error=="true")
       {
           snakebar.open(result.message);
+          router.navigate(['/']);
       }
       else
       {
         console.log(result);
         this.userRole = result.data.role;
-
+        this.username=result.data.name;
       }
     })
 

@@ -11,6 +11,8 @@ export class AppComponent {
   title = 'McuExamWeb';
   constructor(private http:HttpClient)
   {
+    console.log("AppComponent running/");
+    
 //     ip();   // '192.168.0.2'
 // ipv6(); // 'fe80::7aca:39ff:feb0:e67d'
 // mac(function (err, addr) {

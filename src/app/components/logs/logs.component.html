@@ -1,19 +1,81 @@
 <!-- <app-log-table [loglist]="logdata" *ngIf="loaddata"></app-log-table> -->
-<div class="container-fluid">
+<div class="container-fluid ">
+  <div class="row">
 
-  <table datatable [dtOptions]="dtOptions" class="table table-striped table-hover table-sm">
+    <div class="col-12   shadow-sm rounded-3">
+      <div class="card h-100">
+        <h1 class="card-header  text-center  display-5 fw-bold text-body-emphasis">Activity Logs</h1>
 
-    <tfoot>
-      <tr>
-        <th><input type="text" placeholder="Search UID" name="search-uid"/></th>
-        <th><input type="text" placeholder="Search IP Address" name="search-first-name"/></th>
-        <th><input type="text" placeholder="Search URL" name="search-last-name"/></th>
-        <th><input type="text" placeholder="Search Method" name="search-last-name"/></th>
-        <th><input type="text" placeholder="Search Status" name="search-last-name"/></th>
-        <th><input type="text" placeholder="Search Date" name="search-last-name"/></th>
-        <!-- <th><input type="text" placeholder="Search last name" name="search-last-name"/></th> -->
-      </tr>
-    </tfoot>  
-  </table>
+        <!-- <h5 class="card-header">Featured</h5> -->
+        <div class="card-body ">
+
+          <!-- <br> <span
+              class="text-danger fw-bold">{{dirname}}</span> -->
+          <table datatable [dtOptions]="dtOptions" class="table table-striped table-hover table-sm">
+
+            <tfoot>
+              <tr>
+                <th><input type="text" placeholder="Search UID" name="search-uid" /></th>
+                <th><input type="text" placeholder="Search IP Address" name="search-first-name" /></th>
+                <th><input type="text" placeholder="Search URL" name="search-last-name" /></th>
+                <th><input type="text" placeholder="Search Method" name="search-last-name" /></th>
+                <th><input type="text" placeholder="Search Status" name="search-last-name" /></th>
+                <th><input type="text" placeholder="Search Date" name="search-last-name" /></th>
+                <!-- <th><input type="text" placeholder="Search last name" name="search-last-name"/></th> -->
+              </tr>
+            </tfoot>
+          </table>
+
+
+        </div>
+        <!-- <div class="card-footer text-body-secondary">
+          <button type="button" class="btn btn-primary" >Backup Now</button>
+  
+        </div> -->
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-12 mb-4 mt-4 shadow-sm rounded-3">
+      <div class="card h-100">
+        <h1 class="card-header text-center  display-5 fw-bold text-body-emphasis">Delete Logs</h1>
+
+        <!-- <h5 class="card-header">Featured</h5> -->
+        <div class="card-body ">
+          <p class="lead mb-4">Please select which period logs you wish to delete
+
+          </p>
+          <div class="d-flex flex-column bd-highlight mb-3">
+            <div class="p-2 bd-highlight col-sm">
+              <div class="form-floating ">
+                <select class="form-select" style="width: 50%;" id="floatingSelect" aria-label="Floating label select example" #duration>
+                  <!-- <option selected>Open this select menu</option> -->
+                  <option value="1">Before 1 Month</option>
+                  <option value="3">Before 3 Month</option>
+                  <option value="6">Before 6 Month</option>
+                  <option value="12">Before 12 Month</option>
+                  <!-- <option value="0">All</option> -->
+                </select>
+                <label for="floatingSelect">Duration </label>
+              </div>
+            </div>
+            <div class="p-2 bd-highlight"><button class="btn btn-danger" (click)="delete(duration.value)">Delete</button></div>
+            <!-- <div class="p-2 bd-highlight">Flex item 3</div> -->
+          </div>
+
+        </div>
+        <div class="card-footer text-body-secondary">
+          <!-- <button type="button" class="btn btn-primary" (click)="backup()">Backup Now</button> -->
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
 
 </div>

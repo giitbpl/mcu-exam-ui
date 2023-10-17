@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="password" class="form-control" formControlName="name" id="name"
+                                <input type="text" class="form-control" formControlName="name" id="name"
                                     placeholder="Name">
                                 <label for="name">Name</label>
                                 <div *ngIf="myform.controls['name'].invalid && (myform.controls['name'].dirty || myform.controls['name'].touched)"
@@ -47,7 +47,7 @@
                     <div class="row pt-3">
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" formControlName="pwd" id="pwd"
+                                <input type="password" class="form-control" formControlName="pwd" id="pwd"
                                     placeholder="password">
                                 <label for="name">Password</label>
                                 <!-- {{myform.controls["pwd"].value.length}} -->

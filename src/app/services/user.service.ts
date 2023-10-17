@@ -28,5 +28,8 @@ export class UserService {
     });
 
   }
-
+changePwd(formdata:any)
+{
+  return this.http.post(environment.BaseUrl+"admin/chpwd",formdata  );
+}
 }

@@ -11,15 +11,15 @@ import * as CryptoJS from 'crypto-js';
 })
 export class ChangePwdComponent {
   passwordPattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/;
-  private formdata=[];
+  private formdata = [];
   private oldpwd: any = "";
   private newpwd: any = "";
   myform = this.formBuilder.group({
 
-    oldpwd: new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern(this.passwordPattern)]),
+    oldpwd: new FormControl("Ftp@12345", [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern(this.passwordPattern)]),
 
-    pwd: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern(this.passwordPattern)]),
-    repwd: new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(20)]),
+    pwd: new FormControl('Ftp@1234', [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern(this.passwordPattern)]),
+    repwd: new FormControl("Ftp@1234", [Validators.required, Validators.minLength(8), Validators.maxLength(20)]),
 
   },
     {
@@ -47,11 +47,30 @@ export class ChangePwdComponent {
     };
   }
   save() {
+    console.log(this.myform.value);
     if (this.myform.valid == true) {
-      // this.formdata.
-      this.oldpwd = CryptoJS.SHA256(this.myform.controls["oldpwd"].value);
-      this.newpwd = CryptoJS.SHA256(this.myform.controls["newpwd"].value);
-      
+      // this.myform.controls["pwd"].clearValidators();
+      // this.myform.controls["oldpwd"].clearValidators();
+      // // this.myform.controls["repwd"].disable;
+      // this.myform.patchValue({
+      //   oldpwd: CryptoJS.SHA256(this.myform.controls["pwd"].value).toString(),
+      //   pwd: CryptoJS.SHA256(this.myform.controls["oldpwd"].value).toString(),
+      //   repwd:""
+      // });
+
+      // this.myform.clearValidators();
+      // this.myform.clearValidators();
+      // this.myform.patchValue({
+      // this.newpwd = CryptoJS.SHA256(this.myform.controls["pwd"].value).toString();
+      // this.oldpwd = CryptoJS.SHA256(this.myform.controls["oldpwd"].value).toString();
+
+      this.userservice.changePwd(this.myform.value).subscribe((data) => {
+        console.log(data);
+
+      });
+
+
+
     }
 
 
