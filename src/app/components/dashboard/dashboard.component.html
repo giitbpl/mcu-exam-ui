@@ -1,70 +1,64 @@
-<!-- <mat-drawer-container class="w-100 h-100">
-  <mat-drawer #drawer class="example-sidenav w-20  bg-dark" mode="push">
-  <p>Auto-resizing sidenav</p> 
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p> 
-     <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button> 
-    <mat-card class="example-card w-20">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-      </mat-card-header>
-       <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> 
-      <mat-card-content>
-        <mat-list>
-          <div mat-subheader>Folders</div>
-          <mat-list-item >
-            <mat-icon matListItemIcon>folder</mat-icon>
-            <a href=""  matListItemTitle>folders</a>
-             <div matListItemLine>{{folder.updated | date}}</div> 
-          </mat-list-item>
-          <mat-divider></mat-divider>
-           <div mat-subheader>Notes</div>
-          <mat-list-item *ngFor="let note of notes">
-            <mat-icon matListItemIcon>note</mat-icon>
-            <div matListItemTitle>{{note.name}}</div>
-             <div matListItemLine>{{note.updated | date}}</div> 
-          </mat-list-item> 
-        </mat-list>
-      </mat-card-content>
-     <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions> 
-    </mat-card>
+<mat-drawer-container class="w-100 h-100" [hasBackdrop]="true">
+  <mat-drawer #drawer class="example-sidenav bg-dark " mode="push" style="width: 200px;">
+    <div class="d-flex justify-content-center">
+      <img src="assets/images/logo.png" class="w-50">
+    </div>
+    <div class="d-flex justify-content-center">
+     <h4 class="text-white">{{username}}</h4>
+    </div>
+
+    <ul class="nav flex-column mt-5">
+     
+      <li class="nav-item " *ngIf="userRole==1">
+        <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="user" routerLinkActive="active">Users</a>
+      </li>
+      <li class="nav-item " *ngIf="userRole==1">
+        <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="logs" routerLinkActive="active">Logs</a>
+      </li>
+      <li class="nav-item " *ngIf="userRole==1 || userRole==2">
+        <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="import" routerLinkActive="active">Import / Backup</a>
+      </li>
+      <li class="nav-item " *ngIf="userRole==1 || userRole==2">
+        <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="chpwd" routerLinkActive="active">Change Password</a>
+
+      </li>
+      <li class="nav-item " *ngIf="userRole==1 || userRole==2">
+        <a class="nav-link btn btn-outline-primary text-white " (click)="logout()" aria-current="page" >Logout</a>
+
+      </li>
+      
+    </ul>
+    
   </mat-drawer>
 
   <div class="example-sidenav-content">
 
-    <mat-toolbar class="bg-primary">
-      <button type="button" class=" btn btn-secondry" mat-button (click)="drawer.toggle()">
-        <i class="bi bi-list"></i>
+    <mat-toolbar class="bg-dark bg-gradient">
+      <button type="button" class=" btn btn-secondry text-white" mat-button (click)="drawer.toggle()">
+        <i class="bi bi-list" style="font-size: 2rem;"></i>
       </button>
       <span class="example-spacer"></span>
-      <span class="ps-3 text-white">MCU Super Admin</span>
-       <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button> 
+      <span class="ps-3 text-white">Data Verification Service</span>
+    
     </mat-toolbar>
   </div>
+  <router-outlet></router-outlet>
 
-</mat-drawer-container> -->
-<div class="container-fluid">
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+</mat-drawer-container>
+<!-- <div class="container-fluid">
+  
+  <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #a6daff;">
     <div class="container-fluid">
-      <a class="navbar-brand" routerLink="dashboard" routerLinkActive="active">{{username}}</a>
+      <a class="navbar-brand " href="#">
+        <img src="assets/images/logo.png" alt="" width="50" height="50">
+            {{username}}
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
           <li class="nav-item" *ngIf="userRole==1">
             <a class="nav-link " aria-current="page" routerLink="user" routerLinkActive="active">Users</a>
           </li>
@@ -72,15 +66,14 @@
             <a class="nav-link " aria-current="page" routerLink="logs" routerLinkActive="active">Logs</a>
           </li>
           <li class="nav-item" *ngIf="userRole==1 || userRole==2">
-            <a class="nav-link s" aria-current="page" routerLink="import" routerLinkActive="active">Import / Backup</a>
+            <a class="nav-link " aria-current="page" routerLink="import" routerLinkActive="active">Import / Backup</a>
           </li>
 
-          <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li> -->
+       
 
 
         </ul>
+      
         <span class="navbar-text">
           <ul class="navbar-nav  mb-lg-0">
 
@@ -89,28 +82,21 @@
                 aria-expanded="false">
                 Profile
               </a>
-              <ul class="dropdown-menu bg-primary mr-4 dropdown-menu-right">
+              <ul class="dropdown-menu  mr-4 dropdown-menu-right">
                 <li>
                   <a class="dropdown-item" routerLink="chpwd" routerLinkActive="active">Change Password</a>
                 </li>
                 <li>
                   <a class="dropdown-item" (click)="logout()">Logout</a>
                 </li>
-                <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
-                <!-- <li><hr class="dropdown-divider"></li> -->
-                <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+              
               </ul>
             </li>
           </ul>
-          <!-- <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul> -->
+         
         </span>
       </div>
     </div>
   </nav>
-</div>
-<router-outlet></router-outlet>
+</div> -->
+<h1>footer</h1>

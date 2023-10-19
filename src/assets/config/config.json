@@ -1,4 +1,4 @@
 {
-    "serverip": "http://localhost:3000/",
-    "useraddmenu":"true"
+    "serverIp": "http://localhost:5000/"
 }
+    

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -35,6 +35,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 // import { LogTableComponent } from './components/log-table/log-table.component';
 import { DatePipe, UpperCasePipe } from '@angular/common';
+import { AppconfigService } from './services/appconfig.service';
+// import {MatSidenavModule} from '@angular/material/sidenav';
+
+// import { NgModule, APP_INITIALIZER } from '@angular/core';
+export function initConfig(appConfig: AppconfigService) {
+  return () => appConfig.loadConfig();
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,8 +88,13 @@ import { DatePipe, UpperCasePipe } from '@angular/common';
     UpperCasePipe,
     DatePipe,
     {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
-    {provide: HTTP_INTERCEPTORS, useClass: AppInterceptorInterceptor, multi:true}
-
+    {provide: HTTP_INTERCEPTORS, useClass: AppInterceptorInterceptor, multi:true},
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initConfig,
+      deps: [AppconfigService],
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })
