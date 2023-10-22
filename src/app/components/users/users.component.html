@@ -11,7 +11,7 @@
                 <th>Status</th>
                 <th>Role</th>
                 <th>Computer Code</th>
-                <th></th>
+                <!-- <th></th> -->
 
             </tr>
         </thead>
@@ -21,16 +21,24 @@
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.ipaddress}}</td>
-                <td>{{(user.status==1)?"Enable":"Disable"}}</td>
+                <!-- <td>{{(user.status==1)?"Enable":"Disable"}}</td> -->
+                <td>
+                    <mat-slide-toggle
+                    class="example-margin"
+                    [color]="'accent'"
+                    (click)="changeStatus(user.uid)"
+                    [checked]='(user.status==1)?true:false'>
+                    {{(user.status==1)?"Enable":"Disable"}}
+                </mat-slide-toggle>
+                </td>
                 <!-- <td *ngIf="user.role==1">Super user </td>
                 <td *ngIf="user.role==2">Administrator </td>
                 <td *ngIf="user.role==3">Normal User</td> -->
                 <td>{{(user.role===1)?"Super user":(user.role===2)?"Administrator":"Normal user"}}</td>
                 <td>{{user.comcode}}</td>
-                <td>
-                    <!-- <button type="button" class="btn btn-danger" (click)="del(user.uid)">Delete</button> -->
+                <!-- <td>    
                     <button type="button" class="btn btn-info" (click)="edit(user.uid)">Edit</button>
-                </td>
+                </td> -->
             </tr>
         </tbody>
     </table>

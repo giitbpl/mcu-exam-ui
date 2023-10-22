@@ -28,11 +28,18 @@ export class LogsComponent implements OnInit, AfterViewInit {
       ajax: (dataTablesParameters: any, callback: any) => {
         this.logservice.getInfoLog().subscribe((resp: any) => {
           console.log(resp);
+          if(resp.error=="false") {
           callback({
             recordsTotal: resp.recordsTotal,
             recordsFiltered: resp.recordsFiltered,
             data: resp.data             // <-- see here
           });
+        }
+        else
+        {
+          // this.snakebar("")
+          location.href = "/";
+        }
         });
       },
       columns: [{

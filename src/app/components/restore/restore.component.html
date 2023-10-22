@@ -1,0 +1,29 @@
+<div class="row container-fluid text-center">
+    <div class="col-12 mb-4 mt-4 shadow-sm rounded-3">
+        <div class="card h-100">
+            <h1 class="card-header  display-5 fw-bold text-body-emphasis"> Restore Your Data </h1>
+
+            <!-- <h5 class="card-header">Featured</h5> -->
+            <div class="card-body ">
+                <p class="lead mb-4">this utility is only restore databases that backup from this application 
+                  
+                </p>
+                <p class="lead mb-4">Support only .sql file extension   
+                  
+                </p>
+                <div class="d-flex justify-content-center">
+                    <!-- accept="*.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"> -->
+                    <div class="form-floating mb-3">
+                        <input type="file" class="form-control" accept="*.sql"  (change)="onChange($event)">
+                        <label for="floatingInput">Select Sql file </label>
+                      </div>        
+                </div>
+            </div>
+            <div class="card-footer text-body-secondary">
+                <button type="button" class="btn btn-primary" (click)="process()">Upload</button>
+
+            </div>
+        </div>
+
+    </div>
+</div>

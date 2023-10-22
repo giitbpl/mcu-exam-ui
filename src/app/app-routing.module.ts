@@ -6,6 +6,9 @@ import { UsersComponent } from './components/users/users.component';
 import { ImportComponent } from './components/import/import.component';
 import { LogsComponent } from './components/logs/logs.component';
 import { ChangePwdComponent } from './components/change-pwd/change-pwd.component';
+import { BackupComponent } from './components/backup/backup.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { RestoreComponent } from './components/restore/restore.component';
 
 const routes: Routes = [
   { path: '', component:LoginComponent},
@@ -14,6 +17,9 @@ const routes: Routes = [
     { path: 'import', component:ImportComponent},
     { path: 'logs', component:LogsComponent},
     { path: 'chpwd', component:ChangePwdComponent},
+    { path: 'backup', component:BackupComponent},
+    { path: 'about', component:AboutusComponent},
+    { path: 'restore', component:RestoreComponent},
 
   ]},
 ];

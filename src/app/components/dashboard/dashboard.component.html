@@ -7,23 +7,33 @@
      <h4 class="text-white">{{username}}</h4>
     </div>
 
-    <ul class="nav flex-column mt-5">
+    <ul class="nav flex-column mt-5 m-2 text-left">
      
       <li class="nav-item " *ngIf="userRole==1">
-        <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="user" routerLinkActive="active">Users</a>
+        <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="user" routerLinkActive="active"> Users</a>
       </li>
       <li class="nav-item " *ngIf="userRole==1">
         <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="logs" routerLinkActive="active">Logs</a>
       </li>
       <li class="nav-item " *ngIf="userRole==1 || userRole==2">
-        <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="import" routerLinkActive="active">Import / Backup</a>
+        <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="import" routerLinkActive="active">Import </a>
       </li>
+      <li class="nav-item " *ngIf="userRole==1 || userRole==2">
+        <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="backup" routerLinkActive="active"> Backup</a>
+      </li>
+      <!-- <li class="nav-item " *ngIf="userRole==1 || userRole==2">
+        <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="restore" routerLinkActive="active"> Restore</a>
+      </li> -->
       <li class="nav-item " *ngIf="userRole==1 || userRole==2">
         <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="chpwd" routerLinkActive="active">Change Password</a>
 
       </li>
       <li class="nav-item " *ngIf="userRole==1 || userRole==2">
         <a class="nav-link btn btn-outline-primary text-white " (click)="logout()" aria-current="page" >Logout</a>
+
+      </li>
+      <li class="nav-item " *ngIf="userRole==1 || userRole==2">
+        <a class="nav-link btn btn-outline-primary text-white " routerLink="about" routerLinkActive="active" aria-current="page" >About</a>
 
       </li>
       

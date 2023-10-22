@@ -37,7 +37,7 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
     if (req.url.indexOf("import/import") == -1) {
 
       dialogref = this.dialog.open(ProgressdialogComponent, {
-        width: "200px",
+        width: "300px",
         hasBackdrop: true,
         disableClose: true
       });

@@ -3,6 +3,7 @@ import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms'
 import { UserService } from 'src/app/services/user.service';
 // import sha256 from 'angular-crypto';
 import * as CryptoJS from 'crypto-js';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-change-pwd',
@@ -16,17 +17,16 @@ export class ChangePwdComponent {
   private newpwd: any = "";
   myform = this.formBuilder.group({
 
-    oldpwd: new FormControl("Ftp@12345", [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern(this.passwordPattern)]),
-
-    pwd: new FormControl('Ftp@1234', [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern(this.passwordPattern)]),
-    repwd: new FormControl("Ftp@1234", [Validators.required, Validators.minLength(8), Validators.maxLength(20)]),
+    oldpwd: new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern(this.passwordPattern)]),
+    pwd: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern(this.passwordPattern)]),
+    repwd: new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(20)]),
 
   },
     {
       validators: this.ConfirmedValidator("pwd", "repwd"),
     }
   );
-  constructor(private formBuilder: FormBuilder, private userservice: UserService) {
+  constructor(private formBuilder: FormBuilder, private userservice: UserService,private snakebar:MatSnackBar) {
 
   }
   ConfirmedValidator(controlName: string, matchingControlName: string) {
@@ -64,9 +64,11 @@ export class ChangePwdComponent {
       // this.newpwd = CryptoJS.SHA256(this.myform.controls["pwd"].value).toString();
       // this.oldpwd = CryptoJS.SHA256(this.myform.controls["oldpwd"].value).toString();
 
-      this.userservice.changePwd(this.myform.value).subscribe((data) => {
-        console.log(data);
-
+      this.userservice.changePwd(this.myform.value).subscribe((data:any) => {
+        // console.log(data);
+       this.snakebar.open(data.message,"close").afterDismissed().subscribe(data=>{
+          location.reload();
+       });
       });
 
 

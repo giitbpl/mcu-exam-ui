@@ -1,0 +1,29 @@
+<div class="row container-fluid text-center">
+    <div class="col-12 mb-4 mt-4 shadow-sm rounded-3">
+        <div class="card h-100" >
+          <h1 class="card-header  display-5 fw-bold text-body-emphasis"> Backup Your Data <span class="text-danger">(Recommended)</span></h1>
+    
+          <!-- <h5 class="card-header">Featured</h5> -->
+          <div class="card-body ">
+            <p class="lead mb-4">Please download your data before upload a new data 
+              <!-- <br> <span
+                class="text-danger fw-bold">{{dirname}}</span> -->
+              </p>
+              <div class="d-flex justify-content-center">
+                <div class="form-floating">
+                <select  class="form-select"  style="width: 300px;" id="tablename" #tablename aria-label="Floating label select example">
+                  <option selected="{{isLast==true}}" value="{{t.Tables_in_mcuexam}}" *ngFor="let t of tables;let ind = index;last as isLast">{{t.Tables_in_mcuexam}}</option>
+             
+                </select>
+                <label for="tablename">Select database table </label>
+              </div>  
+          </div>
+          </div>
+          <div class="card-footer text-body-secondary">
+            <button type="button" class="btn btn-primary" (click)="backup(tablename.value)">Backup Now</button>
+    
+          </div>
+        </div>
+     
+    </div>
+</div>

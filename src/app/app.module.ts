@@ -36,7 +36,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 // import { LogTableComponent } from './components/log-table/log-table.component';
 import { DatePipe, UpperCasePipe } from '@angular/common';
 import { AppconfigService } from './services/appconfig.service';
+import { BackupComponent } from './components/backup/backup.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { RestoreComponent } from './components/restore/restore.component';
 // import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 // import { NgModule, APP_INITIALIZER } from '@angular/core';
 export function initConfig(appConfig: AppconfigService) {
@@ -54,6 +58,9 @@ export function initConfig(appConfig: AppconfigService) {
     ProgressdialogComponent,
     ImportdialogComponent,
     ChangePwdComponent,
+    BackupComponent,
+    AboutusComponent,
+    RestoreComponent,
     // LogTableComponent
   ],
   imports: [
@@ -77,6 +84,7 @@ export function initConfig(appConfig: AppconfigService) {
     // ProgressBarMode,
     MatProgressBarModule,
     MatTabsModule,
+    MatSlideToggleModule,
     // FormModule
     BackButtonDisableModule.forRoot({
       preserveScroll: false,

@@ -16,10 +16,12 @@ export class ImportdialogComponent {
   value: number = 0;
   showprogress: boolean = false;
   processState:any = false;
+  tablename:any;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private importservice: ImportService,private dialogRef: MatDialogRef<any>,private snackBar: MatSnackBar) {
     this.filename = data.filename;
     this.sheetname = data.sheetname;
     this.rowcount = data.rowcount;
+    this.tablename=data.tablename;
   }
   @HostListener('window:unload', [ '$event' ])
   unloadHandler(event:any) {
@@ -28,15 +30,18 @@ export class ImportdialogComponent {
   }
   async start() {
     this.processState=true;
-    for (let i = 0; i < this.rowcount; i++) {
+    let i;
+    for ( i = 0; i < this.rowcount; i++) {
       this.showprogress = true;
       if(this.processState==false) {
         // alert("import terminated");
-        this.snackBar.open("Import terminated");
-        this.dialogRef.close();
+        this.snackBar.open("Import terminated").afterDismissed().subscribe(() => {
+          
+          this.dialogRef.close();
+        });
         break;
       }
-      let a: any = await lastValueFrom(this.importservice.importRow(this.filename, this.sheetname, i));
+      let a: any = await lastValueFrom(this.importservice.importRow(this.filename, this.sheetname, i,this.tablename));
       if (a.error == "false") {
         this.value = (i + 1);
 
@@ -51,6 +56,13 @@ export class ImportdialogComponent {
 
       // this.processResult(i);
       console.log(a);
+    }
+    if(i==this.rowcount)
+    {
+      this.processState=false;
+      this.snackBar.open("import data successfully","Close").afterDismissed().subscribe(data=>{
+        this.dialogRef.close();
+      });
     }
   }
   stop()

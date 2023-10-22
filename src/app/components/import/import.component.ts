@@ -23,7 +23,11 @@ export class ImportComponent {
   sheetlistflag = false;
   sheetvarify = false;
   public rowcount: number = 0;
+  public years: any;
+  public tables: any;
   constructor(private importService: ImportService, private snackBar: MatSnackBar, private dialog: MatDialog) {
+    this.years = Array.from(Array(new Date().getFullYear() - 2011), (_, i) => (i + 2012).toString())
+    // console.log("years=>", years)
     importService.getExportDirectoryName().subscribe((response: any) => {
       console.log("directory name=", response);
 
@@ -43,6 +47,16 @@ export class ImportComponent {
           this.sheetlistflag = false;
         }
       }
+    });
+    importService.getAllTables().subscribe((data:any) =>{
+      console.log("table name=>",data);
+     // if(data.error=="false") {
+      this.tables=data.data;
+    //  }
+    //  else
+    //  {
+        // location.href="/";
+    //  }
     });
   }
   onChange(event: any) {
@@ -97,12 +111,13 @@ export class ImportComponent {
       this.rowcount = response.data;
     });
   }
-  import(filename: any, sheetname: any) {
+  import(filename: any, sheetname: any,tablename:any) {
     // this.importService.
     let sendata = {
       "sheetname": sheetname,
       "filename": filename,
-      "rowcount": this.rowcount
+      "rowcount": this.rowcount,
+      "tablename": tablename
     };
     this.dialog.open(ImportdialogComponent, {
       width: "800px",
@@ -124,16 +139,11 @@ export class ImportComponent {
 
     });
   }
-  backup() {
-    this.importService.backup().subscribe((result: any) => {
-      console.log(result);
-      let file = window.URL.createObjectURL(result);
-      // let downloadURL = window.URL.createObjectURL(data);
-      let filename=new Date().toLocaleDateString('hi')
-
-      saveAs(result,""+"MCU-"+filename+".sql");
+  create(session: any, year: any) {
+    this.importService.createTable(session, year).subscribe((response: any) => {
+      console.log(response);
+      this.snackBar.open(response.message, "Close");
     });
-
 
   }
 }

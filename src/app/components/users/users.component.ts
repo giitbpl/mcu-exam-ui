@@ -45,7 +45,22 @@ del(uid:any)
 }
 edit(uid:any)
 {
-
+  this.userService.getUserByUid(uid).subscribe((data:any) =>{
+    console.log(data);
+    const dialogRef = this.dialog.open(AddUserComponent,{
+      disableClose: true,
+      width: '800px',
+      height:"auto",
+      data:data,
+      position: {
+        top: "10px"
+      },
+      // height: '100%',
+      hasBackdrop: false,
+  
+    });
+  });
+ 
 }
 add()
 {
@@ -65,6 +80,25 @@ add()
     // dialogRef.afterClosed().subscribe(result => {
     //   console.log(`Dialog result: ${result}`);
     // });
+  
+}
+changeStatus(uid:any)
+{
+  let ans=confirm('Are you sure you want to change the status ');
+  if(ans==true)
+  {
+      this.userService.changeUserstatus(uid).subscribe((result:any) => {
+        if(result.error=="false")
+        {
+            this.snakebar.open("success","close").afterDismissed().subscribe(() =>{
+            
+            });
+        }
+        
+      });
+  }
+  location.reload();
+  // console.log(ans);
   
 }
 }

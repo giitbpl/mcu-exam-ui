@@ -19,7 +19,9 @@ export class UserService {
   }
   getUserByUid(uid:any)
   {
-    return this.http.get(environment.BaseUrl+"admin/getuserbyuid");
+    // console.log(uid);
+    
+    return this.http.get(environment.BaseUrl+"admin/getuserbyuid/"+uid);
   }
   getUserDetailByToken(token:any)
   {
@@ -31,5 +33,17 @@ export class UserService {
 changePwd(formdata:any)
 {
   return this.http.post(environment.BaseUrl+"admin/chpwd",formdata  );
+}
+updateuser(formdata:any)
+{
+  return this.http.post(environment.BaseUrl+"admin/updateuser",formdata  );
+
+}
+changeUserstatus(uid:any)
+{
+  return this.http.post(environment.BaseUrl+"admin/changestatus",{
+    "userid":uid
+  });
+
 }
 }
