@@ -5,6 +5,7 @@ import * as CryptoJS from 'crypto-js';
 import { UtilityService } from 'src/app/services/utility.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-add-user',
@@ -20,7 +21,8 @@ export class AddUserComponent {
   constructor(private formBuilder: FormBuilder,
     private userservice: UserService,
     private utilityService: UtilityService,
-    private snakebar: MatSnackBar,
+    // private snakebar: MatSnackBar,
+    private toastService: ToastService,
     @Inject(MAT_DIALOG_DATA) public sharedata: any
   ) {
     console.log(sharedata);
@@ -73,15 +75,17 @@ export class AddUserComponent {
         this.userservice.registerUser(this.myform.value).subscribe((data: any) => {
           console.log(data);
           if (data.error == "false") {
-            this.snakebar.open(data.message).afterDismissed().subscribe(data => {
+            this.toastService.open(data.message,"success").afterClosed().subscribe(() => {
               window.location.reload();
             });
           }
           else {
-            this.snakebar.open(data.message);
+            this.toastService.open(data.message,"error");
           }
   
         });
+        this.utilityService.enableForm(this.myform, true);
+
       }
       else if(this.isEdit==true)
       {

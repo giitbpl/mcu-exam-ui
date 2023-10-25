@@ -34,13 +34,16 @@ import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 // import { LogTableComponent } from './components/log-table/log-table.component';
-import { DatePipe, UpperCasePipe } from '@angular/common';
+import { DatePipe, HashLocationStrategy, LocationStrategy, UpperCasePipe } from '@angular/common';
 import { AppconfigService } from './services/appconfig.service';
 import { BackupComponent } from './components/backup/backup.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { RestoreComponent } from './components/restore/restore.component';
 // import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { SearchComponent } from './components/search/search.component';
+import { TrsComponent } from './components/trs/trs.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 // import { NgModule, APP_INITIALIZER } from '@angular/core';
 export function initConfig(appConfig: AppconfigService) {
@@ -61,6 +64,9 @@ export function initConfig(appConfig: AppconfigService) {
     BackupComponent,
     AboutusComponent,
     RestoreComponent,
+    SearchComponent,
+    TrsComponent,
+    ToastComponent,
     // LogTableComponent
   ],
   imports: [
@@ -95,7 +101,11 @@ export function initConfig(appConfig: AppconfigService) {
   providers: [
     UpperCasePipe,
     DatePipe,
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
+    { provide: LocationStrategy, useClass: HashLocationStrategy,
+    
+    
+    },
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 5000,horizontalPosition:"center", verticalPosition:"top",panelClass:"my-snackbar"}},
     {provide: HTTP_INTERCEPTORS, useClass: AppInterceptorInterceptor, multi:true},
     {
       provide: APP_INITIALIZER,

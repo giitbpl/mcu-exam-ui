@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ImportService } from 'src/app/services/import.service';
 import { ImportdialogComponent } from '../importdialog/importdialog.component';
 import { saveAs } from "file-saver"
+import { ActivatedRoute } from '@angular/router';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-import',
@@ -25,7 +27,7 @@ export class ImportComponent {
   public rowcount: number = 0;
   public years: any;
   public tables: any;
-  constructor(private importService: ImportService, private snackBar: MatSnackBar, private dialog: MatDialog) {
+  constructor(private importService: ImportService, private snackBar: ToastService, private dialog: MatDialog,private route: ActivatedRoute) {
     this.years = Array.from(Array(new Date().getFullYear() - 2011), (_, i) => (i + 2012).toString())
     // console.log("years=>", years)
     importService.getExportDirectoryName().subscribe((response: any) => {
@@ -40,7 +42,7 @@ export class ImportComponent {
           this.filelistflag = true;
           this.sheetlistflag = true;
           this.filelist = response.data;
-          this.loadSheet(this.filelist[0]);
+          // this.loadSheet(this.filelist[0]);
         }
         else {
           this.filelistflag = false;
@@ -65,11 +67,11 @@ export class ImportComponent {
   process() {
     // console.log(this.file.type);
     if (this.file == undefined) {
-      this.snackBar.open('please select excel file first', "close");
+      this.snackBar.open('please select excel file first', "error");
 
     }
     else if (this.file.type != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
-      this.snackBar.open('this file is not a excel file', "close");
+      this.snackBar.open('this file is not a excel file', "error");
 
     }
     else {
@@ -77,13 +79,13 @@ export class ImportComponent {
       this.importService.upload(this.file).subscribe((data: any) => {
         console.log(data);
         if (data.error == "false") {
-          let snackref = this.snackBar.open('File upload successfully', "close");
-          snackref.afterDismissed().subscribe(() => location.reload());
+          let snackref = this.snackBar.open('File upload successfully');
+          snackref.afterClosed().subscribe(() => location.reload());
 
 
         }
         else {
-          this.snackBar.open('File upload failed', "close");
+          this.snackBar.open('File upload failed', "error");
 
         }
       });
@@ -97,9 +99,11 @@ export class ImportComponent {
       if (sheets.data.length > 0) {
         this.sheetlist = sheets.data;
         this.sheetrowcount(sheets.data[0], fname)
+        this.sheetlistflag=true;
       }
       else
-        this.snackBar.open('no sheet found in this file', "close");
+        this.snackBar.open('no sheet found in this file', "error");
+        this.sheetlistflag=false;
 
 
     });
@@ -130,11 +134,11 @@ export class ImportComponent {
       console.log(response);
       if (response.error == "false") {
         this.sheetvarify = true;
-        this.snackBar.open(response.message, "close");
+        this.snackBar.open(response.message);
       }
       else {
         this.sheetvarify = false;
-        this.snackBar.open(response.message, "close");
+        this.snackBar.open(response.message, "error");
       }
 
     });
@@ -142,7 +146,14 @@ export class ImportComponent {
   create(session: any, year: any) {
     this.importService.createTable(session, year).subscribe((response: any) => {
       console.log(response);
-      this.snackBar.open(response.message, "Close");
+      if(response.error=="true") {
+      this.snackBar.open(response.message, "error");
+      }
+      else
+      {
+      this.snackBar.open(response.message,"success");
+
+      }
     });
 
   }

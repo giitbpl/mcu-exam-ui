@@ -4,6 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 // import sha256 from 'angular-crypto';
 import * as CryptoJS from 'crypto-js';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-change-pwd',
@@ -26,7 +27,7 @@ export class ChangePwdComponent {
       validators: this.ConfirmedValidator("pwd", "repwd"),
     }
   );
-  constructor(private formBuilder: FormBuilder, private userservice: UserService,private snakebar:MatSnackBar) {
+  constructor(private formBuilder: FormBuilder, private userservice: UserService, private toastservice: ToastService) {
 
   }
   ConfirmedValidator(controlName: string, matchingControlName: string) {
@@ -64,11 +65,11 @@ export class ChangePwdComponent {
       // this.newpwd = CryptoJS.SHA256(this.myform.controls["pwd"].value).toString();
       // this.oldpwd = CryptoJS.SHA256(this.myform.controls["oldpwd"].value).toString();
 
-      this.userservice.changePwd(this.myform.value).subscribe((data:any) => {
+      this.userservice.changePwd(this.myform.value).subscribe((data: any) => {
         // console.log(data);
-       this.snakebar.open(data.message,"close").afterDismissed().subscribe(data=>{
+        this.toastservice.open(data.message).afterClosed().subscribe(data => {
           location.reload();
-       });
+        });
       });
 
 

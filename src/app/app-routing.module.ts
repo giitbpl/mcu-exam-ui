@@ -9,10 +9,13 @@ import { ChangePwdComponent } from './components/change-pwd/change-pwd.component
 import { BackupComponent } from './components/backup/backup.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { RestoreComponent } from './components/restore/restore.component';
+import { SearchComponent } from './components/search/search.component';
+import { TrsComponent } from './components/trs/trs.component';
 
 const routes: Routes = [
   { path: '', component:LoginComponent},
   { path: 'dashboard', component:DashboardComponent,children: [
+    {path: '', component:TrsComponent},
     { path: 'user', component:UsersComponent},
     { path: 'import', component:ImportComponent},
     { path: 'logs', component:LogsComponent},
@@ -20,6 +23,7 @@ const routes: Routes = [
     { path: 'backup', component:BackupComponent},
     { path: 'about', component:AboutusComponent},
     { path: 'restore', component:RestoreComponent},
+    { path: 'search', component:SearchComponent},
 
   ]},
 ];

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RestoreService } from 'src/app/services/restore.service';
+import { ToastService } from 'src/app/services/toast.service';
 // import { RestoreService } from 'src/app/services/restore.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { RestoreService } from 'src/app/services/restore.service';
 })
 export class RestoreComponent {
   file: any;
-  constructor(private snackBar:MatSnackBar,private restoreSservices:RestoreService)
+  constructor(private snackBar:ToastService,private restoreSservices:RestoreService)
   {
 
   }
@@ -22,7 +23,7 @@ export class RestoreComponent {
     console.log(this.file);
     
     if (this.file == undefined) {
-      this.snackBar.open('please select sql file first', "close");
+      this.snackBar.open('please select sql file first', "error");
 
     }
     // else if (this.file.type != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
@@ -34,13 +35,13 @@ export class RestoreComponent {
       this.restoreSservices.upload(this.file).subscribe((data: any) => {
         console.log(data);
         if (data.error == "false") {
-          let snackref = this.snackBar.open('File upload successfully', "close");
-          snackref.afterDismissed().subscribe(() => location.reload());
+          let snackref = this.snackBar.open('File upload successfully');
+          snackref.afterClosed().subscribe(() => location.reload());
 
 
         }
         else {
-          this.snackBar.open('File upload failed', "close");
+          this.snackBar.open('File upload failed', "error");
 
         }
       });

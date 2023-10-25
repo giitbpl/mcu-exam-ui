@@ -6,21 +6,15 @@ import { AppconfigService } from './appconfig.service';
 @Injectable({
   providedIn: 'root'
 })
-export class LogsService {
+export class SearchService {
   private BaseUrl:any;
 
   constructor(private http:HttpClient,private appconfig: AppconfigService) {
-    this.BaseUrl=appconfig.getConfig().serverIp;
-
-   }
-   getInfoLog()
+    this.BaseUrl=    appconfig.getConfig().serverIp;
+  }
+   
+   search(formdata:any)
    {
-    return this.http.get(this.BaseUrl +"logs/all");
-   }
-   deleteLogs(duration:any)
-   {
-    return this.http.post(this.BaseUrl +"logs/del",{
-      "duration":duration
-    });
+    return this.http.post(this.BaseUrl+"search/search", formdata);
    }
 }

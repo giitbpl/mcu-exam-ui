@@ -1,0 +1,86 @@
+<div class="container-fluid  ">
+  <div class="card shadow p-3 mb-5 bg-body rounded">
+    <h1 class="card-header display-3 fw-bold text-body-emphasis"> Search
+    </h1>
+    <div class="card-body">
+      <form [formGroup]="myform" >
+      <div class="row">
+        <div class="col">
+          <div class="form-floating">
+            <select class="form-select" id="tablename" #tablename aria-label="Floating label select example" formControlName="tablename">
+              <option selected="{{isLast==true}}" value="{{t.Tables_in_mcuexam}}"
+                *ngFor="let t of tables;let ind = index;last as isLast">{{t.Tables_in_mcuexam}}</option>
+
+            </select>
+            <label for="tablename">Select database table </label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-floating ">
+            <input type="text" class="form-control" id="" placeholder="AV1471330190" #enroll formControlName="envno">
+            <label for="floatingInput">Enrolment No</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingPassword" placeholder="roll number"#roll formControlName="roll">
+            <label for="floatingPassword">Roll Number</label>
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+    <div class="card-footer text-body-secondary">
+      <div class="d-flex flex-row-reverse bd-highlight">
+        <button type="button" (click)="process()" class="btn btn-primary">Search</button>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="container-fluid">
+  <table datatable [dtOptions]="dtOptions" class="row-border hover table" *ngIf="loaddata==true">
+    <thead>
+        <tr>
+            <th width="100">Enrolment no</th>
+            <th>Roll No.</th>
+            <th>Name</th>
+            <th>Father Name</th>
+            <th>Study Center </th>
+            <!-- <th>Role</th>
+            <th>Computer Code</th> -->
+            <!-- <th></th> -->
+
+        </tr>
+    </thead>
+    <tbody *ngFor="let user of userlist">
+        <tr>
+            <td>{{user.enrollno}}</td>
+            <td>{{user.rollno}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.fhname}}</td>  
+            <td>{{user.stdcent}}-{{user.stdcentname}}</td>
+            <!-- <td>{{(user.status==1)?"Enable":"Disable"}}</td> -->
+            <!-- <td>
+                <mat-slide-toggle
+                class="example-margin"
+                [color]="'accent'"
+                (click)="changeStatus(user.uid)"
+                [checked]='(user.status==1)?true:false'>
+                {{(user.status==1)?"Enable":"Disable"}}
+            </mat-slide-toggle>
+            </td> -->
+            <!-- <td *ngIf="user.role==1">Super user </td>
+            <td *ngIf="user.role==2">Administrator </td>
+            <td *ngIf="user.role==3">Normal User</td> -->
+            <!-- <td>{{(user.role===1)?"Super user":(user.role===2)?"Administrator":"Normal user"}}</td>
+            <td>{{user.comcode}}</td> -->
+            <!-- <td>    
+                <button type="button" class="btn btn-info" (click)="edit(user.uid)">Edit</button>
+            </td> -->
+        </tr>
+    </tbody>
+</table>
+</div>

@@ -5,6 +5,7 @@ import { AddUserComponent } from '../add-user/add-user.component';
 import { UserService } from 'src/app/services/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-users',
@@ -15,7 +16,7 @@ export class UsersComponent {
   public dtOptions: DataTables.Settings = {};
   userlist:any;
   loaddata:any=false;
-constructor(private userService: UserService,public dialog: MatDialog,private snakebar: MatSnackBar,private route:Router)
+constructor(private userService: UserService,public dialog: MatDialog,private snakebar: ToastService,private route:Router)
 {
   // this.dtOptions={
 
@@ -27,7 +28,7 @@ constructor(private userService: UserService,public dialog: MatDialog,private sn
       console.log(users);
       if(users.error=="true" && users.code==1001)
       {
-          snakebar.open(users.message,"close").afterDismissed().subscribe(() =>{
+          snakebar.open(users.message,"error").afterClosed().subscribe(() =>{
             route.navigate(["/"]);
           });
       }
@@ -88,16 +89,18 @@ changeStatus(uid:any)
   if(ans==true)
   {
       this.userService.changeUserstatus(uid).subscribe((result:any) => {
+        console.log(result);
+        
         if(result.error=="false")
         {
-            this.snakebar.open("success","close").afterDismissed().subscribe(() =>{
-            
+            this.snakebar.open(result.message).afterClosed().subscribe(()=>{
+              location.reload();
+
             });
         }
         
       });
   }
-  location.reload();
   // console.log(ans);
   
 }

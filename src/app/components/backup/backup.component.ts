@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as saveAs from 'file-saver';
 import { ImportService } from 'src/app/services/import.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-backup',
@@ -11,7 +12,7 @@ import { ImportService } from 'src/app/services/import.service';
 })
 export class BackupComponent {
   tables:any;
-  constructor(private importService: ImportService, private snackBar: MatSnackBar, private dialog: MatDialog) 
+  constructor(private importService: ImportService, private toastservice: ToastService, private dialog: MatDialog) 
     {
       importService.getAllTables().subscribe((data:any) =>{
         // console.log("table name=>",data);

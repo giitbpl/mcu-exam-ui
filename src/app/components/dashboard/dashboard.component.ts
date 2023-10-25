@@ -6,6 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 import { ChangePwdComponent } from '../change-pwd/change-pwd.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from 'src/app/services/login.service';
+import { ToastService } from 'src/app/services/toast.service';
 // import { DataTablesModule } from 'angular-datatables';
 
 @Component({
@@ -18,15 +19,17 @@ export class DashboardComponent {
   showFiller = false;
   userRole: any;
   username: string;
-  constructor(private snakebar:MatSnackBar, private jwt: JwtTokenService,private loginservice:LoginService, private userservice: UserService, private router: Router, private dialog: MatDialog) {
+  constructor(private toastservice:ToastService, private jwt: JwtTokenService,private loginservice:LoginService, private userservice: UserService, private router: Router, private dialog: MatDialog) {
     let token = jwt.getToken();
     userservice.getUserDetailByToken(token).subscribe((result: any) => {
       console.log(result);
       
       if(result.error=="true")
       {
-          snakebar.open(result.message);
-          router.navigate(['/']);
+          toastservice.open(result.message,"error").afterClosed().subscribe(()=>{
+            
+            router.navigate(['/']);
+          });
       }
       else
       {

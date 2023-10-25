@@ -15,7 +15,7 @@ export class AppconfigService {
     constructor(private http: HttpClient) {}
     loadConfig(): Promise<void> {
       return this.http
-          .get<AppConfig>('/assets/config/config.json')
+          .get<AppConfig>('assets/config/config.json')
           .toPromise()
           .then((data:any) => {
               this.config = data;

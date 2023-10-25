@@ -7,6 +7,7 @@ import { DataTableDirective } from 'angular-datatables';
 import { ADTSettings } from 'angular-datatables/src/models/settings';
 import { Subject } from 'rxjs';
 import { LogsService } from 'src/app/services/logs.service';
+import { ToastService } from 'src/app/services/toast.service';
 // import { DataTableDirective } from 'angular-datatables';
 
 @Component({
@@ -18,7 +19,7 @@ export class LogsComponent implements OnInit, AfterViewInit {
   dtOptions: any = {};
   @ViewChild(DataTableDirective, { static: false })
   datatableElement: DataTableDirective;
-  constructor(private snakebar:MatSnackBar,private logservice: LogsService, private pipeDatePipeInstance: DatePipe,private route:Router) {
+  constructor(private snakebar:ToastService,private logservice: LogsService, private pipeDatePipeInstance: DatePipe,private route:Router) {
 
   }
   ngOnInit(): void {
@@ -124,13 +125,13 @@ export class LogsComponent implements OnInit, AfterViewInit {
       console.log(data);
       if(data.error=="false")
       {
-          this.snakebar.open(data.data+" logs deleted","close").afterDismissed().subscribe(()=>{
+          this.snakebar.open(data.data+" logs deleted").afterClosed().subscribe(()=>{
             window.location.reload();
           })
       }
       else
       {
-        this.snakebar.open(data.message);
+        this.snakebar.open(data.message,"error");
       }
       
     });

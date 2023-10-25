@@ -1,12 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { JwtTokenService } from 'src/app/services/jwt-token.service';
 import { LoginService } from 'src/app/services/login.service';
-import * as CryptoJS from 'crypto-js';
 import { UtilityService } from 'src/app/services/utility.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +17,7 @@ export class LoginComponent {
     pwd: new FormControl('', [Validators.required]),
     // type: new FormControl('login')
   });
-  constructor(private utilityservice: UtilityService, private loginservice: LoginService, private router: Router, private snackBar: MatSnackBar, private jwt: JwtTokenService) {
+  constructor(private utilityservice: UtilityService, private loginservice: LoginService, private router: Router, private snackBar: ToastService, private jwt: JwtTokenService) {
 
   }
   get loginFormControl() {
@@ -44,17 +42,17 @@ export class LoginComponent {
         }
         else if (data.error == "true") {
           this.utilityservice.enableForm(this.loginForm, true);
-          this.snackBar.open(data.message, "close");
+          this.snackBar.open(data.message, "error");
         }
         else {
           this.utilityservice.enableForm(this.loginForm, true);
-          this.snackBar.open('database error', "close");
+          this.snackBar.open('database error', "error");
 
         }
       });
     }
     else {
-      this.snackBar.open('please check the form values', "close");
+      this.snackBar.open('please check the form values', "error");
 
     }
   }
