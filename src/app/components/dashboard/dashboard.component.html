@@ -32,6 +32,10 @@
 
       </li>
       <li class="nav-item " *ngIf="userRole==1 || userRole==2">
+        <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="tools" routerLinkActive="active">Tools</a>
+
+      </li>
+      <li class="nav-item " *ngIf="userRole==1 || userRole==2">
         <a class="nav-link btn btn-outline-primary text-white " (click)="logout()" aria-current="page" >Logout</a>
 
       </li>
@@ -47,13 +51,22 @@
   <div class="example-sidenav-content">
 
     <mat-toolbar class="bg-dark bg-gradient">
+     
+      <mat-toolbar-row>
+
       <button type="button" class=" btn btn-secondry text-white" mat-button (click)="drawer.toggle()">
         <i class="bi bi-list" style="font-size: 2rem;"></i>
       </button>
-      <span class="example-spacer"></span>
       <span class="ps-3 text-white">Data Verification Service</span>
-    
+      <span class="example-spacer"></span>
+      
+        <span class="example-spacer"></span>
+        <!-- <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon> -->
+        <button class="btn btn-dark" (click)="reload()" >Reload</button>
+        <button class="btn btn-danger" type="button" (click)="logout()">Logout</button>
+      </mat-toolbar-row>
     </mat-toolbar>
+    
   </div>
   <router-outlet></router-outlet>
 

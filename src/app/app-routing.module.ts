@@ -11,6 +11,7 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { RestoreComponent } from './components/restore/restore.component';
 import { SearchComponent } from './components/search/search.component';
 import { TrsComponent } from './components/trs/trs.component';
+import { ToolsComponent } from './components/tools/tools.component';
 
 const routes: Routes = [
   { path: '', component:LoginComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
     { path: 'about', component:AboutusComponent},
     { path: 'restore', component:RestoreComponent},
     { path: 'search', component:SearchComponent},
+    { path: 'tools', component:ToolsComponent},
 
   ]},
 ];

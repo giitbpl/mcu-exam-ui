@@ -58,7 +58,7 @@ export class ImportService {
   }
   verify(filename:string,sheetname:string)
   {
-    return this.http.post(this.BaseUrl + "import/verify",{
+    return this.http.post(this.BaseUrl + "import/analyzed",{
       "filename": filename,
       "sheetname": sheetname
       // "recordno": recordno

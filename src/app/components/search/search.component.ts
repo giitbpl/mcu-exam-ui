@@ -18,6 +18,8 @@ export class SearchComponent {
   public dtOptions: DataTables.Settings = {};
   userlist:any;
   loaddata:any=false;
+  lists=["indore","bhopal","vidisha","sehore"]
+
   constructor(private importService:ImportService,private formBuilder: FormBuilder,private searchservice:SearchService)
   {
     importService.getAllTables().subscribe((data:any) =>{
@@ -39,5 +41,9 @@ export class SearchComponent {
         this.userlist=data.data;
         this.loaddata=true;
       });  
+  }
+  selectionChanged(event:any)
+  {
+
   }
 }

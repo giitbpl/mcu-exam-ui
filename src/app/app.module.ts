@@ -44,6 +44,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { SearchComponent } from './components/search/search.component';
 import { TrsComponent } from './components/trs/trs.component';
 import { ToastComponent } from './components/toast/toast.component';
+import { ToolsComponent } from './components/tools/tools.component';
+// import {SelectModule} from 'ng2-select'
+// import { SelectDropDownModule } from 'ngx-select-dropdown'
 
 // import { NgModule, APP_INITIALIZER } from '@angular/core';
 export function initConfig(appConfig: AppconfigService) {
@@ -67,6 +70,7 @@ export function initConfig(appConfig: AppconfigService) {
     SearchComponent,
     TrsComponent,
     ToastComponent,
+    ToolsComponent,
     // LogTableComponent
   ],
   imports: [
@@ -91,6 +95,7 @@ export function initConfig(appConfig: AppconfigService) {
     MatProgressBarModule,
     MatTabsModule,
     MatSlideToggleModule,
+    // SelectDropDownModule,
     // FormModule
     BackButtonDisableModule.forRoot({
       preserveScroll: false,

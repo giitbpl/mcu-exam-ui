@@ -12,11 +12,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProgressdialogComponent } from './components/progressdialog/progressdialog.component';
 import { JwtTokenService } from './services/jwt-token.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from './services/toast.service';
+import { ActivatedRoute, Router } from '@angular/router';
 // import
 @Injectable()
 export class AppInterceptorInterceptor implements HttpInterceptor {
 
-  constructor(public dialog: MatDialog, private jwttoken: JwtTokenService, private snakebar: MatSnackBar) {
+  constructor(public dialog: MatDialog, private jwttoken: JwtTokenService, private snakebar: ToastService,private router: Router) {
 
   }
 
@@ -81,7 +83,9 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
 
           }
           if (error.status === 0) {
-            this.snakebar.open("server error :Cannot connect to server");
+            this.snakebar.open("server error :Cannot connect to server","error").afterClosed().subscribe(()=>{
+                this.router.navigate(["/"]);
+            });
           }
           // this.modalRef.close();
 

@@ -1,0 +1,132 @@
+<div class="row">
+
+  <div class="col-4 mb-4 shadow-sm rounded-3">
+    <div class="card h-100">
+      <h2 class="card-header display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 2)</span> Upload
+        new Data</h2>
+
+      <!-- <h5 class="card-header">Featured</h5> -->
+      <div class="card-body">
+        <p class="lead mb-4">You can also copy your excel files into<br> <span class="text-danger fw-bold">{{dirname |
+            uppercase }}</span>
+          directory .it will also show on the file list on Step-2</p>
+        <h4 class="text-dark fw-bold">OR</h4>
+        <p class="lead mb-4">You can also upload the file</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <input type="file" class="form-control" (change)="onChange($event)"
+            accept="*.xlsx,*.xls, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+          <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4">Secondary</button> -->
+        </div>
+      </div>
+      <div class="card-footer text-body-secondary">
+        <button type="button" class="btn btn-primary" (click)="process()">Upload</button>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="col-4 mb-4  shadow-sm rounded-3">
+    <div class="card">
+      <h2 class="card-header display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 3)</span> Please
+        select a file
+      </h2>
+
+      <!-- <h5 class="card-header">Featured</h5> -->
+      <div class="card-body">
+        <p class="lead mb-4">Files are fetch from the <br> <span class="text-danger fw-bold">{{dirname | uppercase}}
+          </span>Directory
+        </p>
+        <!-- <ul class="list-group" *ngFor="let f of filelist">
+          <li class="list-group-item">
+            <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="{{f}}" #fileselect id="firstRadio">
+            <label class="form-check-label" for="firstRadio">{{f}}</label>
+          </li>
+    
+        </ul> -->
+        <select class="form-select" #n>
+          <option value="{{f}}" *ngFor="let f of filelist">{{f}}</option>
+
+        </select>
+        <!-- {{n.value}} -->
+      </div>
+      <div class="card-footer text-body-secondary">
+        <button class="btn btn-primary mt-3" type="button" (click)="loadSheet(n.value)"
+          [disabled]="!filelistflag">Process</button>
+
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="col-4 mb-4  shadow-sm rounded-3">
+    <div class="card">
+      <h1 class="card-header display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 4)</span> Please
+        select a Sheet
+      </h1>
+
+      <!-- <h5 class="card-header">Featured</h5> -->
+      <div class="card-body">
+        <p class="lead mb-4">Please select excel sheet and session db name </p>
+        <div class="d-flex ">
+          <div class="form-floating">
+            <select class="form-select" style="width: 300px;" #sheetname
+              (change)="sheetrowcount(sheetname.value,n.value)">
+              <option value="{{s}}" *ngFor="let s of sheetlist">{{s}}</option>
+
+            </select>
+            <label for="session">Select Sheet</label>
+          </div>
+          <!-- <div class="form-floating">
+            <select  class="form-select" [disabled]="!sheetvarify" style="width: 300px;" id="tablename" #tablename aria-label="Floating label select example">
+              <option selected="{{isLast==true}}" value="{{t.Tables_in_mcuexam}}" *ngFor="let t of tables;let ind = index;last as isLast">{{t.Tables_in_mcuexam}}</option>
+         
+            </select>
+            <label for="tablename">Select database table </label>
+          </div>   -->
+        </div>
+        <!-- <form [formGroup]="myform"> -->
+
+
+
+        <!-- Record Count {{rowcount}} -->
+
+        <!-- </form> -->
+
+      </div>
+      <div class="card-footer text-body-secondary">
+        <!-- 2 days ago -->
+        <button class="btn btn-primary mt-3" [disabled]="sheetlistflag"
+          (click)="verify(n.value,sheetname.value)">Verify</button>
+        <!-- <button class="btn btn-primary mt-3" [disabled]="!sheetvarify" (click)="import(n.value,sheetname.value,tablename.value)">Import</button> -->
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="row mt-2 container">
+  <div class="col-4">
+    <h1>Total Column in master table <span class="text-danger ">{{master_columns_length}}</span></h1>
+    <ul class="list-group ">
+      <li class="list-group-item list-group-item-success" *ngFor="let c of master_columns">
+        {{c}}
+      </li>
+    </ul>
+  </div>
+  <div class="col-4">
+    <h1>Total Column in excel sheet <span class="text-danger ">{{excel_columns_length}}</span></h1>
+    <ul class="list-group">
+      <li class="list-group-item " *ngFor="let c of excel_columns">
+        {{c}}
+      </li>
+    </ul>
+  </div>
+  <div class="col-4">
+    <h1>Difference Column  <span class="text-danger ">{{diffrence_columns_length}}</span></h1>
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-danger" *ngFor="let c of diffrence_columns">
+        {{c}}
+      </li>
+    </ul>
+  </div>
+</div>
