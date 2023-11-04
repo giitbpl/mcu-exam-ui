@@ -108,7 +108,7 @@ export class ToolsComponent {
     });
   }
   verify(filename: any, sheetname: any) {
-    this.importService.verify(filename, sheetname).subscribe((response: any) => {
+    this.importService.verify(filename, sheetname,"all").subscribe((response: any) => {
       console.log(response);
       if (response.error == "false") {
         this.sheetvarify = true;

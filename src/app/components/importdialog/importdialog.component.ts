@@ -63,6 +63,7 @@ export class ImportdialogComponent {
       this.processState=false;
       this.snackBar.open("import data successfully").afterClosed().subscribe(data=>{
         this.dialogRef.close();
+        location.reload();
       });
     }
   }

@@ -1,20 +1,17 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ImportService } from 'src/app/services/import.service';
-import { ImportdialogComponent } from '../importdialog/importdialog.component';
-import { saveAs } from "file-saver"
 import { ActivatedRoute } from '@angular/router';
+import { ImportService } from 'src/app/services/import.service';
 import { ToastService } from 'src/app/services/toast.service';
-import { CourseService } from 'src/app/services/course.service';
+import { ImportdialogComponent } from '../importdialog/importdialog.component';
 
 @Component({
-  selector: 'app-import',
-  templateUrl: './import.component.html',
-  styleUrls: ['./import.component.css']
+  selector: 'app-college-master',
+  templateUrl: './college-master.component.html',
+  styleUrls: ['./college-master.component.css']
 })
-export class ImportComponent {
+export class CollegeMasterComponent {
   public myform = new FormGroup({
     fileselectlist: new FormControl()
   });
@@ -25,12 +22,10 @@ export class ImportComponent {
   filelistflag = false;
   sheetlistflag = false;
   sheetvarify = false;
-  courselist: any;
-
   public rowcount: number = 0;
   public years: any;
   public tables: any;
-  constructor(private courseserice: CourseService,private importService: ImportService, private snackBar: ToastService, private dialog: MatDialog,private route: ActivatedRoute) {
+  constructor(private importService: ImportService, private snackBar: ToastService, private dialog: MatDialog, private route: ActivatedRoute) {
     this.years = Array.from(Array(new Date().getFullYear() - 2011), (_, i) => (i + 2012).toString())
     // console.log("years=>", years)
     importService.getExportDirectoryName().subscribe((response: any) => {
@@ -53,35 +48,34 @@ export class ImportComponent {
         }
       }
     });
-    importService.getAllTables().subscribe((data:any) =>{
-      console.log("table name=>",data);
-     // if(data.error=="false") {
-      this.tables=data.data;
-    //  }
-    //  else
-    //  {
-        // location.href="/";
-    //  }
-    });
-    courseserice.getAllCourse().subscribe((data: any) => {
-      console.log(data);
-      
-      this.courselist = data.data;
+    importService.getAllTables().subscribe((data: any) => {
+      console.log("table name=>", data);
+      // if(data.error=="false") {
+      this.tables = data.data;
+      //  }
+      //  else
+      //  {
+      // location.href="/";
+      //  }
     });
   }
   onChange(event: any) {
     this.file = event.target.files[0];
   }
   process() {
-    // console.log(this.file.type);
+    console.log(this.file.type);
     if (this.file == undefined) {
       this.snackBar.open('please select excel file first', "error");
 
     }
-    else if (this.file.type != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
-      this.snackBar.open('this file is not a excel file', "error");
+    // else if (this.file.type != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
+    //   this.snackBar.open('this file is not a excel file', "error");
 
-    }
+    // }
+    // else if (this.file.type != "application/vnd.ms-excel") {
+    //   this.snackBar.open('this file is not a excel file', "error");
+
+    // }
     else {
 
       this.importService.upload(this.file).subscribe((data: any) => {
@@ -107,11 +101,11 @@ export class ImportComponent {
       if (sheets.data.length > 0) {
         this.sheetlist = sheets.data;
         this.sheetrowcount(sheets.data[0], fname)
-        this.sheetlistflag=true;
+        this.sheetlistflag = true;
       }
       else
         this.snackBar.open('no sheet found in this file', "error");
-        this.sheetlistflag=false;
+      this.sheetlistflag = false;
 
 
     });
@@ -123,7 +117,7 @@ export class ImportComponent {
       this.rowcount = response.data;
     });
   }
-  import(filename: any, sheetname: any,tablename:any) {
+  import(filename: any, sheetname: any, tablename: any) {
     // this.importService.
     let sendata = {
       "sheetname": sheetname,
@@ -139,7 +133,7 @@ export class ImportComponent {
     });
   }
   verify(filename: any, sheetname: any) {
-    this.importService.verify(filename, sheetname,"resultdata").subscribe((response: any) => {
+    this.importService.verify(filename, sheetname,"college").subscribe((response: any) => {
       console.log(response);
       if (response.error == "false") {
         this.sheetvarify = true;
@@ -155,12 +149,12 @@ export class ImportComponent {
   create(session: any, year: any) {
     this.importService.createTable(session, year).subscribe((response: any) => {
       console.log(response);
-      if(response.error=="true") {
-      this.snackBar.open(response.message, "error");
+      if (response.error == "true") {
+        this.snackBar.open(response.message, "error");
       }
-      else
-      {
-      this.snackBar.open(response.message,"success");
+      else {
+        this.snackBar.open(response.message, "success");
+
       }
     });
 

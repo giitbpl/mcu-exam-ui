@@ -1,10 +1,9 @@
 <!-- <h1 class="visually-hidden">Heroes examples</h1> -->
 <div class="row container-fluid text-center">
-  <div class="col-6 shadow-sm rounded-3">
+  <!-- <div class="col-6 shadow-sm rounded-3">
     <div class="card h-100" >
       <h2 class="card-header  display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 1)</span> Create new session database <span class="text-danger">(Recommended)</span></h2>
 
-      <!-- <h5 class="card-header">Featured</h5> -->
       <div class="card-body ">
         <div class="d-flex justify-content-center">
           <div class="form-floating">
@@ -32,10 +31,10 @@
       </div>
     </div>
  
-</div>
+</div> -->
   <div class="col-6  shadow-sm rounded-3">
     <div class="card h-100" >
-      <h2 class="card-header display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 2)</span> Upload
+      <h2 class="card-header display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 1)</span> Upload
         new Data</h2>
 
       <!-- <h5 class="card-header">Featured</h5> -->
@@ -58,9 +57,9 @@
     </div>
  
 </div>
-  <div class="col-6 mb-4  shadow-sm rounded-3">
+  <div class="col-6   shadow-sm rounded-3">
     <div class="card">
-      <h2 class="card-header display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 3)</span> Please select a file
+      <h2 class="card-header display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 2)</span> Please select a file
       </h2>
   
       <!-- <h5 class="card-header">Featured</h5> -->
@@ -75,14 +74,16 @@
           </li>
     
         </ul> -->
+        <br><br>  <br><br>  
         <select class="form-select" #n>
           <option value="{{f}}" *ngFor="let f of filelist">{{f}}</option>
             
           </select>
+          <br><br> <br><br> 
         <!-- {{n.value}} -->
       </div>
       <div class="card-footer text-body-secondary">
-        <button class="btn btn-primary mt-3" type="button" (click)="loadSheet(n.value)" [disabled]="!filelistflag">Process</button>
+        <button class="btn btn-primary " type="button" (click)="loadSheet(n.value)" [disabled]="!filelistflag">Process</button>
         
       </div>
     </div>
@@ -90,9 +91,11 @@
 
    
   </div>
-  <div class="col-6 mb-4  shadow-sm rounded-3">
+  </div>
+  <div class=" container ">
+  <div class=" mb-4 d-flex justify-content-center shadow-sm rounded-3">
     <div class="card">
-      <h1 class="card-header display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 4)</span> Please select a Sheet
+      <h1 class="card-header display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 3)</span> Please select a Sheet
       </h1>
   
       <!-- <h5 class="card-header">Featured</h5> -->
@@ -106,13 +109,30 @@
               </select>
             <label for="session">Select Sheet</label>
           </div>
-          <div class="form-floating">
+          <!-- <div class="form-floating">
             <select  class="form-select" [disabled]="!sheetvarify" style="width: 300px;" id="tablename" #tablename aria-label="Floating label select example">
               <option selected="{{isLast==true}}" value="{{t.Tables_in_mcuexam}}" *ngFor="let t of tables;let ind = index;last as isLast">{{t.Tables_in_mcuexam}}</option>
          
             </select>
-            <label for="tablename">Select database table </label>
-          </div>  
+            <label for="tablename">Select Course Name </label>
+          </div>   -->
+          <div class="form-floating">
+            <select class="form-select" id="coursecode" #tablename aria-label="Floating label select example" (change)="onChange($event.target)"
+             >
+              <option selected="{{isLast==false}}" value="{{t.code}}"
+                *ngFor="let t of courselist;let ind = index;last as isLast">{{t.code}}-{{t.shortname}} {{t.fullname}}</option>
+
+            </select>
+            <!-- <input list="browsers" name="browser" class="form-select">
+            <datalist id="browsers" >
+              <option value="{{e}}" *ngFor="let e of lists">
+
+            </datalist> -->
+            <label for="tablename">Select Course </label>
+            <!-- <div *ngIf="myform.controls.coursecode.invalid" class="text-danger">
+              Course name is required.
+          </div> -->
+          </div>
         </div>
         <!-- <form [formGroup]="myform"> -->
 

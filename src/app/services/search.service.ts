@@ -16,5 +16,10 @@ export class SearchService {
    search(formdata:any)
    {
     return this.http.post(this.BaseUrl+"search/search", formdata);
+  }
+  getSessionListByEnrollment(formdata:any) 
+  {
+    return this.http.post(this.BaseUrl+"search/getsessionnamebycoursename", formdata);
+    
    }
 }

@@ -1,16 +1,16 @@
-<div class="container-fluid  ">
+<div class="container d-print-none ">
   <div class="card shadow p-3 mb-5 bg-body rounded">
     <h1 class="card-header display-3 fw-bold text-body-emphasis"> Search
     </h1>
     <div class="card-body">
       <form [formGroup]="myform">
         <div class="row">
-          <div class="col">
+          <div class="col-7">
             <div class="form-floating">
-              <select class="form-select" id="tablename" #tablename aria-label="Floating label select example"
-                formControlName="tablename">
-                <option selected="{{isLast==true}}" value="{{t.Tables_in_mcuexam}}"
-                  *ngFor="let t of tables;let ind = index;last as isLast">{{t.Tables_in_mcuexam}}</option>
+              <select class="form-select" id="coursecode" #coursecode aria-label="Floating label select example" (change)="onChange($event.target)"
+                formControlName="coursecode" >
+                <option selected="{{isLast==true}}" value="{{t.code}}"
+                  *ngFor="let t of courselist;let ind = index;last as isLast">{{t.code}}-{{t.shortname}} {{t.fullname}}</option>
 
               </select>
               <!-- <input list="browsers" name="browser" class="form-select">
@@ -18,36 +18,68 @@
                 <option value="{{e}}" *ngFor="let e of lists">
   
               </datalist> -->
-              <label for="tablename">Select database table </label>
+              <label for="tablename">Select Course </label>
+              <div *ngIf="myform.controls.coursecode.invalid" class="text-danger">
+                Course name is required.
+            </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-3">
             <div class="form-floating ">
-              <input type="text" class="form-control" id="" placeholder="AV1471330190" #enroll formControlName="envno">
+              <input type="text" name="envno" class="form-control"  id="envno" placeholder="AV1471330190" #enroll formControlName="envno" autocomplete="on">
               <label for="floatingInput">Enrolment No</label>
+              <!-- <div *ngIf="myform.controls.envno.invalid"class="text-danger"> -->
+
+              <div *ngIf="myform.controls.envno.invalid" class="text-danger">
+                  Enrollment number is required.
+              </div>
+           
+
+          <!-- </div> -->
             </div>
           </div>
-          <div class="col">
-            <!-- <div class="form-floating">
-            <input type="text" class="form-control" id="floatingPassword" placeholder="roll number"#roll formControlName="roll">
-            <label for="floatingPassword">Roll Number</label>
-          </div> -->
-        
+          <div class="col-2">
+         
+        <button class="btn btn-primary btn-lg " type="button" (click)="loadSession()">Get Session</button>
+          </div>
+        </div>
+        <div class="row" *ngIf="showsessioname==true">
+          <div class="col-3">
+            <div class="form-floating">
+              <select class="form-select" id="session_name" #session_name aria-label="Floating label select example" (change)="onChange($event.target)"
+                >
+                <option selected="{{isLast==true}}" value="{{t.yrtermcode}}"
+                  *ngFor="let t of sessionlist;let ind = index;last as isLast">{{t.yrtermcode}}</option>
+
+              </select>
+              <!-- <input list="browsers" name="browser" class="form-select">
+              <datalist id="browsers" >
+                <option value="{{e}}" *ngFor="let e of lists">
+  
+              </datalist> -->
+              <label for="tablename">Select Session </label>
+            </div>
+          </div>
+          <div class="col-4">
+            <button type="button" (click)="process(session_name.value)" class="btn btn-primary btn-lg">Search</button>
+
           </div>
         </div>
       </form>
     </div>
-    <div class="card-footer text-body-secondary">
+    <!-- <div class="card-footer text-body-secondary">
       <div class="d-flex flex-row-reverse bd-highlight">
         <button type="button" (click)="process()" class="btn btn-primary">Search</button>
 
       </div>
-    </div>
+    </div> -->
   </div>
 
 </div>
-
 <div class="container-fluid">
+  <!-- <app-trs [studetail]="detail" ></app-trs> -->
+</div>
+<!-- <div class="container-fluid">
   <table datatable [dtOptions]="dtOptions" class="row-border hover table" *ngIf="loaddata==true">
     <thead>
       <tr>
@@ -56,9 +88,7 @@
         <th>Name</th>
         <th>Father Name</th>
         <th>Study Center </th>
-        <!-- <th>Role</th>
-            <th>Computer Code</th> -->
-        <!-- <th></th> -->
+     
 
       </tr>
     </thead>
@@ -69,25 +99,8 @@
         <td>{{user.name}}</td>
         <td>{{user.fhname}}</td>
         <td>{{user.stdcent}}-{{user.stdcentname}}</td>
-        <!-- <td>{{(user.status==1)?"Enable":"Disable"}}</td> -->
-        <!-- <td>
-                <mat-slide-toggle
-                class="example-margin"
-                [color]="'accent'"
-                (click)="changeStatus(user.uid)"
-                [checked]='(user.status==1)?true:false'>
-                {{(user.status==1)?"Enable":"Disable"}}
-            </mat-slide-toggle>
-            </td> -->
-        <!-- <td *ngIf="user.role==1">Super user </td>
-            <td *ngIf="user.role==2">Administrator </td>
-            <td *ngIf="user.role==3">Normal User</td> -->
-        <!-- <td>{{(user.role===1)?"Super user":(user.role===2)?"Administrator":"Normal user"}}</td>
-            <td>{{user.comcode}}</td> -->
-        <!-- <td>    
-                <button type="button" class="btn btn-info" (click)="edit(user.uid)">Edit</button>
-            </td> -->
+      
       </tr>
     </tbody>
   </table>
-</div>
+</div> -->

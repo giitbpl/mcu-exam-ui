@@ -56,11 +56,12 @@ export class ImportService {
       "tablename": tablename
     });
   }
-  verify(filename:string,sheetname:string)
+  verify(filename:string,sheetname:string,type:string)
   {
-    return this.http.post(this.BaseUrl + "import/analyzed",{
+    return this.http.post(this.BaseUrl + "import/verify",{
       "filename": filename,
-      "sheetname": sheetname
+      "sheetname": sheetname,
+      "type": type
       // "recordno": recordno
     });
   }
@@ -78,7 +79,8 @@ export class ImportService {
     return this.http.post(this.BaseUrl + "import/createtable",
     {
         session: session,
-        year: year
+        year: year,
+        
     });
 
   }

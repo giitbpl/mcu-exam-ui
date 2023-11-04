@@ -45,6 +45,9 @@ import { SearchComponent } from './components/search/search.component';
 import { TrsComponent } from './components/trs/trs.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { ToolsComponent } from './components/tools/tools.component';
+import { ImportDashboardComponent } from './components/import-dashboard/import-dashboard.component';
+import { CollegeMasterComponent } from './components/college-master/college-master.component';
+import { CourseComponent } from './components/course/course.component';
 // import {SelectModule} from 'ng2-select'
 // import { SelectDropDownModule } from 'ngx-select-dropdown'
 
@@ -71,6 +74,9 @@ export function initConfig(appConfig: AppconfigService) {
     TrsComponent,
     ToastComponent,
     ToolsComponent,
+    ImportDashboardComponent,
+    CollegeMasterComponent,
+    CourseComponent,
     // LogTableComponent
   ],
   imports: [

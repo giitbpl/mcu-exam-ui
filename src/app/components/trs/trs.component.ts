@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ToastService } from 'src/app/services/toast.service';
 
@@ -8,18 +8,25 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./trs.component.css']
 })
 export class TrsComponent {
-constructor(private snakebar:MatSnackBar,private toastservice:ToastService)
-{
+  @Input() studetail:any=[];
+  showdata:boolean = false;
+  name: string;
+  constructor(private snakebar: MatSnackBar, private toastservice: ToastService) {
+    console.log("studedetail=>", this.studetail);
 
-}
-  show()
-{
-  // this.snakebar.open("adhkjadh ajhdakjd akjdh","close",{
-  //   duration: 500000,
-  //  panelClass:'bg-info'
-  // });
-  this.toastservice.open("hello world","success").afterClosed().subscribe(() =>{
-    // alert("Hello world!");
-  });
-}
+  }
+  ngOnChanges(changes: SimpleChanges) {
+
+    this.studetail = changes["studetail"].currentValue;
+    console.log(this.studetail);
+    this.name = this.studetail[0].name;
+    this.showdata=true;
+  }
+
+  show() {
+
+    this.toastservice.open("hello world", "success").afterClosed().subscribe(() => {
+      // alert("Hello world!");
+    });
+  }
 }

@@ -12,13 +12,21 @@ import { RestoreComponent } from './components/restore/restore.component';
 import { SearchComponent } from './components/search/search.component';
 import { TrsComponent } from './components/trs/trs.component';
 import { ToolsComponent } from './components/tools/tools.component';
+import { ImportDashboardComponent } from './components/import-dashboard/import-dashboard.component';
+import { CollegeMasterComponent } from './components/college-master/college-master.component';
+import { CourseComponent } from './components/course/course.component';
 
 const routes: Routes = [
   { path: '', component:LoginComponent},
   { path: 'dashboard', component:DashboardComponent,children: [
-    {path: '', component:TrsComponent},
+    {path: '', component:SearchComponent},
     { path: 'user', component:UsersComponent},
-    { path: 'import', component:ImportComponent},
+    { path: 'import', component:ImportDashboardComponent,children: [
+      { path: '', component:CollegeMasterComponent},
+      {path: 'importdata', component:ImportComponent},
+      {path: 'college-master', component:CollegeMasterComponent},
+      {path: 'course', component:CourseComponent},
+    ]},
     { path: 'logs', component:LogsComponent},
     { path: 'chpwd', component:ChangePwdComponent},
     { path: 'backup', component:BackupComponent},
