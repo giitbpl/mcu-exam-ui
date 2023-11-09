@@ -24,7 +24,7 @@ export class CollegeMasterComponent {
   sheetvarify = false;
   public rowcount: number = 0;
   public years: any;
-  public tables: any;
+  public tables= new Array();
   constructor(private importService: ImportService, private snackBar: ToastService, private dialog: MatDialog, private route: ActivatedRoute) {
     this.years = Array.from(Array(new Date().getFullYear() - 2011), (_, i) => (i + 2012).toString())
     // console.log("years=>", years)
@@ -51,7 +51,28 @@ export class CollegeMasterComponent {
     importService.getAllTables().subscribe((data: any) => {
       console.log("table name=>", data);
       // if(data.error=="false") {
-      this.tables = data.data;
+      // this.tables = data.data;
+      // console.log(      this.tables.filter((element:string) => element.includes("college")));
+      // let parentThis=this;
+      var index, value:string, result;
+      for (index = 0; index < data.data.length; ++index) {
+          value = data.data[index].Tables_in_mcuexam;
+          // console.log(value);
+          
+          if (value.substring(0, 3) === "col") {
+              // You've found it, the full text is in `value`.
+              // So you might grab it and break the loop, although
+              // really what you do having found it depends on
+              // what you need.
+              this.tables.push(value);
+              // result = value;
+              // break;
+          }
+      }
+        // console.log(this.tables);
+        
+      // });
+      // console.log(this.tables);
       //  }
       //  else
       //  {

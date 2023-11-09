@@ -1,4 +1,6 @@
 <!-- <h1 class="visually-hidden">Heroes examples</h1> -->
+<h1 class="text-center text-danger fw-bolder">Result data</h1>
+
 <div class="row container-fluid text-center">
   <!-- <div class="col-6 shadow-sm rounded-3">
     <div class="card h-100" >
@@ -117,8 +119,7 @@
             <label for="tablename">Select Course Name </label>
           </div>   -->
           <div class="form-floating">
-            <select class="form-select" id="coursecode" #tablename aria-label="Floating label select example" (change)="onChange($event.target)"
-             >
+            <select class="form-select" id="coursecode" #tablename aria-label="Floating label select example" >
               <option selected="{{isLast==false}}" value="{{t.code}}"
                 *ngFor="let t of courselist;let ind = index;last as isLast">{{t.code}}-{{t.shortname}} {{t.fullname}}</option>
 

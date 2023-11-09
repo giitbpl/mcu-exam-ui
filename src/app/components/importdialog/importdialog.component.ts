@@ -18,11 +18,15 @@ export class ImportdialogComponent {
   showprogress: boolean = false;
   processState:any = false;
   tablename:any;
+  type:any;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private importservice: ImportService,private dialogRef: MatDialogRef<any>,private snackBar: ToastService) {
+    console.log(data);
+    
     this.filename = data.filename;
     this.sheetname = data.sheetname;
     this.rowcount = data.rowcount;
     this.tablename=data.tablename;
+    this.type=data.type;
   }
   @HostListener('window:unload', [ '$event' ])
   unloadHandler(event:any) {
@@ -30,6 +34,7 @@ export class ImportdialogComponent {
     alert("bye");
   }
   async start() {
+    
     this.processState=true;
     let i;
     for ( i = 0; i < this.rowcount; i++) {
@@ -42,7 +47,7 @@ export class ImportdialogComponent {
         });
         break;
       }
-      let a: any = await lastValueFrom(this.importservice.importRow(this.filename, this.sheetname, i,this.tablename));
+      let a: any = await lastValueFrom(this.importservice.importRow(this.filename, this.sheetname, i,this.tablename,this.type));
       if (a.error == "false") {
         this.value = (i + 1);
 

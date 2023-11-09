@@ -1,4 +1,4 @@
-<!-- <h1 class="visually-hidden">Heroes examples</h1> -->
+<h1 class="text-center text-danger fw-bolder">College or Exam Center</h1>
 <div class="row container-fluid text-center">
     <div class="col-6 shadow-sm rounded-3">
       <div class="card h-100" >
@@ -108,7 +108,7 @@
             </div>
             <div class="form-floating">
               <select  class="form-select" [disabled]="!sheetvarify" style="width: 300px;" id="tablename" #tablename aria-label="Floating label select example">
-                <option selected="{{isLast==true}}" value="{{t.Tables_in_mcuexam}}" *ngFor="let t of tables;let ind = index;last as isLast">{{t.Tables_in_mcuexam}}</option>
+                <option selected="{{isLast==true}}" value="{{t}}" *ngFor="let t of tables;let ind = index;last as isLast">{{t}}</option>
            
               </select>
               <label for="tablename">Select database table </label>

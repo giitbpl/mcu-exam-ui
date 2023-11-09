@@ -22,4 +22,18 @@ export class SearchService {
     return this.http.post(this.BaseUrl+"search/getsessionnamebycoursename", formdata);
     
    }
+   getStudieCenterDetailByCode(code:any,session:any)
+   {
+    return this.http.post(this.BaseUrl+"search/getstudydetailbycode", {
+      "code":code,
+      "session":session
+    });
+
+   }
+   getSubjectsDetailByCodeList(codelist:string)
+   {
+    return this.http.post(this.BaseUrl+"search/getsubjectsdetailbycodelist", {
+     "codelist":codelist
+    });
+   }
 }

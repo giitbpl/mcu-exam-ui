@@ -12,6 +12,9 @@ export class ToastService {
     if (type != "success") {
       this.cssclass = "bg-danger";
     }
+    else {
+      this.cssclass = "bg-success";
+    }
 
     return this.dialog.open(ToastComponent, {
       width: "500px",

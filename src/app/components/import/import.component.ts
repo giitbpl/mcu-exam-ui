@@ -130,7 +130,7 @@ export class ImportComponent {
       "filename": filename,
       "rowcount": this.rowcount,
       "tablename": tablename,
-      "type": "college"
+      "type": "examdata"
     };
     this.dialog.open(ImportdialogComponent, {
       width: "800px",

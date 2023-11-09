@@ -7,7 +7,7 @@
                 <p>Result declaration date</p>
             </div>
             <div class="d-flex justify-content-between">
-                <p>Tabulation resister for - Bachelor of computer application (B.C.A) semester-VI (CBCS)</p>
+                <p>Tabulation resister for - {{ studetail.student[0]?.examname}}</p>
 
             </div>
             <div class="d-flex justify-content-end">
@@ -158,60 +158,60 @@
     <div class="row mt-0">
         <div class="col-1 text-center">
             <!-- <p>study center code</p> -->
-            <p>{{ studetail[0]?.stdcent }}</p>
+            <p> {{ studetail.study[0].code }}</p>
         </div>
         <div class="col-11">
             <!-- <p> study center name</p> -->
-            <p>{{ studetail[0]?.stdcentname }}</p>
+            <p>{{ studetail.study[0]["COLLEGE / CENTER NAME"]}} {{studetail.study[0]?.city}}</p>
         </div>
     </div>
     <hr>
     <div class="row mt-0">
         <div class="col-1 text-center">
-            <p>ECC-{{ studetail[0]?.examcent }} </p>
+            <p>ECC-{{ studetail.student[0]?.examcent }}   </p>
         </div>
         <div class="col-11">
             <!-- <p> Exam center name here </p> -->
-            <p>{{ studetail[0]?.examcentname }}</p>
+            <p>{{ studetail.student[0]["COLLEGE / CENTER NAME"] }} {{ studetail.student[0].city }}</p>
         </div>
     </div>
     <hr>
     <div class="row mt-0">
         <div class="col-1 text-center">
             <!-- <p>roll number</p> -->
-            <p>{{ studetail[0]?.rollno }}</p>
+            <p>{{ studetail.student[0]?.rollno }}</p>
         </div>
         <div class="col-2">
             <div class="row">
                 <div class="col-12">
                     <!-- <p> name of student </p> -->
-                    <p>{{ studetail[0]?.name }}</p>
+                    <p>{{ studetail.student[0]?.name }}</p>
                 </div>
                 <div class="col-12">
                     <!-- <p>father name of student </p> -->
-                    <p>{{ studetail[0]?.fhname }}</p>
+                    <p>{{ studetail.student[0]?.fhname }}</p>
                 </div>
                 <div class="col-12">
                     <!-- <p>mother name of student </p> -->
-                    <p>{{ studetail[0]?.mname }}</p>
+                    <p>{{ studetail.student[0]?.mname }}</p>
                 </div>
                 <div class="col-12">
                     <!-- <p>Enrolment no </p> -->
-                    <p>{{ studetail[0]?.enrollno }}</p>
+                    <p>{{ studetail.student[0]?.enrollno }}</p>
                 </div>
                 <div class="col-12">
                     <div class="row ">
                         <div class="col-4 ">
                             <!-- <p>regular</p> -->
-                            <p>{{ studetail[0]?.status }}</p>
+                            <p>{{ studetail.student[0]?.status }}</p>
                         </div>
                         <div class="col-4 ">
                             <!-- <p>cat</p> -->
-                            <p>{{ studetail[0]?.category }}</p>
+                            <p>{{ studetail.student[0]?.category }}</p>
                         </div>
                         <div class="col-4 ">
                             <!-- <p>med</p> -->
-                            <p>{{ studetail[0]?.medium }}</p>
+                            <p>{{ studetail.student[0]?.medium }}</p>
                         </div>
                     </div>
                 </div>
@@ -222,7 +222,7 @@
                         </div>
                         <div class="col-6">
                             <!-- <p>123456</p> -->
-                            <p>{{ studetail[0]?.msheetno }}</p>
+                            <p>{{ studetail.student[0]?.msheetno }}</p>
                         </div>
                     </div>
                 </div>
@@ -230,14 +230,14 @@
                     <div class="row">
                         <div class="col-4">
                             <!-- <p>5/400</p> -->
-                            <p>{{studetail.length}}/{{ studetail[0]?.semoutof }}</p>
+                            <p>{{studetail.student.length}}/{{ studetail.student[0]?.semoutof }}</p>
                         </div>
                         <div class="col-4">
                             <p>EC:</p>
                         </div>
                         <div class="col-4">
                             <!-- <p>149</p> -->
-                            <p>{{ studetail[0]?.examcent }}</p>
+                            <p>{{ studetail.student[0]?.examcent }}</p>
                         </div>
                     </div>
                 </div>
@@ -246,30 +246,59 @@
 
         </div>
         <div class="col-9">
-            <div class="row  -info">
+            <div class="row  -info" *ngFor="let s of studetail.student">
                 <div class="col-1 w-auto">
-                    0343
+                    <!-- 0343 -->
+                    {{s.subcode}}
                 </div>
                 <div class="col-2   ">
-                    <p style="font-size: 10px;">fundamentals of programming</p>
+                    <!-- <p style="font-size: 10px;">fundamentals of programming</p> -->
+                    <p class="small-text">{{s.subname}}</p>
                 </div>
                 <div class="col-9 ">
                     <div class="d-flex flex-row bd-highlight">
-                        <div class="flex-fill  text-center w-auto bd-highlight">123</div>
-                        <div class="flex-fill  text-center bd-highlight">223</div>
-                        <div class="flex-fill  text-center w-auto bd-highlight">323</div>
-                        <div class="flex-fill  text-center w-auto bd-highlight">123</div>
-                        <div class="flex-fill  text-center w-auto bd-highlight">223</div>
-                        <div class="flex-fill  text-center w-auto bd-highlight">323</div>
-                        <div class="flex-fill  text-center w-auto bd-highlight">123</div>
-                        <div class="flex-fill  text-center w-auto bd-highlight">223</div>
-                        <div class="flex-fill  text-center w-auto bd-highlight">323</div>
-                        <div class="flex-fill  text-center w-auto bd-highlight">123</div>
-                        <div class="flex-fill  text-center w-auto bd-highlight">223</div>
-                        <div class="flex-fill  text-center w-auto bd-highlight">323</div>
-                        <div class="flex-fill  text-center w-auto bd-highlight">123</div>
-                        <div class="flex-fill  text-center w-auto bd-highlight">223</div>
-                        <div class="flex-fill  text-center w-auto bd-highlight">323</div>
+                        <div class="flex-fill  text-end w-auto bd-highlight">
+                           <p class="small-text">
+                             {{ s.tmin==0? '--' :s.tmin  }}  {{ s.tmax==0? '--' :s.tmax  }}
+                            </p>
+                           </div>
+                        <div class="flex-fill  text-end bd-highlight">
+                            <p class="small-text"> 
+                                {{ s.pmin==0? '--' :s.pmin  }}  {{ s.pmax==0? '--' :s.pmax  }}
+
+                                <!-- {{ s.pmin }}  {{ s.pmax }} -->
+
+                            </p>
+                        </div>
+                        <div class="flex-fill  text-end w-auto bd-highlight">
+                            <p class="small-text">
+                                {{ s.smin==0? '--' :s.smin  }}  {{ s.smax==0? '--' :s.smax  }}
+                        </p>
+                    </div>
+                        <div class="flex-fill  text-end w-auto bd-highlight">
+                            <p class="small-text">
+                               
+                            </p>
+                        </div>
+                        <div class="flex-fill  text-end w-auto bd-highlight">223</div>
+                        <div class="flex-fill  text-end w-auto bd-highlight"><p class="small-text">
+
+                        </p></div>
+                        <div class="flex-fill  text-end w-auto bd-highlight">123</div>
+                        <div class="flex-fill  text-end w-auto bd-highlight">223</div>
+                        <div class="flex-fill  text-end w-auto bd-highlight"><p class="small-text">
+
+                        </p></div>
+                        <div class="flex-fill  text-end w-auto bd-highlight">123</div>
+                        <div class="flex-fill  text-end w-auto bd-highlight">223</div>
+                        <div class="flex-fill  text-end w-auto bd-highlight"><p class="small-text">
+
+                        </p></div>
+                        <div class="flex-fill  text-end w-auto bd-highlight">123</div>
+                        <div class="flex-fill  text-end w-auto bd-highlight">223</div>
+                        <div class="flex-fill  text-end w-auto bd-highlight"><p class="small-text">
+
+                        </p></div>
                       </div>
                 </div>
             </div>

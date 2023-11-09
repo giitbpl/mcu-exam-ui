@@ -9,7 +9,7 @@ import { ToastService } from 'src/app/services/toast.service';
 })
 export class TrsComponent {
   @Input() studetail:any=[];
-  showdata:boolean = false;
+  @Input() showdata:boolean = false;
   name: string;
   constructor(private snakebar: MatSnackBar, private toastservice: ToastService) {
     console.log("studedetail=>", this.studetail);
@@ -19,7 +19,7 @@ export class TrsComponent {
 
     this.studetail = changes["studetail"].currentValue;
     console.log(this.studetail);
-    this.name = this.studetail[0].name;
+    this.name = this.studetail.student[0].name;
     this.showdata=true;
   }
 
