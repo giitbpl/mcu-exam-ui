@@ -21,8 +21,8 @@
     <hr>
     <div class="row      ">
         <div class="col-1        text-center">
-           <!-- <p>{{ studetail[0]?.name }}</p> -->
-           <p>RollNo</p>
+            <!-- <p>{{ studetail[0]?.name }}</p> -->
+            <p>RollNo</p>
 
         </div>
         <div class="col-2       text-start">
@@ -51,7 +51,7 @@
             <p>father name</p>
         </div>
 
-        <div class="col-3        text-center">
+        <div class="col-3       ">
             <div class="row">
                 <div class="col-4    ">
                     <p>theory</p>
@@ -63,6 +63,11 @@
                     <p>int</p>
                 </div>
             </div>
+            <!-- <div class="d-flex">
+                <div class=" flex-fill"> min-max</div>
+                <div class=" flex-fill"> min-max</div>
+                <div class=" flex-fill"> min-max</div>
+              </div> -->
             <!-- <div class="d-flex justify-content-between ">
         
               
@@ -72,65 +77,81 @@
         </div>
 
     </div>
-    <div class="row      ">
-        <div class="col-1        text-center">
+        <div class="row      ">
+            <div class="col-1        text-center">
 
 
-        </div>
-        <div class="col-4        text-start">
-            <p>Mother name</p>
-        </div>
-
-        <div class="col-3       ">
-
-            <div class="row text-center">
-                <div class="col-4  ">
-                    <p>min-max</p>
-                </div>
-                <div class="col-4  ">
-                    <p>min-max</p>
-                </div>
-                <div class="col-4  ">
-                    <p>min-max</p>
-                </div>
             </div>
-        </div>
-        <div class="col-2       ">
-
-            <div class="row text-center">
-                <div class="col-4   ">
-                    <p>th</p>
-                </div>
-                <div class="col-4   ">
-                    <p>pr</p>
-                </div>
-                <div class="col-4   ">
-                    <p>int</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-1     text-center">
-            <p>OBT/OUT</p>
-
-        </div>
-        <div class="col-1     ">
-            <div class="row">
-                <div class="col-3 ">
-                    <p>cr</p>
-                </div>
-                <div class="col-3 ">
-                    <p>gp</p>
-                </div>
-                <div class="col-3 ">
-                    <p>cp</p>
-                </div>
-                <div class="col-3 ">
-                    <p>gr</p>
-                </div>
+            <div class="col-4        text-start">
+                <p>Mother name</p>
             </div>
 
+            <div class="col-3       ">
+
+                <div class="row justify-content-md-center">
+                
+                            <div class="col md-auto">
+                                <p> min-max</p>
+                            </div>
+                            <div class="col md-auto">
+                                <p> min-max</p>
+                            </div>
+                            <div class="col md-auto">
+                                <p> min-max</p>
+                            </div>
+                    
+                        <!-- min-max -->
+                        <!-- min-max -->
+                        <!-- min-max -->
+                        <!-- <div class="d-flex">
+                            <div class=" flex-fill"> min-max1</div>
+                            <div class=" flex-fill"> min-max2</div>
+                            <div class=" flex-fill"> min-max3</div>
+                        </div> -->
+                
+
+                    <!-- <div class="col  ">
+                        <div class="col  ">
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-2       ">
+
+                <div class="row text-center">
+                    <div class="col-4   ">
+                        <p>th</p>
+                    </div>
+                    <div class="col-4   ">
+                        <p>pr</p>
+                    </div>
+                    <div class="col-4   ">
+                        <p>int</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1     text-center">
+                <p>OBT/OUT</p>
+
+            </div>
+            <div class="col-1     ">
+                <div class="row">
+                    <div class="col-3 ">
+                        <p>cr</p>
+                    </div>
+                    <div class="col-3 ">
+                        <p>gp</p>
+                    </div>
+                    <div class="col-3 ">
+                        <p>cp</p>
+                    </div>
+                    <div class="col-3 ">
+                        <p>gr</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
     <div class="row   ">
         <div class="col-1">
 
@@ -168,7 +189,7 @@
     <hr>
     <div class="row mt-0">
         <div class="col-1 text-center">
-            <p>ECC-{{ studetail.student[0]?.examcent }}   </p>
+            <p>ECC-{{ studetail.student[0]?.examcent }} </p>
         </div>
         <div class="col-11">
             <!-- <p> Exam center name here </p> -->
@@ -255,8 +276,64 @@
                     <!-- <p style="font-size: 10px;">fundamentals of programming</p> -->
                     <p class="small-text">{{s.subname}}</p>
                 </div>
-                <div class="col-9 ">
-                    <div class="d-flex flex-row bd-highlight">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <!-- <div class="d-flex">
+                                <div class="p-2 flex-fill">
+                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
+                                </div>
+                                <div class="p-2 flex-fill">
+                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
+                                </div>
+                                <div class="p-2 flex-fill">
+
+                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
+                                </div>
+                            </div> -->
+                            <div class="row justify-content-md-center">
+                                <div class="p-2 col-3 md-auto">
+                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
+                                </div>
+                                <div class="p-2 col-3 md-auto">
+                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
+                                </div>
+                                <div class="p-2 col-3 md-auto">
+                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 ">
+                            <div class="row">
+                                <div class="p-2 col">
+                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
+                                </div>
+                                <div class="p-2 col">
+                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
+                                </div>
+                                <div class="p-2 col">
+                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 ">
+                            <div class="row">
+                                <div class="p-2 col">
+                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
+                                </div>
+                                <div class="p-2 col">
+                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
+                                </div>
+                                <div class="p-2 col">
+                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
+                                </div>
+                            </div>
+                          
+                        </div>
+                        <!-- git status -->
+
+                    </div>
+                    <!-- <div class="d-flex flex-row bd-highlight">
                         <div class="flex-fill  text-end w-auto bd-highlight">
                            <p class="small-text">
                              {{ s.tmin==0? '--' :s.tmin  }}  {{ s.tmax==0? '--' :s.tmax  }}
@@ -266,7 +343,6 @@
                             <p class="small-text"> 
                                 {{ s.pmin==0? '--' :s.pmin  }}  {{ s.pmax==0? '--' :s.pmax  }}
 
-                                <!-- {{ s.pmin }}  {{ s.pmax }} -->
 
                             </p>
                         </div>
@@ -299,7 +375,7 @@
                         <div class="flex-fill  text-end w-auto bd-highlight"><p class="small-text">
 
                         </p></div>
-                      </div>
+                      </div> -->
                 </div>
             </div>
         </div>

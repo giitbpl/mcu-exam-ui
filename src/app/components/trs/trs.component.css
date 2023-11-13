@@ -25,3 +25,11 @@
 {
     font-size: 8px;
 }
+.row
+{
+    /* border:thin solid red; */
+}
+.col,col-1
+{
+    /* background-color: aqua; */
+}
