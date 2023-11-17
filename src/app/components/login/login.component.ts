@@ -24,29 +24,35 @@ export class LoginComponent {
     return this.loginForm.controls;
   }
   process() {
-    console.log(this.loginForm.value);
+    console.log(this.loginForm.valid);
 
     if (this.loginForm.valid == true) {
       // this.loginForm.patchValue({
       //   pwd: CryptoJS.SHA256(this.loginForm.controls.pwd.value!).toString(),
       // });
-      console.log("form data=", this.loginForm.value);
+      // console.log("form data=", this.loginForm.value);
       
-      this.utilityservice.enableForm(this.loginForm, false);
+      // this.utilityservice.enableForm(this.loginForm, false);
       this.loginservice.login(this.loginForm.value).subscribe((data: any) => {
-        console.log(data);
+        // console.log(data);
         if (data.error == "false") {
           this.jwt.saveToken(data.token);
           // sessionStorage.setItem("",
           this.router.navigate(['/dashboard']);
         }
         else if (data.error == "true") {
-          this.utilityservice.enableForm(this.loginForm, true);
-          this.snackBar.open(data.message, "error");
+          this.snackBar.open(data.message, "error").afterClosed().subscribe(() => {
+           // this.utilityservice.enableForm(this.loginForm, true);
+          //  console.log("error");
+           
+            // location.reload();
+          });
         }
         else {
-          this.utilityservice.enableForm(this.loginForm, true);
-          this.snackBar.open('database error', "error");
+          this.snackBar.open('database error', "error").afterClosed().subscribe(() => {
+            // location.reload();
+          //  this.utilityservice.enableForm(this.loginForm, true);
+          }) ;
 
         }
       });

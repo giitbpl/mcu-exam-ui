@@ -98,6 +98,7 @@ export class SearchComponent {
                   // data.data[i].pmin = element.PRACTICAL_MIN_MARKS;
                   data.data[i].smax = element.SESSIONAL_MAX_MARKS;
                   data.data[i].smin = element.SESSIONAL_MIN_MARKS;
+                  // data.data[i].thobt = element.THOBT;
 
                   return;
                 }

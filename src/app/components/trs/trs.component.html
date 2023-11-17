@@ -1,6 +1,11 @@
 <div class="container-fluid trc" *ngIf="showdata==true">
-
-    <div class="row     ">
+    <button class="btn btn-primary d-print-none" onclick="window.print()">PRINT</button>
+<div class="row">
+    <div class="col-12 text-center">
+        <p>Preview / Printed BY {{username}} {{email}} {{ipaddress}}</p>
+    </div>
+</div>
+    <div class="row">
         <div class="col-12 ">
             <div class="d-flex justify-content-between m-0">
                 <p>Makhanlal Chaturvedi National university of journalism & comm. Bhopal</p>
@@ -25,19 +30,22 @@
             <p>RollNo</p>
 
         </div>
-        <div class="col-2       text-start">
+        <div class="col-1       text-start">
             <p>Candidate name</p>
             <!-- <p>{{ studetail[0]?.name }}</p> -->
         </div>
-        <div class="col-2      text-start">
+        <div class="col-3      ">
             <p>Subject code & description</p>
         </div>
         <div class="col-3       text-center">
             <p>scheme of marks</p>
         </div>
-        <div class="col-2        text-center">
+        <div class="col-2       text-center">
             <p>marks obtained</p>
         </div>
+        <!-- <div class="col-1        text-center">
+           
+        </div> -->
         <div class="col-1        text-center">
             <p>total</p>
         </div>
@@ -52,7 +60,7 @@
         </div>
 
         <div class="col-3       ">
-            <div class="row">
+            <div class="row text-center">
                 <div class="col-4    ">
                     <p>theory</p>
                 </div>
@@ -63,115 +71,90 @@
                     <p>int</p>
                 </div>
             </div>
-            <!-- <div class="d-flex">
-                <div class=" flex-fill"> min-max</div>
-                <div class=" flex-fill"> min-max</div>
-                <div class=" flex-fill"> min-max</div>
-              </div> -->
-            <!-- <div class="d-flex justify-content-between ">
-        
-              
-               
-            </div> -->
+          
 
         </div>
 
     </div>
-        <div class="row      ">
-            <div class="col-1        text-center">
+    <div class="row      ">
+        <div class="col-1        text-center">
 
 
-            </div>
-            <div class="col-4        text-start">
-                <p>Mother name</p>
-            </div>
+        </div>
+        <div class="col-1        text-start">
+            <p>Mother name</p>
+        </div>
+        <div class="col-3        text-start">
+          
+        </div>
 
-            <div class="col-3       ">
+        <div class="col-3       ">
 
-                <div class="row justify-content-md-center">
-                
-                            <div class="col md-auto">
-                                <p> min-max</p>
-                            </div>
-                            <div class="col md-auto">
-                                <p> min-max</p>
-                            </div>
-                            <div class="col md-auto">
-                                <p> min-max</p>
-                            </div>
-                    
-                        <!-- min-max -->
-                        <!-- min-max -->
-                        <!-- min-max -->
-                        <!-- <div class="d-flex">
-                            <div class=" flex-fill"> min-max1</div>
-                            <div class=" flex-fill"> min-max2</div>
-                            <div class=" flex-fill"> min-max3</div>
-                        </div> -->
-                
-
-                    <!-- <div class="col  ">
-                        <div class="col  ">
+            <div class="row text-center">
+               
+                        <div class="col">
+                            <p> min-max</p>
                         </div>
-                    </div> -->
-                </div>
-            </div>
-            <div class="col-2       ">
-
-                <div class="row text-center">
-                    <div class="col-4   ">
-                        <p>th</p>
-                    </div>
-                    <div class="col-4   ">
-                        <p>pr</p>
-                    </div>
-                    <div class="col-4   ">
-                        <p>int</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-1     text-center">
-                <p>OBT/OUT</p>
-
-            </div>
-            <div class="col-1     ">
-                <div class="row">
-                    <div class="col-3 ">
-                        <p>cr</p>
-                    </div>
-                    <div class="col-3 ">
-                        <p>gp</p>
-                    </div>
-                    <div class="col-3 ">
-                        <p>cp</p>
-                    </div>
-                    <div class="col-3 ">
-                        <p>gr</p>
-                    </div>
-                </div>
-
+                        <div class="col">
+                            <p> min-max</p>
+                        </div>
+                        <div class="col">
+                            <p> min-max</p>
+                        </div>
+                  
+                  
             </div>
         </div>
-    <div class="row   ">
+        <div class="col-2       ">
+
+            <div class="row text-center">
+                <div class="col-4   ">
+                    <p>th</p>
+                </div>
+                <div class="col-4   ">
+                    <p>pr</p>
+                </div>
+                <div class="col-4   ">
+                    <p>int</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-1     text-center">
+            <p>OBT/OUT</p>
+
+        </div>
+        <div class="col-1     ">
+            <div class="row">
+                <div class="col-3 ">
+                    <p>cr</p>
+                </div>
+                <div class="col-3 ">
+                    <p>gp</p>
+                </div>
+                <div class="col-3 ">
+                    <p>cp</p>
+                </div>
+                <div class="col-3 ">
+                    <p>gr</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row ">
         <div class="col-1">
 
         </div>
-        <div class="col-2">
-            <div class="row gx-5">
-                <div class="col-2">
-                    <p>enrol</p>
-
-                </div>
-                <div class="col-2">
-                    <p>stat</p>
-                </div>
-                <div class="col-2">
-                    <p>cat</p>
-                </div>
-                <div class="col-2">
-                    <p>med</p>
-                </div>
-            </div>
+        <div class="col-4">
+            <div class="d-flex bd-highlight flex-row mb-3">
+                <div class=" bd-highlight"><p>enrol &nbsp;       </p></div>
+                <div class=" bd-highlight"><p>stat  &nbsp;      </p></div>
+                <div class=" bd-highlight"><p> med &nbsp;</p></div>
+                <div class=" bd-highlight"><p> cat </p></div>
+              </div>
+            <!-- <p>enrol stat cat med</p> -->
+        </div>
+        <div class="col">
 
         </div>
     </div>
@@ -202,7 +185,7 @@
             <!-- <p>roll number</p> -->
             <p>{{ studetail.student[0]?.rollno }}</p>
         </div>
-        <div class="col-2">
+        <div class="col-1">
             <div class="row">
                 <div class="col-12">
                     <!-- <p> name of student </p> -->
@@ -266,206 +249,94 @@
 
 
         </div>
-        <div class="col-9">
-            <div class="row  -info" *ngFor="let s of studetail.student">
-                <div class="col-1 w-auto">
-                    <!-- 0343 -->
-                    {{s.subcode}}
-                </div>
-                <div class="col-2   ">
-                    <!-- <p style="font-size: 10px;">fundamentals of programming</p> -->
-                    <p class="small-text">{{s.subname}}</p>
-                </div>
-                <div class="col">
-                    <div class="row">
-                        <div class="col">
-                            <!-- <div class="d-flex">
-                                <div class="p-2 flex-fill">
-                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
-                                </div>
-                                <div class="p-2 flex-fill">
-                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
-                                </div>
-                                <div class="p-2 flex-fill">
-
-                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
-                                </div>
-                            </div> -->
-                            <div class="row justify-content-md-center">
-                                <div class="p-2 col-3 md-auto">
-                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
-                                </div>
-                                <div class="p-2 col-3 md-auto">
-                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
-                                </div>
-                                <div class="p-2 col-3 md-auto">
-                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3 ">
-                            <div class="row">
-                                <div class="p-2 col">
-                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
-                                </div>
-                                <div class="p-2 col">
-                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
-                                </div>
-                                <div class="p-2 col">
-                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3 ">
-                            <div class="row">
-                                <div class="p-2 col">
-                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
-                                </div>
-                                <div class="p-2 col">
-                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
-                                </div>
-                                <div class="p-2 col">
-                                    {{ s.tmin==0? '--' :s.tmin }} {{ s.tmax==0? '--' :s.tmax }}
-                                </div>
-                            </div>
-                          
-                        </div>
-                        <!-- git status -->
-
-                    </div>
-                    <!-- <div class="d-flex flex-row bd-highlight">
-                        <div class="flex-fill  text-end w-auto bd-highlight">
-                           <p class="small-text">
-                             {{ s.tmin==0? '--' :s.tmin  }}  {{ s.tmax==0? '--' :s.tmax  }}
-                            </p>
-                           </div>
-                        <div class="flex-fill  text-end bd-highlight">
-                            <p class="small-text"> 
-                                {{ s.pmin==0? '--' :s.pmin  }}  {{ s.pmax==0? '--' :s.pmax  }}
-
-
-                            </p>
-                        </div>
-                        <div class="flex-fill  text-end w-auto bd-highlight">
-                            <p class="small-text">
-                                {{ s.smin==0? '--' :s.smin  }}  {{ s.smax==0? '--' :s.smax  }}
+        <div class="col-10">
+            <table class="w-100" >
+                <tr *ngFor="let s of studetail.student">
+                    <td class="" width="395">
+                        <p>
+                            {{s.subcode}}-{{s.subname}}
                         </p>
-                    </div>
-                        <div class="flex-fill  text-end w-auto bd-highlight">
-                            <p class="small-text">
-                               
-                            </p>
-                        </div>
-                        <div class="flex-fill  text-end w-auto bd-highlight">223</div>
-                        <div class="flex-fill  text-end w-auto bd-highlight"><p class="small-text">
-
-                        </p></div>
-                        <div class="flex-fill  text-end w-auto bd-highlight">123</div>
-                        <div class="flex-fill  text-end w-auto bd-highlight">223</div>
-                        <div class="flex-fill  text-end w-auto bd-highlight"><p class="small-text">
-
-                        </p></div>
-                        <div class="flex-fill  text-end w-auto bd-highlight">123</div>
-                        <div class="flex-fill  text-end w-auto bd-highlight">223</div>
-                        <div class="flex-fill  text-end w-auto bd-highlight"><p class="small-text">
-
-                        </p></div>
-                        <div class="flex-fill  text-end w-auto bd-highlight">123</div>
-                        <div class="flex-fill  text-end w-auto bd-highlight">223</div>
-                        <div class="flex-fill  text-end w-auto bd-highlight"><p class="small-text">
-
-                        </p></div>
-                      </div> -->
-                </div>
-            </div>
+                    </td>
+                    <td class=" " width="120">
+                         <p>{{ s.tmin==0 || s.tmin==undefined? '--' :s.tmin }} {{ s.tmax==0 || s.tmax==undefined? '--' :s.tmax }}</p>
+                    </td>
+                    <td class="" width="120">
+                         <p> {{ s.pmin==0 || s.pmin==undefined? '--' :s.pmin }} {{ s.pmax==0 || s.pmax==undefined? '--' :s.pmax }}</p>
+                    </td>
+                    <td class="" width="120">
+                         <p> {{ s.smin==0 || s.smin==undefined? '--' :s.smin }} {{ s.smax==0 || s.smax==undefined? '--' :s.smax }}</p>
+                    </td>
+                    <td class="" width="80" >
+                         <p> {{ s.thobt==0 || s.thobt==undefined? '--' : s.thobt }} </p>
+                    </td>
+                    <td class="text-center" width="80" >
+                         <p> {{ s.probt==0 || s.probt==undefined ? '--' :s.probt }} </p>
+                    </td>
+                    <td class="text-center" width="100" >
+                         <p> {{ s.intobt==0 || s.intobt==undefined? '--' :s.intobt }} </p>
+                    </td>
+                  
+                    <td class="" >
+                         <p>{{ s.sub_total==0 || s.sub_total==undefined? '--' :s.sub_total }} {{ s.sub_max==0 || s.sub_max==undefined? '--' :s.sub_max }}</p>
+                    </td>
+                  
+                   
+                    <td class=" text-end border " width="120">
+                        <div class="d-flex bd-highlight">
+                           
+                           
+                            <div class=" flex-fill bd-highlight"><p>{{s.sub_credit}}</p></div>
+                            <div class=" flex-fill bd-highlight"><p>{{s.sub_grade_point}}</p></div>
+                            <div class=" flex-fill bd-highlight"><p>{{s.sub_credit_point}}</p></div>
+                            <div class=" flex-fill bd-highlight"><p>{{s.sub_grade}}</p></div>
+                          </div>
+                        <!-- <p>9  9  50.00 A</p> -->
+                        <!-- <table class="w-100">
+                            <tr>
+                                <td><p>9</p></td>
+                                <td><p>9</p></td>
+                            
+                                <td><p>50.00<p></td>
+                                <td><p>A</p></td>
+                            </tr> -->
+                        <!-- </table> -->
+                        <!-- <p> <span>9</span> &nbsp;
+                      <span>9</span> 
+                      <span>50.00</span>
+                      <span>A</span></p> -->
+                    </td>
+                </tr>
+              
+            </table>
+            
         </div>
     </div>
 
     <div class="row  ">
         <div class="col-12">
-            <table class="table tbl">
+            <table class="">
                 <tr>
                     <td>
-                        I-sem 250/400
+                        <p>Curr Sem {{studetail.student[0].semobt }} / {{studetail.student[0].semoutof}}</p>
                     </td>
-                    <td>
-                        II-sem 250/400
-                    </td>
-                    <td>
-                        III-sem 250/400
-                    </td>
-                    <td>
-                        IV-sem 250/400
-                    </td>
-                    <td>
-                        V-sem 250/400
-                    </td>
-                    <td>
-                        VI-sem 250/400
-                    </td>
-                    <td>
-                        grand total 250/400
-                    </td>
-                    <td>
-                        cp/cr :207
-                    </td>
+              
                 </tr>
                 <tr>
                     <td>
-                        I-sem 250/400
+                        <p>SGPA {{studetail.student[0].SGPA }} </p>
                     </td>
-                    <td>
-                        II-sem 250/400
-                    </td>
-                    <td>
-                        III-sem 250/400
-                    </td>
-                    <td>
-                        IV-sem 250/400
-                    </td>
-                    <td>
-                        V-sem 250/400
-                    </td>
-                    <td>
-                        VI-sem 250/400
-                    </td>
-                    <td>
-                        grand total 250/400
-                    </td>
-                    <td>
-                        cp/cr :207
-                    </td>
+              
                 </tr>
                 <tr>
                     <td>
-                        I-sem 250/400
+                       <p>{{studetail.student[0].yrtermcode}}</p>
                     </td>
-                    <td>
-                        II-sem 250/400
-                    </td>
-                    <td>
-                        III-sem 250/400
-                    </td>
-                    <td>
-                        IV-sem 250/400
-                    </td>
-                    <td>
-                        V-sem 250/400
-                    </td>
-                    <td>
-                        VI-sem 250/400
-                    </td>
-                    <td>
-                        grand total 250/400
-                    </td>
-                    <td>
-                        cp/cr :207
-                    </td>
+              
                 </tr>
+             
             </table>
         </div>
     </div>
     <hr>
-    <button class="btn btn-primary d-print-none" onclick="window.print()">print</button>
     <!-- <button class="btn btn-primary" (click)="show()">message</button> -->
 </div>

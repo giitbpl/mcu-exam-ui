@@ -22,7 +22,7 @@ export class DashboardComponent {
   constructor(private toastservice:ToastService, private jwt: JwtTokenService,private loginservice:LoginService, private userservice: UserService, private router: Router, private dialog: MatDialog) {
     let token = jwt.getToken();
     userservice.getUserDetailByToken(token).subscribe((result: any) => {
-      console.log(result);
+      console.log("user detail=>",result);
       
       if(result.error=="true")
       {
