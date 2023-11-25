@@ -48,6 +48,9 @@ import { ToolsComponent } from './components/tools/tools.component';
 import { ImportDashboardComponent } from './components/import-dashboard/import-dashboard.component';
 import { CollegeMasterComponent } from './components/college-master/college-master.component';
 import { CourseComponent } from './components/course/course.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { SharingeDataService } from './services/sharinge-data.service';
+
 // import {SelectModule} from 'ng2-select'
 // import { SelectDropDownModule } from 'ngx-select-dropdown'
 
@@ -103,6 +106,7 @@ export function initConfig(appConfig: AppconfigService) {
     MatSlideToggleModule,
     // SelectDropDownModule,
     // FormModule
+    MatAutocompleteModule,
     BackButtonDisableModule.forRoot({
       preserveScroll: false,
       
@@ -110,6 +114,7 @@ export function initConfig(appConfig: AppconfigService) {
 
   ],
   providers: [
+    
     UpperCasePipe,
     DatePipe,
     { provide: LocationStrategy, useClass: HashLocationStrategy,

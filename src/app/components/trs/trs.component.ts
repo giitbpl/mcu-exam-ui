@@ -1,7 +1,9 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, OnDestroy, SimpleChanges } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { JwtTokenService } from 'src/app/services/jwt-token.service';
+import { SharingeDataService } from 'src/app/services/sharinge-data.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -10,14 +12,15 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './trs.component.html',
   styleUrls: ['./trs.component.css']
 })
-export class TrsComponent {
-  @Input() studetail:any=[];
+export class TrsComponent implements OnDestroy{
+  studetail:any=[];
   @Input() showdata:boolean = false;
   name: string;
   username:string;
   ipaddress:string;
   email:string;
-  constructor(private snakebar: MatSnackBar,private router: Router, private toastservice: ToastService,private jwt:JwtTokenService,private userservice: UserService) {
+  subscription: Subscription;
+  constructor(private sharing: SharingeDataService,private snakebar: MatSnackBar,private router: Router, private toastservice: ToastService,private jwt:JwtTokenService,private userservice: UserService) {
     console.log("studedetail=>", this.studetail);
     let token = jwt.getToken();
     userservice.getUserDetailByToken(token).subscribe((result: any) => {
@@ -37,14 +40,32 @@ export class TrsComponent {
         this.email=result.data.email;
       }
     });
-  }
-  ngOnChanges(changes: SimpleChanges) {
+    this.sharing.changeMessage("");
 
-    this.studetail = changes["studetail"].currentValue;
-    console.log(this.studetail);
-    this.name = this.studetail.student[0].name;
-    this.showdata=true;
+    this.subscription = this.sharing.data.subscribe(result => {
+      // dtInstance.clear();
+      console.log("result: " + result);
+      
+      this.studetail = result;
+      this.showdata=true;
+      // this.loadData = true;
+
+      // console.log("result=", this.stulist);
+
+    });
   }
+  ngOnDestroy(): void {
+    // this.stulist = "";
+    this.sharing.changeMessage("");
+    this.subscription.unsubscribe();
+  }
+  // ngOnChanges(changes: SimpleChanges) {
+
+  //   this.studetail = changes["studetail"].currentValue;
+  //   console.log(this.studetail);
+  //   this.name = this.studetail.student[0].name;
+  //   this.showdata=true;
+  // }
 
   show() {
 

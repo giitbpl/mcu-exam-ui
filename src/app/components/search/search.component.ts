@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { CourseService } from 'src/app/services/course.service';
 import { ImportService } from 'src/app/services/import.service';
 import { SearchService } from 'src/app/services/search.service';
+import { SharingeDataService } from 'src/app/services/sharinge-data.service';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
@@ -11,6 +13,18 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent {
+  studetail: any = [];
+  name: string;
+  username: string;
+  ipaddress: string;
+  email: string;
+  loadCourse(coursetype: any) {
+    this.courseserice.getCourseNameByType(coursetype).subscribe((data: any) => {
+      console.log(data);
+      this.courselist = data.data;
+    });
+    // throw new Error('Method not implemented.');
+  }
   // selectedcoursetext: string = ""
   getSelectedIndex(event: any) {
 
@@ -35,14 +49,16 @@ export class SearchComponent {
   courselist: any;
   sessionlist: any;
   showsessioname: boolean = false;
+  filteredOptions: Observable<any[]>;
+
   // send to trs component
   detail: any;
-  constructor(private snackBar: ToastService, private courseserice: CourseService, private importService: ImportService, private formBuilder: FormBuilder, private searchservice: SearchService) {
-    courseserice.getAllCourse().subscribe((data: any) => {
-      console.log(data);
+  constructor(private sharing: SharingeDataService, private snackBar: ToastService, private courseserice: CourseService, private importService: ImportService, private formBuilder: FormBuilder, private searchservice: SearchService) {
+    // courseserice.getAllCourse().subscribe((data: any) => {
+    //   console.log(data);
 
-      this.courselist = data.data;
-    });
+    //   this.courselist = data.data;
+    // });
     // importService.getAllTables().subscribe((data: any) => {
     //   console.log("table name=>", data);
     //   // if(data.error=="false") {
@@ -53,6 +69,14 @@ export class SearchComponent {
     //   // location.href="/";
     //   //  }
     // });
+    this.courseserice.getCourseNameByType("P").subscribe((data: any) => {
+      console.log("code=>", data.data[0].code);
+      this.courselist = data.data;
+      this.myform.patchValue({
+        coursecode: data.data[0].code
+      });
+    });
+
   }
   process(session_name: string) {
     console.log(this.myform.valid);
@@ -64,24 +88,25 @@ export class SearchComponent {
     // console.log(processData);
 
     this.searchservice.search(processData).subscribe((data: any) => {
+      console.log("search: " , data);
 
       if (data.error == "false") {
 
         // this.userlist = data.data;
-        this.loaddata = true;
+
         // console.log(data.data[0].stdcent);
         this.searchservice.getStudieCenterDetailByCode(data.data[0].stdcent, session_name).subscribe((response: any) => {
 
           // this.detail["study"]=response.data;
           // this.detail["data"]=data.data;
           // data.data.
-          console.log(data);
+          // console.log(data);
           let subcode: any = [];
           data.data.forEach((element: any) => {
             // console.log(element.subcode);
             subcode.push(element.subcode);
           });
-          console.log(subcode.join(","));
+          // console.log(subcode.join(","));
 
           this.searchservice.getSubjectsDetailByCodeList(subcode.join(",")).subscribe((subject: any) => {
             console.log("subject", subject);
@@ -112,9 +137,11 @@ export class SearchComponent {
               "student": data.data,
               // "subject":subject.data
             };
+            console.log("detail:", this.detail);
+            this.studetail = this.detail;
+            this.sharing.changeMessage(this.detail);
+            this.loaddata = true;
           });
-
-          console.log(this.detail);
 
         });
 
@@ -131,7 +158,7 @@ export class SearchComponent {
   loadSession() {
     // this.myform.controls.session_name.clearValidators();
     console.log("loadSession");
-    
+
     this.loaddata = false;
     console.log(this.myform.value);
 
@@ -159,4 +186,9 @@ export class SearchComponent {
     console.log(event.text);
 
   }
+  displayFn(user: any): string {
+    return user && user.code ? user.code : '';
+  }
 }
+
+

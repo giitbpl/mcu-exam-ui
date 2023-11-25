@@ -23,4 +23,10 @@ export class CourseService {
     });
     
   }
+  getCourseNameByType(type:any)
+  {
+    return this.http.post(this.BaseUrl+"course/coursebytype",{
+      "type":type
+    });
+  }
 }
