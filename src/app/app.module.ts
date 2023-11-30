@@ -50,6 +50,7 @@ import { CollegeMasterComponent } from './components/college-master/college-mast
 import { CourseComponent } from './components/course/course.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { SharingeDataService } from './services/sharinge-data.service';
+import { SubjectComponent } from './components/subject/subject.component';
 
 // import {SelectModule} from 'ng2-select'
 // import { SelectDropDownModule } from 'ngx-select-dropdown'
@@ -80,6 +81,7 @@ export function initConfig(appConfig: AppconfigService) {
     ImportDashboardComponent,
     CollegeMasterComponent,
     CourseComponent,
+    SubjectComponent,
     // LogTableComponent
   ],
   imports: [

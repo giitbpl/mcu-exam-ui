@@ -18,7 +18,7 @@
           </div>
         </div> -->
         <div class="row">
-          <div class="col-3">
+          <div class="col-2">
             <div class="form-floating" >
               <select class="form-select" #coursetype (change)="loadCourse(coursetype.value)">
                 <option value="P" selected>PG</option>
@@ -45,7 +45,7 @@
               </div> -->
             </div>
           </div>
-          <div class="col-3">
+          <div class="col-2">
             <div class="form-floating">
               <select class="form-select" id="coursecode" #coursecode aria-label="Floating label select example"
                 (change)="getSelectedIndex($event)" formControlName="coursecode">
@@ -77,6 +77,30 @@
 
 
               <!-- </div> -->
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="form-floating">
+              <select class="form-select"  aria-label="Floating label select example" formControlName="sem">
+              <option selected value="1" >1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+
+              </select>
+              <!-- <input list="browsers" name="browser" class="form-select">
+              <datalist id="browsers" >
+                <option value="{{e}}" *ngFor="let e of lists">
+  
+              </datalist> -->
+              <label for="tablename">Select Semester </label>
+              <div *ngIf="myform.controls.coursecode.invalid" class="text-danger">
+                Course name is required.
+              </div>
             </div>
           </div>
           <div class="col-2">

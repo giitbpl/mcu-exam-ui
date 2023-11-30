@@ -40,6 +40,7 @@ export class SearchComponent {
     envno: new FormControl('', Validators.required),
     // roll: new FormControl('', Validators.required),
     coursecode: new FormControl('', Validators.required),
+    sem: new FormControl('1', Validators.required),
     // session_name: new FormControl('', Validators.required),
   });
   public dtOptions: DataTables.Settings = {};
@@ -83,7 +84,8 @@ export class SearchComponent {
     let processData = {
       "session_name": session_name,
       "coursecode": this.myform.controls.coursecode.value,
-      "envno": this.myform.controls.envno.value
+      "envno": this.myform.controls.envno.value,
+      "sem": this.myform.controls.sem.value
     };
     // console.log(processData);
 
@@ -106,7 +108,7 @@ export class SearchComponent {
             // console.log(element.subcode);
             subcode.push(element.subcode);
           });
-          // console.log(subcode.join(","));
+          console.log("subcode=>",subcode);
 
           this.searchservice.getSubjectsDetailByCodeList(subcode.join(",")).subscribe((subject: any) => {
             console.log("subject", subject);
@@ -171,6 +173,7 @@ export class SearchComponent {
 
         }
         else {
+          // if(err``)
           this.snackBar.open(data.message, "error");
           this.showsessioname = false;
 

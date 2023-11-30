@@ -15,27 +15,33 @@ import { ToolsComponent } from './components/tools/tools.component';
 import { ImportDashboardComponent } from './components/import-dashboard/import-dashboard.component';
 import { CollegeMasterComponent } from './components/college-master/college-master.component';
 import { CourseComponent } from './components/course/course.component';
+import { SubjectComponent } from './components/subject/subject.component';
 
 const routes: Routes = [
-  { path: '', component:LoginComponent},
-  { path: 'dashboard', component:DashboardComponent,children: [
-    {path: '', component:SearchComponent},
-    { path: 'user', component:UsersComponent},
-    { path: 'import', component:ImportDashboardComponent,children: [
-      { path: '', component:CollegeMasterComponent},
-      {path: 'importdata', component:ImportComponent},
-      {path: 'college-master', component:CollegeMasterComponent},
-      {path: 'course', component:CourseComponent},
-    ]},
-    { path: 'logs', component:LogsComponent},
-    { path: 'chpwd', component:ChangePwdComponent},
-    { path: 'backup', component:BackupComponent},
-    { path: 'about', component:AboutusComponent},
-    { path: 'restore', component:RestoreComponent},
-    { path: 'search', component:SearchComponent},
-    { path: 'tools', component:ToolsComponent},
+  { path: '', component: LoginComponent },
+  {
+    path: 'dashboard', component: DashboardComponent, children: [
+      { path: '', component: SearchComponent },
+      { path: 'user', component: UsersComponent },
+      {
+        path: 'import', component: ImportDashboardComponent, children: [
+          { path: '', component: CollegeMasterComponent },
+          { path: 'importdata', component: ImportComponent },
+          { path: 'college-master', component: CollegeMasterComponent },
+          { path: 'course', component: CourseComponent },
+          { path: 'subject', component: SubjectComponent },
+        ]
+      },
+      { path: 'logs', component: LogsComponent },
+      { path: 'chpwd', component: ChangePwdComponent },
+      { path: 'backup', component: BackupComponent },
+      { path: 'about', component: AboutusComponent },
+      { path: 'restore', component: RestoreComponent },
+      { path: 'search', component: SearchComponent },
+      { path: 'tools', component: ToolsComponent },
 
-  ]},
+    ]
+  },
 ];
 
 @NgModule({
