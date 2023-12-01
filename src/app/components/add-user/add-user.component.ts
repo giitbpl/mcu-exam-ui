@@ -50,10 +50,11 @@ export class AddUserComponent {
     pwd: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(20)]),
     role: new FormControl("", [Validators.required]),
     ipaddress: new FormControl("", [Validators.required, Validators.pattern("(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])")]),
-    macaddress: new FormControl("", [Validators.required, Validators.pattern("^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})|([0-9a-fA-F]{4}\\.[0-9a-fA-F]{4}\\.[0-9a-fA-F]{4})$")]),
+    // macaddress: new FormControl("", [Validators.required, Validators.pattern("^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})|([0-9a-fA-F]{4}\\.[0-9a-fA-F]{4}\\.[0-9a-fA-F]{4})$")]),
+    macaddress: new FormControl("", [Validators.required]),
     name: new FormControl("", [Validators.required]),
     repwd: new FormControl("", [Validators.required]),
-    comcode: new FormControl("", [Validators.required]),
+    comcode: new FormControl("abc", [Validators.required]),
 
     // type: new FormControl('login')
   },

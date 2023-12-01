@@ -74,13 +74,13 @@
                 </select>
               <label for="session">Select Sheet</label>
             </div>
-            <div class="form-floating">
+            <!-- <div class="form-floating">
               <select  class="form-select" [disabled]="!sheetvarify" style="width: 300px;" id="tablename" #tablename aria-label="Floating label select example">
                 <option selected="{{isLast==true}}" value="{{t}}" *ngFor="let t of tables;let ind = index;last as isLast">{{t}}</option>
            
               </select>
               <label for="tablename">Select database table </label>
-            </div>  
+            </div>   -->
           </div>
           <!-- <form [formGroup]="myform"> -->
   
@@ -94,7 +94,7 @@
         <div class="card-footer text-body-secondary">
           <!-- 2 days ago -->
           <button class="btn btn-primary mt-3" [disabled]="sheetlistflag" (click)="verify(n.value,sheetname.value)">Verify</button>
-          <button class="btn btn-primary mt-3" [disabled]="!sheetvarify" (click)="import(n.value,sheetname.value,tablename.value)">Import</button>
+          <button class="btn btn-primary mt-3" [disabled]="!sheetvarify" (click)="import(n.value,sheetname.value)">Import</button>
         </div>
       </div>
   

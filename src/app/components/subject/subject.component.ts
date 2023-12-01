@@ -138,14 +138,14 @@ export class SubjectComponent {
       this.rowcount = response.data;
     });
   }
-  import(filename: any, sheetname: any, tablename: any) {
+  import(filename: any, sheetname: any) {
     // this.importService.
     let sendata = {
       "sheetname": sheetname,
       "filename": filename,
       "rowcount": this.rowcount,
-      "tablename": tablename,
-      "type": "college"
+      "tablename": "subject",
+      "type": "subject"
     };
     this.dialog.open(ImportdialogComponent, {
       width: "800px",
@@ -154,7 +154,7 @@ export class SubjectComponent {
     });
   }
   verify(filename: any, sheetname: any) {
-    this.importService.verify(filename, sheetname,"college").subscribe((response: any) => {
+    this.importService.verify(filename, sheetname,"subject").subscribe((response: any) => {
       console.log(response);
       if (response.error == "false") {
         this.sheetvarify = true;
