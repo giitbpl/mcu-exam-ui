@@ -312,7 +312,7 @@
         </div>
     </div>
 
-    <div class="row  ">
+    <!-- <div class="row  ">
         <div class="col-12">
             <table class="">
                 <tr>
@@ -335,6 +335,14 @@
                 </tr>
              
             </table>
+        </div>
+    </div> -->
+    <hr>
+    <div class="row pt-3" >
+        <div class="col-2" *ngFor="let c of studetail.consolidateddata;index as i">
+            <p>Sem {{i+1}} {{c.semobt }} / {{c.semoutof}}</p>
+            <p>SGPA {{c.SGPA }} </p>
+            <p>{{c.yrtermcode}}</p>
         </div>
     </div>
     <hr>

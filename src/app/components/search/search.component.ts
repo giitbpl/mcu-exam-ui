@@ -18,6 +18,9 @@ export class SearchComponent {
   username: string;
   ipaddress: string;
   email: string;
+  lastsem: any;
+  sems: any;
+  consolidateddata: any;
   loadCourse(coursetype: any) {
     this.courseserice.getCourseNameByType(coursetype).subscribe((data: any) => {
       console.log(data);
@@ -28,7 +31,13 @@ export class SearchComponent {
   // selectedcoursetext: string = ""
   getSelectedIndex(event: any) {
 
-    // console.log(event.target['options']
+    console.log(event.target['options'].selectedIndex);
+    let index = event.target['options'].selectedIndex;
+    console.log(this.courselist[index].max_sem);
+    this.lastsem = this.courselist[index].max_sem.substring(0, 1);
+    this.sems = this.range(this.lastsem);
+    console.log(this.sems);
+
     // [event.target['options'].selectedIndex].text);
     // this.selectedcoursetext=event.target['options'][event.target['options'].selectedIndex].text;
 
@@ -55,24 +64,15 @@ export class SearchComponent {
   // send to trs component
   detail: any;
   constructor(private sharing: SharingeDataService, private snackBar: ToastService, private courseserice: CourseService, private importService: ImportService, private formBuilder: FormBuilder, private searchservice: SearchService) {
-    // courseserice.getAllCourse().subscribe((data: any) => {
-    //   console.log(data);
 
-    //   this.courselist = data.data;
-    // });
-    // importService.getAllTables().subscribe((data: any) => {
-    //   console.log("table name=>", data);
-    //   // if(data.error=="false") {
-    //   this.tables = data.data;
-    //   //  }
-    //   //  else
-    //   //  {
-    //   // location.href="/";
-    //   //  }
-    // });
+
     this.courseserice.getCourseNameByType("P").subscribe((data: any) => {
       console.log("code=>", data.data[0].code);
       this.courselist = data.data;
+      this.lastsem = this.courselist[0].max_sem.substring(0, 1);
+      this.sems = this.range(this.lastsem);
+      console.log(this.sems);
+
       this.myform.patchValue({
         coursecode: data.data[0].code
       });
@@ -90,7 +90,7 @@ export class SearchComponent {
     // console.log(processData);
 
     this.searchservice.search(processData).subscribe((data: any) => {
-      console.log("search: " , data);
+      console.log("search: ", data);
 
       if (data.error == "false") {
 
@@ -108,7 +108,7 @@ export class SearchComponent {
             // console.log(element.subcode);
             subcode.push(element.subcode);
           });
-          console.log("subcode=>",subcode);
+          console.log("subcode=>", subcode);
 
           this.searchservice.getSubjectsDetailByCodeList(subcode.join(",")).subscribe((subject: any) => {
             console.log("subject", subject);
@@ -134,16 +134,45 @@ export class SearchComponent {
             }
             console.log("update data=>", data);
 
-            this.detail = {
-              "study": response.data,
-              "student": data.data,
-              // "subject":subject.data
-            };
-            console.log("detail:", this.detail);
-            this.studetail = this.detail;
-            this.sharing.changeMessage(this.detail);
-            this.loaddata = true;
+           
           });
+     //     if (this.myform.controls.sem.value == this.lastsem) {
+            // console.log("lastsem");
+            this.searchservice.getConsolidateResults(processData).subscribe((res: any) => {
+              if (res.error == "false") {
+                console.log(res);
+                // this.consolidateddata=res.data;
+                this.detail = {
+                  "study": response.data,
+                  "student": data.data,
+                  "consolidateddata": res.data
+                  // "subject":subject.data
+                };
+                console.log("detail:", this.detail);
+                this.studetail = this.detail;
+                this.sharing.changeMessage(this.detail);
+                this.loaddata = true;
+              }
+              else
+              {
+
+              }
+            });
+
+      //    }
+      //    else
+        //  {
+            // // this.detail = {
+            // //   "study": response.data,
+            // //   "student": data.data,
+            // //   "consolidateddata":[]
+            // //   // "subject":subject.data
+            // // };
+            // console.log("detail:", this.detail);
+            // this.studetail = this.detail;
+            // this.sharing.changeMessage(this.detail);
+            // this.loaddata = true;
+        //  }
 
         });
 
@@ -192,6 +221,15 @@ export class SearchComponent {
   displayFn(user: any): string {
     return user && user.code ? user.code : '';
   }
+  // range1(i: number) { var x = []; var i = 0; while (x.push(i++) < i) { }; return x }
+  range(max: number) {
+    let range = [];
+    for (var i = 0; i < max; i++) {
+      range.push(i);
+    }
+    return range;
+  }
+
 }
 
 

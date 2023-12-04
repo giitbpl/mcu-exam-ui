@@ -36,4 +36,11 @@ export class SearchService {
      "codelist":codelist
     });
    }
+   getConsolidateResults(data:any)
+   {
+      return this.http.post(this.BaseUrl+"search/getconsolidateresult",{
+        "envno":data.envno,
+        "coursecode":data.coursecode
+      });
+   }
 }
