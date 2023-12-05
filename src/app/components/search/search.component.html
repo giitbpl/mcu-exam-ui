@@ -3,6 +3,7 @@
     <h1 class="card-header display-3 fw-bold text-body-emphasis"> Search
     </h1>
     <div class="card-body">
+      <button class="btn btn-success mb-5" (click)="reload()">Refresh</button>
       <form [formGroup]="myform">
         <!-- <div class="row">
           <div class="col-12">
@@ -138,6 +139,7 @@
   </div>
 
 </div>
-<div class="container-fluid">
+<div class="container-fluid mb5">
   <app-trs  [showdata]="loaddata"></app-trs>
+
 </div>

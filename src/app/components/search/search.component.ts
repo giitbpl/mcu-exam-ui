@@ -229,7 +229,10 @@ export class SearchComponent {
     }
     return range;
   }
-
+  reload()
+  {
+    location.reload();
+  }
 }
 
 
