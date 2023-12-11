@@ -1,0 +1,21 @@
+<div class="container" *ngIf="showdata==true">
+
+    <h2 class="text-center text-uppercase text-decoration-underline">Transcript of Performance </h2>
+    <p class="text-center text-upper">{{course}}</p>
+    <div class="row">
+        <div class="col-2 fw-bold">NAME</div>
+        <div class="col-2 fw-bold">{{student[0].semdetail[0].name}}</div>
+    </div>
+    <div class="row">
+        <div class="col-2 fw-bold">FATHER's NAME</div>
+        <div class="col-2 fw-bold">{{student[0].semdetail[0].fhname}}</div>
+    </div>
+    <div class="row">
+        <div class="col-2 fw-bold">MOTHER's NAME</div>
+        <div class="col-2 fw-bold">{{student[0].semdetail[0].mname}}</div>
+    </div>
+    <div class="row">
+        <div class="col-2 fw-bold">ENROLLMENT </div>
+        <div class="col-2 fw-bold">{{student[0].semdetail[0].enrollno}}</div>
+    </div>
+</div>

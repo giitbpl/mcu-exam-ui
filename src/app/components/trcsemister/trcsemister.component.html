@@ -1,0 +1,74 @@
+<div class="container d-print-none ">
+    <div class="card shadow p-3 mb-5 bg-body rounded">
+      <h1 class="card-header display-3 fw-bold text-body-emphasis"> Detail Semester Transcript
+      </h1>
+      <div class="card-body">
+        <button class="btn btn-success mb-5" (click)="reload()">Refresh</button>
+        <form [formGroup]="myform">
+        
+          <div class="row">
+            <div class="col-2">
+              <div class="form-floating" >
+                <select class="form-select" #coursetype (change)="loadCourse(coursetype.value)">
+                  <option value="P" selected>PG</option>
+                  <option value="U">UG</option>
+                  <option value="D">Diploma</option>
+                  
+                </select>
+                              <label for="tablename">Select Course </label>
+  
+              
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="form-floating">
+                <select class="form-select" id="coursecode" #coursecode aria-label="Floating label select example"
+                  formControlName="coursecode">
+                  <option  value="{{t.code}}" [attr.data-index]="ind"
+                    *ngFor="let t of courselist;let ind = index;last as isLast">{{t.code}} {{t.shortname}} </option>
+  
+                </select>
+            
+                <label for="tablename">Select Course </label>
+                <div *ngIf="myform.controls.coursecode.invalid" class="text-danger">
+                  Course name is required.
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-floating ">
+                <input type="text" name="envno" class="form-control" id="envno" placeholder="AV1471330190" #enroll
+                  formControlName="envno" autocomplete="on">
+                <label for="floatingInput">Enrolment No</label>
+            
+                <div *ngIf="myform.controls.envno.invalid" class="text-danger">
+                  Enrollment number is required.
+                </div>
+  
+  
+             
+              </div>
+            </div>
+         
+            <div class="col-2">
+  
+                <button type="button" (click)="process()" class="btn btn-primary btn-lg">Search</button>
+            </div>
+          </div>
+          <div class="row pt-3" *ngIf="showsessioname==true">
+         
+            <div class="col-4">
+              <button type="button" (click)="process()" class="btn btn-primary btn-lg">Search</button>
+  
+            </div>
+          </div>
+        </form>
+      </div>
+    
+    </div>
+  
+  </div>
+  <div class="container-fluid mb5">
+    <!-- <app-trs  [showdata]="loaddata"></app-trs> -->
+    <app-trc-all-semister-report  [showdata]="loaddata"></app-trc-all-semister-report>
+  </div>
