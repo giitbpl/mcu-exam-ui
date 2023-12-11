@@ -16,12 +16,14 @@ import { ImportDashboardComponent } from './components/import-dashboard/import-d
 import { CollegeMasterComponent } from './components/college-master/college-master.component';
 import { CourseComponent } from './components/course/course.component';
 import { SubjectComponent } from './components/subject/subject.component';
+import { TrcsemisterComponent } from './components/trcsemister/trcsemister.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
     path: 'dashboard', component: DashboardComponent, children: [
       { path: '', component: SearchComponent },
+      {path: 'trcsem', component: TrcsemisterComponent },
       { path: 'user', component: UsersComponent },
       {
         path: 'import', component: ImportDashboardComponent, children: [

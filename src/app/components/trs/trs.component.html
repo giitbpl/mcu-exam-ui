@@ -1,22 +1,26 @@
 <div class="container-fluid trc" *ngIf="showdata==true">
+    
     <button class="btn btn-primary d-print-none" onclick="window.print()">PRINT</button>
-<div class="row">
-    <div class="col-12 text-center">
-        <p>Preview / Printed BY {{username}} {{email}} {{ipaddress}}</p>
+    <button class="btn btn-danger d-print-none" (click)="zoomin()" >A+</button>
+    <button class="btn btn-danger d-print-none" (click)="zoomout()">A-</button>
+    <!-- <div class="watermark" ></div> -->
+    <div class="row">
+        <div class="col-12 text-center">
+        <p [ngStyle]="{'font-size.px':fontSize}">Preview / Printed BY {{username}} {{email}} {{ipaddress}}</p>
     </div>
 </div>
     <div class="row">
         <div class="col-12 ">
             <div class="d-flex justify-content-between m-0">
-                <p>Makhanlal Chaturvedi National university of journalism & comm. Bhopal</p>
-                <p>Result declaration date</p>
+                <p [ngStyle]="{'font-size.px':fontSize}">Makhanlal Chaturvedi National university of journalism & comm. Bhopal</p>
+                <p [ngStyle]="{'font-size.px':fontSize}">Result declaration date</p>
             </div>
             <div class="d-flex justify-content-between">
-                <p>Tabulation resister for - {{ studetail.student[0]?.examname}}</p>
+                <p [ngStyle]="{'font-size.px':fontSize}">Tabulation resister for - {{ studetail.student[0]?.examname}}</p>
 
             </div>
             <div class="d-flex justify-content-end">
-                <p>Held in - may -june 2022</p>
+                <p [ngStyle]="{'font-size.px':fontSize}">Held in - may -june 2022</p>
 
             </div>
 
@@ -26,28 +30,28 @@
     <hr>
     <div class="row      ">
         <div class="col-1        text-center">
-            <!-- <p>{{ studetail[0]?.name }}</p> -->
-            <p>RollNo</p>
+            <!-- <p [ngStyle]="{'font-size.px':fontSize}">{{ studetail[0]?.name }}</p> -->
+            <p [ngStyle]="{'font-size.px':fontSize}">RollNo</p>
 
         </div>
         <div class="col-1       text-start">
-            <p>Candidate name</p>
-            <!-- <p>{{ studetail[0]?.name }}</p> -->
+            <p [ngStyle]="{'font-size.px':fontSize}">Candidate name</p>
+            <!-- <p [ngStyle]="{'font-size.px':fontSize}">{{ studetail[0]?.name }}</p> -->
         </div>
         <div class="col-3      ">
-            <p>Subject code & description</p>
+            <p [ngStyle]="{'font-size.px':fontSize}">Subject code & description</p>
         </div>
         <div class="col-3       text-center">
-            <p>scheme of marks</p>
+            <p [ngStyle]="{'font-size.px':fontSize}">scheme of marks</p>
         </div>
         <div class="col-2       text-center">
-            <p>marks obtained</p>
+            <p [ngStyle]="{'font-size.px':fontSize}">marks obtained</p>
         </div>
         <!-- <div class="col-1        text-center">
            
         </div> -->
         <div class="col-1        text-center">
-            <p>total</p>
+            <p [ngStyle]="{'font-size.px':fontSize}">total</p>
         </div>
     </div>
     <div class="row      ">
@@ -56,19 +60,19 @@
 
         </div>
         <div class="col-4       text-start">
-            <p>father name</p>
+            <p [ngStyle]="{'font-size.px':fontSize}">father name</p>
         </div>
 
         <div class="col-3       ">
             <div class="row text-center">
                 <div class="col-4    ">
-                    <p>theory</p>
+                    <p [ngStyle]="{'font-size.px':fontSize}">theory</p>
                 </div>
                 <div class="col-4    ">
-                    <p>prac</p>
+                    <p [ngStyle]="{'font-size.px':fontSize}">prac</p>
                 </div>
                 <div class="col-4    ">
-                    <p>int</p>
+                    <p [ngStyle]="{'font-size.px':fontSize}">int</p>
                 </div>
             </div>
           
@@ -82,7 +86,7 @@
 
         </div>
         <div class="col-1        text-start">
-            <p>Mother name</p>
+            <p [ngStyle]="{'font-size.px':fontSize}">Mother name</p>
         </div>
         <div class="col-3        text-start">
           
@@ -93,13 +97,13 @@
             <div class="row text-center">
                
                         <div class="col">
-                            <p> min-max</p>
+                            <p [ngStyle]="{'font-size.px':fontSize}"> min-max</p>
                         </div>
                         <div class="col">
-                            <p> min-max</p>
+                            <p [ngStyle]="{'font-size.px':fontSize}"> min-max</p>
                         </div>
                         <div class="col">
-                            <p> min-max</p>
+                            <p [ngStyle]="{'font-size.px':fontSize}"> min-max</p>
                         </div>
                   
                   
@@ -109,33 +113,33 @@
 
             <div class="row text-center">
                 <div class="col-4   ">
-                    <p>th</p>
+                    <p [ngStyle]="{'font-size.px':fontSize}">th</p>
                 </div>
                 <div class="col-4   ">
-                    <p>pr</p>
+                    <p [ngStyle]="{'font-size.px':fontSize}">pr</p>
                 </div>
                 <div class="col-4   ">
-                    <p>int</p>
+                    <p [ngStyle]="{'font-size.px':fontSize}">int</p>
                 </div>
             </div>
         </div>
         <div class="col-1     text-center">
-            <p>OBT/OUT</p>
+            <p [ngStyle]="{'font-size.px':fontSize}">OBT/OUT</p>
 
         </div>
         <div class="col-1     ">
             <div class="row">
                 <div class="col-3 ">
-                    <p>cr</p>
+                    <p [ngStyle]="{'font-size.px':fontSize}">cr</p>
                 </div>
                 <div class="col-3 ">
-                    <p>gp</p>
+                    <p [ngStyle]="{'font-size.px':fontSize}">gp</p>
                 </div>
                 <div class="col-3 ">
-                    <p>cp</p>
+                    <p [ngStyle]="{'font-size.px':fontSize}">cp</p>
                 </div>
                 <div class="col-3 ">
-                    <p>gr</p>
+                    <p [ngStyle]="{'font-size.px':fontSize}">gr</p>
                 </div>
             </div>
 
@@ -147,12 +151,12 @@
         </div>
         <div class="col-4">
             <div class="d-flex bd-highlight flex-row mb-3">
-                <div class=" bd-highlight"><p>enrol &nbsp;       </p></div>
-                <div class=" bd-highlight"><p>stat  &nbsp;      </p></div>
-                <div class=" bd-highlight"><p> med &nbsp;</p></div>
-                <div class=" bd-highlight"><p> cat </p></div>
+                <div class=" bd-highlight"><p [ngStyle]="{'font-size.px':fontSize}">enrol &nbsp;       </p></div>
+                <div class=" bd-highlight"><p [ngStyle]="{'font-size.px':fontSize}">stat  &nbsp;      </p></div>
+                <div class=" bd-highlight"><p [ngStyle]="{'font-size.px':fontSize}"> med &nbsp;</p></div>
+                <div class=" bd-highlight"><p [ngStyle]="{'font-size.px':fontSize}"> cat </p></div>
               </div>
-            <!-- <p>enrol stat cat med</p> -->
+            <!-- <p [ngStyle]="{'font-size.px':fontSize}">enrol stat cat med</p> -->
         </div>
         <div class="col">
 
@@ -161,87 +165,87 @@
     <hr>
     <div class="row mt-0">
         <div class="col-1 text-center">
-            <!-- <p>study center code</p> -->
-            <p> {{ studetail.study[0].code }}</p>
+            <!-- <p [ngStyle]="{'font-size.px':fontSize}">study center code</p> -->
+            <p [ngStyle]="{'font-size.px':fontSize}"> {{ studetail.study[0].code }}</p>
         </div>
         <div class="col-11">
-            <!-- <p> study center name</p> -->
-            <p>{{ studetail.study[0]["COLLEGE / CENTER NAME"]}} {{studetail.study[0]?.city}}</p>
+            <!-- <p [ngStyle]="{'font-size.px':fontSize}"> study center name</p> -->
+            <p [ngStyle]="{'font-size.px':fontSize}">{{ studetail.study[0]["COLLEGE / CENTER NAME"]}} {{studetail.study[0]?.city}}</p>
         </div>
     </div>
     <hr>
     <div class="row mt-0">
         <div class="col-1 text-center">
-            <p>ECC-{{ studetail.student[0]?.examcent }} </p>
+            <p [ngStyle]="{'font-size.px':fontSize}">ECC-{{ studetail.student[0]?.examcent }} </p>
         </div>
         <div class="col-11">
-            <!-- <p> Exam center name here </p> -->
-            <p>{{ studetail.student[0]["COLLEGE / CENTER NAME"] }} {{ studetail.student[0].city }}</p>
+            <!-- <p [ngStyle]="{'font-size.px':fontSize}"> Exam center name here </p> -->
+            <p [ngStyle]="{'font-size.px':fontSize}">{{ studetail.student[0]["COLLEGE / CENTER NAME"] }} {{ studetail.student[0].city }}</p>
         </div>
     </div>
     <hr>
     <div class="row mt-0">
         <div class="col-1 text-center">
-            <!-- <p>roll number</p> -->
-            <p>{{ studetail.student[0]?.rollno }}</p>
+            <!-- <p [ngStyle]="{'font-size.px':fontSize}">roll number</p> -->
+            <p [ngStyle]="{'font-size.px':fontSize}">{{ studetail.student[0]?.rollno }}</p>
         </div>
         <div class="col-1">
             <div class="row">
                 <div class="col-12">
-                    <!-- <p> name of student </p> -->
-                    <p>{{ studetail.student[0]?.name }}</p>
+                    <!-- <p [ngStyle]="{'font-size.px':fontSize}"> name of student </p> -->
+                    <p [ngStyle]="{'font-size.px':fontSize}">{{ studetail.student[0]?.name }}</p>
                 </div>
                 <div class="col-12">
-                    <!-- <p>father name of student </p> -->
-                    <p>{{ studetail.student[0]?.fhname }}</p>
+                    <!-- <p [ngStyle]="{'font-size.px':fontSize}">father name of student </p> -->
+                    <p [ngStyle]="{'font-size.px':fontSize}">{{ studetail.student[0]?.fhname }}</p>
                 </div>
                 <div class="col-12">
-                    <!-- <p>mother name of student </p> -->
-                    <p>{{ studetail.student[0]?.mname }}</p>
+                    <!-- <p [ngStyle]="{'font-size.px':fontSize}">mother name of student </p> -->
+                    <p [ngStyle]="{'font-size.px':fontSize}">{{ studetail.student[0]?.mname }}</p>
                 </div>
                 <div class="col-12">
-                    <!-- <p>Enrolment no </p> -->
-                    <p>{{ studetail.student[0]?.enrollno }}</p>
+                    <!-- <p [ngStyle]="{'font-size.px':fontSize}">Enrolment no </p> -->
+                    <p [ngStyle]="{'font-size.px':fontSize}">{{ studetail.student[0]?.enrollno }}</p>
                 </div>
                 <div class="col-12">
                     <div class="row ">
                         <div class="col-4 ">
-                            <!-- <p>regular</p> -->
-                            <p>{{ studetail.student[0]?.status }}</p>
+                            <!-- <p [ngStyle]="{'font-size.px':fontSize}">regular</p> -->
+                            <p [ngStyle]="{'font-size.px':fontSize}">{{ studetail.student[0]?.status }}</p>
                         </div>
                         <div class="col-4 ">
-                            <!-- <p>cat</p> -->
-                            <p>{{ studetail.student[0]?.category }}</p>
+                            <!-- <p [ngStyle]="{'font-size.px':fontSize}">cat</p> -->
+                            <p [ngStyle]="{'font-size.px':fontSize}">{{ studetail.student[0]?.category }}</p>
                         </div>
                         <div class="col-4 ">
-                            <!-- <p>med</p> -->
-                            <p>{{ studetail.student[0]?.medium }}</p>
+                            <!-- <p [ngStyle]="{'font-size.px':fontSize}">med</p> -->
+                            <p [ngStyle]="{'font-size.px':fontSize}">{{ studetail.student[0]?.medium }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="row">
                         <div class="col-6">
-                            <p>mark sheet</p>
+                            <p [ngStyle]="{'font-size.px':fontSize}">mark sheet</p>
                         </div>
                         <div class="col-6">
-                            <!-- <p>123456</p> -->
-                            <p>{{ studetail.student[0]?.msheetno }}</p>
+                            <!-- <p [ngStyle]="{'font-size.px':fontSize}">123456</p> -->
+                            <p [ngStyle]="{'font-size.px':fontSize}">{{ studetail.student[0]?.msheetno }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="row">
                         <div class="col-4">
-                            <!-- <p>5/400</p> -->
-                            <p>{{studetail.student.length}}/{{ studetail.student[0]?.semoutof }}</p>
+                            <!-- <p [ngStyle]="{'font-size.px':fontSize}">5/400</p> -->
+                            <p [ngStyle]="{'font-size.px':fontSize}">{{studetail.student.length}}/{{ studetail.student[0]?.semoutof }}</p>
                         </div>
                         <div class="col-4">
-                            <p>EC:</p>
+                            <p [ngStyle]="{'font-size.px':fontSize}">EC:</p>
                         </div>
                         <div class="col-4">
-                            <!-- <p>149</p> -->
-                            <p>{{ studetail.student[0]?.examcent }}</p>
+                            <!-- <p [ngStyle]="{'font-size.px':fontSize}">149</p> -->
+                            <p [ngStyle]="{'font-size.px':fontSize}">{{ studetail.student[0]?.examcent }}</p>
                         </div>
                     </div>
                 </div>
@@ -253,31 +257,31 @@
             <table class="w-100" >
                 <tr *ngFor="let s of studetail.student">
                     <td class="" width="395">
-                        <p>
+                        <p [ngStyle]="{'font-size.px':fontSize}">
                             {{s.subcode}}-{{s.subname}}
                         </p>
                     </td>
                     <td class=" " width="10%">
-                         <p>{{ s.tmin==0 || s.tmin==undefined? '--' :s.tmin }} {{ s.tmax==0 || s.tmax==undefined? '--' :s.tmax }}</p>
+                         <p [ngStyle]="{'font-size.px':fontSize}">{{ s.tmin==0 || s.tmin==undefined? '--' :s.tmin }} {{ s.tmax==0 || s.tmax==undefined? '--' :s.tmax }}</p>
                     </td>
                     <td class="" width="10%">
-                         <p> {{ s.pmin==0 || s.pmin==undefined? '--' :s.pmin }} {{ s.pmax==0 || s.pmax==undefined? '--' :s.pmax }}</p>
+                         <p [ngStyle]="{'font-size.px':fontSize}"> {{ s.pmin==0 || s.pmin==undefined? '--' :s.pmin }} {{ s.pmax==0 || s.pmax==undefined? '--' :s.pmax }}</p>
                     </td>
                     <td class="" width="10%">
-                         <p> {{ s.smin==0 || s.smin==undefined? '--' :s.smin }} {{ s.smax==0 || s.smax==undefined? '--' :s.smax }}</p>
+                         <p [ngStyle]="{'font-size.px':fontSize}"> {{ s.smin==0 || s.smin==undefined? '--' :s.smin }} {{ s.smax==0 || s.smax==undefined? '--' :s.smax }}</p>
                     </td>
                     <td class="" width="80" >
-                         <p> {{ s.thobt==0 || s.thobt==undefined? '--' : s.thobt }} </p>
+                         <p [ngStyle]="{'font-size.px':fontSize}"> {{ s.thobt==0 || s.thobt==undefined? '--' : s.thobt }} </p>
                     </td>
                     <td class="text-center" width="80" >
-                         <p> {{ s.probt==0 || s.probt==undefined ? '--' :s.probt }} </p>
+                         <p [ngStyle]="{'font-size.px':fontSize}"> {{ s.probt==0 || s.probt==undefined ? '--' :s.probt }} </p>
                     </td>
                     <td class="text-center" width="100" >
-                         <p> {{ s.intobt==0 || s.intobt==undefined? '--' :s.intobt }} </p>
+                         <p [ngStyle]="{'font-size.px':fontSize}"> {{ s.intobt==0 || s.intobt==undefined? '--' :s.intobt }} </p>
                     </td>
                   
                     <td class="" >
-                         <p>{{ s.sub_total==0 || s.sub_total==undefined? '--' :s.sub_total }} {{ s.sub_max==0 || s.sub_max==undefined? '--' :s.sub_max }}</p>
+                         <p [ngStyle]="{'font-size.px':fontSize}">{{ s.sub_total==0 || s.sub_total==undefined? '--' :s.sub_total }} {{s.threvised}} {{ s.sub_max==0 || s.sub_max==undefined? '--' :s.sub_max }}</p>
                     </td>
                   
                    
@@ -285,22 +289,22 @@
                         <div class="d-flex bd-highlight">
                            
                            
-                            <div class=" flex-fill bd-highlight"><p>{{s.sub_credit}}</p></div>
-                            <div class=" flex-fill bd-highlight"><p>{{s.sub_grade_point}}</p></div>
-                            <div class=" flex-fill bd-highlight"><p>{{s.sub_credit_point}}</p></div>
-                            <div class=" flex-fill bd-highlight"><p>{{s.sub_grade}}</p></div>
+                            <div class=" flex-fill bd-highlight"><p [ngStyle]="{'font-size.px':fontSize}">{{s.sub_credit}}</p></div>
+                            <div class=" flex-fill bd-highlight"><p [ngStyle]="{'font-size.px':fontSize}">{{s.sub_grade_point}}</p></div>
+                            <div class=" flex-fill bd-highlight"><p [ngStyle]="{'font-size.px':fontSize}">{{s.sub_credit_point}}</p></div>
+                            <div class=" flex-fill bd-highlight"><p [ngStyle]="{'font-size.px':fontSize}">{{s.sub_grade}}</p></div>
                           </div>
-                        <!-- <p>9  9  50.00 A</p> -->
+                        <!-- <p [ngStyle]="{'font-size.px':fontSize}">9  9  50.00 A</p> -->
                         <!-- <table class="w-100">
                             <tr>
-                                <td><p>9</p></td>
-                                <td><p>9</p></td>
+                                <td><p [ngStyle]="{'font-size.px':fontSize}">9</p></td>
+                                <td><p [ngStyle]="{'font-size.px':fontSize}">9</p></td>
                             
-                                <td><p>50.00<p></td>
-                                <td><p>A</p></td>
+                                <td><p [ngStyle]="{'font-size.px':fontSize}">50.00<p [ngStyle]="{'font-size.px':fontSize}"></td>
+                                <td><p [ngStyle]="{'font-size.px':fontSize}">A</p></td>
                             </tr> -->
                         <!-- </table> -->
-                        <!-- <p> <span>9</span> &nbsp;
+                        <!-- <p [ngStyle]="{'font-size.px':fontSize}"> <span>9</span> &nbsp;
                       <span>9</span> 
                       <span>50.00</span>
                       <span>A</span></p> -->
@@ -317,19 +321,19 @@
             <table class="">
                 <tr>
                     <td>
-                        <p>Curr Sem {{studetail.student[0].semobt }} / {{studetail.student[0].semoutof}}</p>
+                        <p [ngStyle]="{'font-size.px':fontSize}">Curr Sem {{studetail.student[0].semobt }} / {{studetail.student[0].semoutof}}</p>
                     </td>
               
                 </tr>
                 <tr>
                     <td>
-                        <p>SGPA {{studetail.student[0].SGPA }} </p>
+                        <p [ngStyle]="{'font-size.px':fontSize}">SGPA {{studetail.student[0].SGPA }} </p>
                     </td>
               
                 </tr>
                 <tr>
                     <td>
-                       <p>{{studetail.student[0].yrtermcode}}</p>
+                       <p [ngStyle]="{'font-size.px':fontSize}">{{studetail.student[0].yrtermcode}}</p>
                     </td>
               
                 </tr>
@@ -340,9 +344,17 @@
     <hr>
     <div class="row pt-3" >
         <div class="col-2" *ngFor="let c of studetail.consolidateddata;index as i">
-            <p>Sem {{i+1}} {{c.semobt }} / {{c.semoutof}}</p>
-            <p>SGPA {{c.SGPA }} </p>
-            <p>{{c.yrtermcode}}</p>
+            <p [ngStyle]="{'font-size.px':fontSize}">Sem {{i+1}} {{c.semobt }} / {{c.semoutof}}</p>
+            <p [ngStyle]="{'font-size.px':fontSize}">SGPA {{c.SGPA }} </p>
+            <p [ngStyle]="{'font-size.px':fontSize}">{{c.yrtermcode}}</p>
+            
+        </div>
+        <div class="col-2" >
+            <p [ngStyle]="{'font-size.px':fontSize}">Grand Total {{agrtotobtn }} / {{agrtotout}}</p>
+            <p [ngStyle]="{'font-size.px':fontSize}">Result {{agrtotobtn }} / {{agrtotout}}</p>
+
+            <p [ngStyle]="{'font-size.px':fontSize}">CGPA {{CGPA }} </p>
+            <!-- <p [ngStyle]="{'font-size.px':fontSize}">{{c.yrtermcode}}</p> -->
         </div>
     </div>
     <hr>

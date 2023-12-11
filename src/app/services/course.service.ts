@@ -8,7 +8,6 @@ import { AppconfigService } from './appconfig.service';
 export class CourseService {
 
   private BaseUrl:any;
-
   constructor(private http:HttpClient,private appconfig: AppconfigService) {
     this.BaseUrl=appconfig.getConfig().serverIp;
   }
@@ -27,6 +26,12 @@ export class CourseService {
   {
     return this.http.post(this.BaseUrl+"course/coursebytype",{
       "type":type
+    });
+  }
+  getCourseByCode(code:any)
+  {
+    return this.http.post(this.BaseUrl+"course/getCourseNameByCode",{
+      "code":code
     });
   }
 }

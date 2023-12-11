@@ -155,7 +155,7 @@ export class SearchComponent {
               }
               else
               {
-
+                this.snackBar.open(data.message, "error");
               }
             });
 

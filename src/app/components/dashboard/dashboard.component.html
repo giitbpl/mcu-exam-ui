@@ -10,7 +10,13 @@
     <ul class="nav flex-column mt-5 m-2 text-left">
      
       <li class="nav-item">
-        <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="search" routerLinkActive="active"> Search</a>
+        <a class="nav-link btn btn-outline-primary text-white " href="#collapseExample" role="button" aria-current="page" data-bs-toggle="collapse"> Search</a>
+        <div class="collapse collapse-horizontal" id="collapseExample">
+         
+            <a class=" nav-link m-2 btn btn-outline-primary text-white " aria-current="page" routerLink="search" routerLinkActive="active"> TRC-Short</a>
+            <a class=" nav-link m-2 btn btn-outline-primary text-white " aria-current="page" routerLink="trcsem" routerLinkActive="active"> TRC-Detail</a>
+          
+        </div>
       </li>
       <li class="nav-item " *ngIf="userRole==1">
         <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="user" routerLinkActive="active"> Users</a>

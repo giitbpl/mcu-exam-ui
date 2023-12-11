@@ -13,12 +13,35 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./trs.component.css']
 })
 export class TrsComponent implements OnDestroy{
+fontSize: number = 12;
+zoomout() {
+this.fontSize-- ;
+
+}
+zoomin() {
+
+this.fontSize++;
+}
+// zoomout() {
+
+//   document.p.style.zoom = "120%"
+
+
+// }
+// zoomin() {
+
+
+// }
   studetail:any=[];
   @Input() showdata:boolean = false;
   name: string;
   username:string;
   ipaddress:string;
   email:string;
+  agrtotobtn:any;
+  agrtotout:any;
+  CGPA:any;
+  result:any;
   subscription: Subscription;
   constructor(private sharing: SharingeDataService,private snakebar: MatSnackBar,private router: Router, private toastservice: ToastService,private jwt:JwtTokenService,private userservice: UserService) {
     console.log("studedetail=>", this.studetail);
@@ -42,10 +65,15 @@ export class TrsComponent implements OnDestroy{
     });
     this.sharing.changeMessage("");
 
-    this.subscription = this.sharing.data.subscribe(result => {
+    this.subscription = this.sharing.data.subscribe((result:any) => {
       // dtInstance.clear();
-      console.log("result: " + result);
-      
+      console.log("result: " , result.student);
+      let length=result.consolidateddata.length;
+      this.agrtotobtn=result.consolidateddata[length-1].agrtotobtn;
+      this.agrtotout=result.consolidateddata[length-1].agrtotout;
+      this.CGPA=result.consolidateddata[length-1].CGPA;
+      this.result=result.consolidateddata[length-1].CGPA;
+    
       this.studetail = result;
       this.showdata=true;
       // this.loadData = true;

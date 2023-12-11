@@ -12,7 +12,11 @@ export class SearchService {
   constructor(private http:HttpClient,private appconfig: AppconfigService) {
     this.BaseUrl=    appconfig.getConfig().serverIp;
   }
-   
+   searchByCourseAndEnrollment(formdata:any)
+   {
+    return this.http.post(this.BaseUrl+"search/courseenrollment", formdata);
+
+   }
    search(formdata:any)
    {
     return this.http.post(this.BaseUrl+"search/search", formdata);
