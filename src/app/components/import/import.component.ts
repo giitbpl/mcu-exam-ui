@@ -103,10 +103,10 @@ export class ImportComponent {
     this.sheetvarify = false;
     console.log(fname);
     this.importService.getSheetname(fname).subscribe((sheets: any) => {
-      console.log("sheetname=", sheets);
+      console.log("sheetname=", sheets.length);
       if (sheets.data.length > 0) {
         this.sheetlist = sheets.data;
-        this.sheetrowcount(sheets.data[0], fname)
+      //  this.sheetrowcount(sheets.data[0], fname)
         this.sheetlistflag=true;
       }
       else
@@ -119,24 +119,41 @@ export class ImportComponent {
   }
   sheetrowcount(sheetname: string, filename: string) {
     this.importService.getSheetRecord(sheetname, filename).subscribe((response: any) => {
-      console.log(response);
+      console.log("rowcount=>",response);
       this.rowcount = response.data;
     });
   }
   import(filename: any, sheetname: any,tablename:any) {
     // this.importService.
+    console.log(filename, sheetname,tablename,this.rowcount);
+    
     let sendata = {
       "sheetname": sheetname,
       "filename": filename,
       "rowcount": this.rowcount,
+      // "rowcount": 299472,
       "tablename": tablename,
       "type": "examdata"
     };
-    this.dialog.open(ImportdialogComponent, {
-      width: "800px",
-      data: sendata,
-      hasBackdrop: false
+    // this.dialog.open(ImportdialogComponent, {
+    //   width: "800px",
+    //   data: sendata,
+    //   hasBackdrop: false
+    // });
+    this.importService.importRow(sendata.filename, sendata.sheetname, sendata.rowcount,sendata.tablename,sendata.type).subscribe((response:any) => {
+      if (response.error == "false") {
+        this.sheetvarify = true;
+        this.snackBar.open(response.message).afterClosed().subscribe(()=>{
+          location.reload();
+        });
+      }
+      else {
+        this.sheetvarify = false;
+        this.snackBar.open(response.message, "error");
+      }
+
     });
+    
   }
   verify(filename: any, sheetname: any) {
     this.importService.verify(filename, sheetname,"resultdata").subscribe((response: any) => {

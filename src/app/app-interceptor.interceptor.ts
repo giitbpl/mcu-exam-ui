@@ -36,14 +36,14 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
   // {
 
   // }
-    if (req.url.indexOf("import/import") == -1) {
+   // if (req.url.indexOf("import/import") == -1) {
 
       dialogref = this.dialog.open(ProgressdialogComponent, {
         width: "300px",
         hasBackdrop: true,
         disableClose: true
       });
-    }
+  //  }
     let token: any = this.jwttoken.getToken()
     console.log("token=>",token);
     
