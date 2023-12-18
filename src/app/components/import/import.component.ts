@@ -25,12 +25,12 @@ export class ImportComponent {
   filelistflag = false;
   sheetlistflag = false;
   sheetvarify = false;
-  courselist: any;
+  courselist: Array<any> = [];
 
   public rowcount: number = 0;
   public years: any;
   public tables: any;
-  constructor(private courseserice: CourseService,private importService: ImportService, private snackBar: ToastService, private dialog: MatDialog,private route: ActivatedRoute) {
+  constructor(private courseserice: CourseService, private importService: ImportService, private snackBar: ToastService, private dialog: MatDialog, private route: ActivatedRoute) {
     this.years = Array.from(Array(new Date().getFullYear() - 2011), (_, i) => (i + 2012).toString())
     // console.log("years=>", years)
     importService.getExportDirectoryName().subscribe((response: any) => {
@@ -53,20 +53,24 @@ export class ImportComponent {
         }
       }
     });
-    importService.getAllTables().subscribe((data:any) =>{
-      console.log("table name=>",data);
-     // if(data.error=="false") {
-      this.tables=data.data;
-    //  }
-    //  else
-    //  {
-        // location.href="/";
-    //  }
+    importService.getAllTables().subscribe((data: any) => {
+      console.log("table name=>", data);
+      // if(data.error=="false") {
+      this.tables = data.data;
+      //  }
+      //  else
+      //  {
+      // location.href="/";
+      //  }
     });
     courseserice.getAllCourse().subscribe((data: any) => {
       console.log(data);
-      
-      this.courselist = data.data;
+
+      data.data.forEach((element: any) => {
+        if (element.code == 17 || element.code == 14 || element.code == 16)
+          this.courselist.push(element);
+      });
+      // this.courselist = data.data;
     });
   }
   onChange(event: any) {
@@ -106,12 +110,12 @@ export class ImportComponent {
       console.log("sheetname=", sheets.length);
       if (sheets.data.length > 0) {
         this.sheetlist = sheets.data;
-      //  this.sheetrowcount(sheets.data[0], fname)
-        this.sheetlistflag=true;
+        //  this.sheetrowcount(sheets.data[0], fname)
+        this.sheetlistflag = true;
       }
       else
         this.snackBar.open('no sheet found in this file', "error");
-        this.sheetlistflag=false;
+      this.sheetlistflag = false;
 
 
     });
@@ -119,14 +123,14 @@ export class ImportComponent {
   }
   sheetrowcount(sheetname: string, filename: string) {
     this.importService.getSheetRecord(sheetname, filename).subscribe((response: any) => {
-      console.log("rowcount=>",response);
+      console.log("rowcount=>", response);
       this.rowcount = response.data;
     });
   }
-  import(filename: any, sheetname: any,tablename:any) {
+  import(filename: any, sheetname: any, tablename: any) {
     // this.importService.
-    console.log(filename, sheetname,tablename,this.rowcount);
-    
+    console.log(filename, sheetname, tablename, this.rowcount);
+
     let sendata = {
       "sheetname": sheetname,
       "filename": filename,
@@ -140,10 +144,10 @@ export class ImportComponent {
     //   data: sendata,
     //   hasBackdrop: false
     // });
-    this.importService.importRow(sendata.filename, sendata.sheetname, sendata.rowcount,sendata.tablename,sendata.type).subscribe((response:any) => {
+    this.importService.importRow(sendata.filename, sendata.sheetname, sendata.rowcount, sendata.tablename, sendata.type).subscribe((response: any) => {
       if (response.error == "false") {
         this.sheetvarify = true;
-        this.snackBar.open(response.message).afterClosed().subscribe(()=>{
+        this.snackBar.open(response.message).afterClosed().subscribe(() => {
           location.reload();
         });
       }
@@ -153,10 +157,10 @@ export class ImportComponent {
       }
 
     });
-    
+
   }
   verify(filename: any, sheetname: any) {
-    this.importService.verify(filename, sheetname,"resultdata").subscribe((response: any) => {
+    this.importService.verify(filename, sheetname, "resultdata").subscribe((response: any) => {
       console.log(response);
       if (response.error == "false") {
         this.sheetvarify = true;
@@ -172,12 +176,11 @@ export class ImportComponent {
   create(session: any, year: any) {
     this.importService.createTable(session, year).subscribe((response: any) => {
       console.log(response);
-      if(response.error=="true") {
-      this.snackBar.open(response.message, "error");
+      if (response.error == "true") {
+        this.snackBar.open(response.message, "error");
       }
-      else
-      {
-      this.snackBar.open(response.message,"success");
+      else {
+        this.snackBar.open(response.message, "success");
       }
     });
 

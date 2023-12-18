@@ -53,6 +53,8 @@ import { SharingeDataService } from './services/sharinge-data.service';
 import { SubjectComponent } from './components/subject/subject.component';
 import { TrcsemisterComponent } from './components/trcsemister/trcsemister.component';
 import { TrcAllSemisterReportComponent } from './components/trc-all-semister-report/trc-all-semister-report.component';
+import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
+// import { NgxSpinnerModule } from 'ngx-spinner';
 
 // import {SelectModule} from 'ng2-select'
 // import { SelectDropDownModule } from 'ngx-select-dropdown'
@@ -110,6 +112,17 @@ export function initConfig(appConfig: AppconfigService) {
     MatProgressBarModule,
     MatTabsModule,
     MatSlideToggleModule,
+    
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.circle ,
+      backdropBackgroundColour: 'rgba(0, 0, 0, 0.1)',
+      backdropBorderRadius: '4px',
+      primaryColour: '#0d6efd',
+      secondaryColour: '#000000',
+      tertiaryColour: '#aaccaa',
+      fullScreenBackdrop: true,
+    }),
+    // NgxSpinnerModule,
     // SelectDropDownModule,
     // FormModule
     MatAutocompleteModule,

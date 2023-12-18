@@ -11,12 +11,15 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./course.component.css']
 })
 export class CourseComponent {
-  courselist: any;
+  courselist: Array<any> = [];
   constructor(private snackBar: ToastService, private courseserice: CourseService, private importService: ImportService, private formBuilder: FormBuilder, private searchservice: SearchService) {
     courseserice.getAllCourse().subscribe((data: any) => {
       console.log(data);
-
-      this.courselist = data.data;
+      data.data.forEach((element: any) => {
+        if (element.code == 17 || element.code == 14 || element.code == 16)
+          this.courselist.push(element);
+      });
+      // this.courselist = data.data;
     });
   }
 

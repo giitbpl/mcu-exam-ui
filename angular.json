@@ -28,6 +28,9 @@
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
               "node_modules/datatables.net-bs5/css/dataTables.bootstrap5.min.css"
+            
+
+
 
              
 

@@ -23,7 +23,7 @@ export class SearchComponent {
   consolidateddata: any;
   loadCourse(coursetype: any) {
     this.courseserice.getCourseNameByType(coursetype).subscribe((data: any) => {
-      console.log(data);
+      // console.log(data);
       this.courselist = data.data;
     });
     // throw new Error('Method not implemented.');
@@ -31,12 +31,12 @@ export class SearchComponent {
   // selectedcoursetext: string = ""
   getSelectedIndex(event: any) {
 
-    console.log(event.target['options'].selectedIndex);
+    // console.log(event.target['options'].selectedIndex);
     let index = event.target['options'].selectedIndex;
-    console.log(this.courselist[index].max_sem);
+    // console.log(this.courselist[index].max_sem);
     this.lastsem = this.courselist[index].max_sem.substring(0, 1);
     this.sems = this.range(this.lastsem);
-    console.log(this.sems);
+    // console.log(this.sems);
 
     // [event.target['options'].selectedIndex].text);
     // this.selectedcoursetext=event.target['options'][event.target['options'].selectedIndex].text;
@@ -67,11 +67,11 @@ export class SearchComponent {
 
 
     this.courseserice.getCourseNameByType("P").subscribe((data: any) => {
-      console.log("code=>", data.data[0].code);
+      // console.log("code=>", data.data[0].code);
       this.courselist = data.data;
       this.lastsem = this.courselist[0].max_sem.substring(0, 1);
       this.sems = this.range(this.lastsem);
-      console.log(this.sems);
+      // console.log(this.sems);
 
       this.myform.patchValue({
         coursecode: data.data[0].code
@@ -80,14 +80,14 @@ export class SearchComponent {
 
   }
   process(session_name: string) {
-    console.log(this.myform.valid);
+    // console.log(this.myform.valid);
     let processData = {
       "session_name": session_name,
       "coursecode": this.myform.controls.coursecode.value,
       "envno": this.myform.controls.envno.value,
       "sem": this.myform.controls.sem.value
     };
-    // console.log(processData);
+    console.log("processdata=>",processData);
 
     this.searchservice.search(processData).subscribe((data: any) => {
       console.log("search: ", data);
@@ -102,16 +102,20 @@ export class SearchComponent {
           // this.detail["study"]=response.data;
           // this.detail["data"]=data.data;
           // data.data.
-          // console.log(data);
+          // console.log("result data=>",data);
           let subcode: any = [];
           data.data.forEach((element: any) => {
             // console.log(element.subcode);
             subcode.push(element.subcode);
           });
+          let s = new Set(subcode);
+          let it = s.values();
+          subcode=Array.from(it);
+          subcode=subcode.join(",");
           console.log("subcode=>", subcode);
-
-          this.searchservice.getSubjectsDetailByCodeList(subcode.join(",")).subscribe((subject: any) => {
-            console.log("subject", subject);
+          this.searchservice.getSubjectsDetailByCodeList(subcode).subscribe((subject: any) => {
+            console.log("subject length=", subject.data.length);
+            console.log("data length=",data.data.length);
 
             for (let i = 0; i < data.data.length; i++) {
               subject.data.forEach((element: any) => {
@@ -132,7 +136,7 @@ export class SearchComponent {
               });
 
             }
-            console.log("update data=>", data);
+            // console.log("update data=>", data);
 
            
           });
@@ -140,7 +144,7 @@ export class SearchComponent {
             // console.log("lastsem");
             this.searchservice.getConsolidateResults(processData).subscribe((res: any) => {
               if (res.error == "false") {
-                console.log(res);
+                // console.log(res);
                 // this.consolidateddata=res.data;
                 this.detail = {
                   "study": response.data,
@@ -148,7 +152,7 @@ export class SearchComponent {
                   "consolidateddata": res.data
                   // "subject":subject.data
                 };
-                console.log("detail:", this.detail);
+                // console.log("detail:", this.detail);
                 this.studetail = this.detail;
                 this.sharing.changeMessage(this.detail);
                 this.loaddata = true;
@@ -188,14 +192,15 @@ export class SearchComponent {
   }
   loadSession() {
     // this.myform.controls.session_name.clearValidators();
-    console.log("loadSession");
+    // console.log("loadSession");
 
     this.loaddata = false;
-    console.log(this.myform.value);
+    // console.log(this.myform.value);
 
     if (this.myform.valid == true) {
+      
       this.searchservice.getSessionListByEnrollment(this.myform.value).subscribe((data: any) => {
-        console.log(data);
+        // console.log(data);
         if (data.error == "false") {
           this.sessionlist = data.data;
           this.showsessioname = true;
@@ -215,7 +220,7 @@ export class SearchComponent {
     // if(this.myform.value)
   }
   onChange(event: any) {
-    console.log(event.text);
+    // console.log(event.text);
 
   }
   displayFn(user: any): string {

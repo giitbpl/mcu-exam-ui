@@ -14,6 +14,7 @@ import { JwtTokenService } from './services/jwt-token.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ToastService } from './services/toast.service';
 import { ActivatedRoute, Router } from '@angular/router';
+// import { NgxSpinnerService } from 'ngx-spinner';
 // import
 @Injectable()
 export class AppInterceptorInterceptor implements HttpInterceptor {
@@ -24,7 +25,7 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    console.log(`Requesting `);
+    // console.log(`Requesting `);
     // req.headers.set('clientip', ""+sessionStorage.getItem('ip'));
     var dialogref: any = null;
   // if(req.url.indexOf("getip")>=1)
@@ -36,7 +37,8 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
   // {
 
   // }
-   // if (req.url.indexOf("import/import") == -1) {
+  //  if (req.url.indexOf("import/import") == -1) {
+    // this.spinner.show();
 
       dialogref = this.dialog.open(ProgressdialogComponent, {
         width: "300px",
@@ -45,7 +47,7 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
       });
   //  }
     let token: any = this.jwttoken.getToken()
-    console.log("token=>",token);
+    // console.log("token=>",token);
     
     // const authReq = req.clone({ headers: req.headers.set('Authorization', token) });
     const authReq = req.clone({
@@ -58,8 +60,8 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
     return next.handle(authReq).pipe(
       tap({
         next: (event: any) => {
-          console.log("status=", event.status);
-          console.log("type=", event.type);
+          // console.log("status=", event.status);
+          // console.log("type=", event.type);
           // console.log("type=",event.type);
           if (event instanceof HttpResponse) {
 
@@ -67,6 +69,7 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
             if (event.type == HttpEventType.Response) {
               // alert('Unauthorized access!')
               // this.modalRef.dismiss(true);
+              // this.spinner.hide();
               if (dialogref != null) {
                 dialogref.close();
 
@@ -76,8 +79,8 @@ export class AppInterceptorInterceptor implements HttpInterceptor {
           return event;
         },
         error: (error) => {
-          console.log("error intercept=", error);
-          console.log("error status=", error.status);
+          // console.log("error intercept=", error);
+          // console.log("error status=", error.status);
           if (dialogref != null) {
             dialogref.close();
 

@@ -122,7 +122,7 @@
             <select class="form-select" id="coursecode" #tablename aria-label="Floating label select example" >
               <option selected="{{isLast==false}}" value="{{t.code}}"
                 *ngFor="let t of courselist;let ind = index;last as isLast">{{t.code}}-{{t.shortname}} {{t.fullname}}</option>
-
+                <option value="media">Others- Media Course</option>
             </select>
             <!-- <input list="browsers" name="browser" class="form-select">
             <datalist id="browsers" >

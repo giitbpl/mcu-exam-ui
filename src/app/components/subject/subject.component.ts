@@ -147,10 +147,23 @@ export class SubjectComponent {
       "tablename": "subject",
       "type": "subject"
     };
-    this.dialog.open(ImportdialogComponent, {
-      width: "800px",
-      data: sendata,
-      hasBackdrop: false
+    // this.dialog.open(ImportdialogComponent, {
+    //   width: "800px",
+    //   data: sendata,
+    //   hasBackdrop: false
+    // });
+    this.importService.importRow(sendata.filename, sendata.sheetname, sendata.rowcount, sendata.tablename, sendata.type).subscribe((response: any) => {
+      if (response.error == "false") {
+        this.sheetvarify = true;
+        this.snackBar.open(response.message).afterClosed().subscribe(() => {
+          location.reload();
+        });
+      }
+      else {
+        this.sheetvarify = false;
+        this.snackBar.open(response.message, "error");
+      }
+
     });
   }
   verify(filename: any, sheetname: any) {

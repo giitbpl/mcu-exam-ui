@@ -8,3 +8,7 @@ md-progress-linear .md-container .md-bar {
 ::ng-deep .custom-dialog > mat-dialog-container {
     background-color: var(--background);
   } */
+  .spinner-circle[_ngcontent-ggm-c59]
+  {
+    font-size: 10px;
+  }
