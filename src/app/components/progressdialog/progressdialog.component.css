@@ -12,3 +12,7 @@ md-progress-linear .md-container .md-bar {
   {
     font-size: 10px;
   }
+  .example-section
+  {
+    background-image: url("~src/assets/images/logo-watermark.png");
+  }

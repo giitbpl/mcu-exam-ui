@@ -1,5 +1,5 @@
 <mat-drawer-container class="w-100 h-100" [hasBackdrop]="true">
-  <mat-drawer #drawer class="example-sidenav bg-dark " mode="push" style="width: 200px;">
+  <mat-drawer #drawer class="example-sidenav bg-dark " mode="push" style="width: 280px;">
     <div class="d-flex justify-content-center">
       <img src="assets/images/logo.png" class="w-50">
     </div>
@@ -14,7 +14,7 @@
         <div class="collapse collapse-horizontal" id="collapseExample">
          
             <a class=" nav-link m-2 btn btn-outline-primary text-white " aria-current="page" routerLink="search" routerLinkActive="active"> TRC-Short</a>
-            <a class=" nav-link m-2 btn btn-outline-primary text-white " aria-current="page" routerLink="trcsem" routerLinkActive="active"> TRC-Detail</a>
+            <!-- <a class=" nav-link m-2 btn btn-outline-primary text-white " aria-current="page" routerLink="trcsem" routerLinkActive="active"> TRC-Detail</a> -->
           
         </div>
       </li>
@@ -24,9 +24,21 @@
       <li class="nav-item " *ngIf="userRole==1 || userRole==2">
         <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="logs" routerLinkActive="active">Logs</a>
       </li>
-      <li class="nav-item " *ngIf="userRole==1 || userRole==2">
-        <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="import" routerLinkActive="active">Import </a>
+      <li class="nav-item">
+        <a class="nav-link btn btn-outline-primary text-white " href="#imports" role="button" aria-current="page" data-bs-toggle="collapse"> Imports</a>
+        <div class="collapse collapse-horizontal" id="imports">
+         
+               <!-- <a class=" nav-link m-2 btn btn-outline-primary text-white " aria-current="page" routerLink="trcsem" routerLinkActive="active"> TRC-Detail</a> -->
+               <a class="nav-link m-2 btn btn-outline-primary text-white " aria-current="page" routerLink="subject" routerLinkActive="active" >Subject Master</a>
+               <a class="nav-link m-2 btn btn-outline-primary text-white " aria-current="page" routerLink="course" routerLinkActive="active" >Course Master</a>
+               <a class="nav-link m-2 btn btn-outline-primary text-white " aria-current="page" routerLink="college-master" routerLinkActive="active" >College Master</a>
+               <a class="nav-link m-2 btn btn-outline-primary text-white " routerLink="importdata" routerLinkActive="active">Result Master</a>
+            
+        </div>
       </li>
+      <!-- <li class="nav-item " *ngIf="userRole==1 || userRole==2">
+        <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="import" routerLinkActive="active">Import </a>
+      </li> -->
       <li class="nav-item " *ngIf="userRole==1 || userRole==2">
         <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="backup" routerLinkActive="active"> Backup</a>
       </li>
@@ -37,10 +49,10 @@
         <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="chpwd" routerLinkActive="active">Change Password</a>
 
       </li>
-      <li class="nav-item " *ngIf="userRole==1 ">
+      <!-- <li class="nav-item " *ngIf="userRole==1 ">
         <a class="nav-link btn btn-outline-primary text-white " aria-current="page" routerLink="tools" routerLinkActive="active">Tools</a>
 
-      </li>
+      </li> -->
       <li class="nav-item " >
         <a class="nav-link btn btn-outline-primary text-white " (click)="logout()" aria-current="page" >Logout</a>
 

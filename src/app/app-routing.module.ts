@@ -27,13 +27,14 @@ const routes: Routes = [
       { path: 'user', component: UsersComponent },
       {
         path: 'import', component: ImportDashboardComponent, children: [
-          { path: '', component: CollegeMasterComponent },
-          { path: 'importdata', component: ImportComponent },
-          { path: 'college-master', component: CollegeMasterComponent },
-          { path: 'course', component: CourseComponent },
-          { path: 'subject', component: SubjectComponent },
+       
         ]
       },
+      { path: '', component: CollegeMasterComponent },
+      { path: 'importdata', component: ImportComponent },
+      { path: 'college-master', component: CollegeMasterComponent },
+      { path: 'course', component: CourseComponent },
+      { path: 'subject', component: SubjectComponent },
       { path: 'logs', component: LogsComponent },
       { path: 'chpwd', component: ChangePwdComponent },
       { path: 'backup', component: BackupComponent },
