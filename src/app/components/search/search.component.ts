@@ -136,15 +136,15 @@ export class SearchComponent {
               });
 
             }
-            // console.log("update data=>", data);
+            console.log("update data=>", data);
 
            
           });
      //     if (this.myform.controls.sem.value == this.lastsem) {
             // console.log("lastsem");
             this.searchservice.getConsolidateResults(processData).subscribe((res: any) => {
+              console.log("consolidate response=>",res);
               if (res.error == "false") {
-                // console.log(res);
                 // this.consolidateddata=res.data;
                 this.detail = {
                   "study": response.data,

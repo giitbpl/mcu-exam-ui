@@ -17,17 +17,18 @@ import { CollegeMasterComponent } from './components/college-master/college-mast
 import { CourseComponent } from './components/course/course.component';
 import { SubjectComponent } from './components/subject/subject.component';
 import { TrcsemisterComponent } from './components/trcsemister/trcsemister.component';
+import { UpdateComponent } from './components/update/update.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
     path: 'dashboard', component: DashboardComponent, children: [
       { path: '', component: SearchComponent },
-      {path: 'trcsem', component: TrcsemisterComponent },
+      { path: 'trcsem', component: TrcsemisterComponent },
       { path: 'user', component: UsersComponent },
       {
         path: 'import', component: ImportDashboardComponent, children: [
-       
+
         ]
       },
       { path: '', component: CollegeMasterComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
       { path: 'restore', component: RestoreComponent },
       { path: 'search', component: SearchComponent },
       { path: 'tools', component: ToolsComponent },
+      { path: 'update', component: UpdateComponent },
 
     ]
   },
