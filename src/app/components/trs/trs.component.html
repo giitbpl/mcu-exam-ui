@@ -343,14 +343,21 @@
     </div> -->
     <hr>
     <div class="row pt-3" >
-        <div class="col-2" *ngFor="let c of studetail.consolidateddata;index as i">
-            <p [ngStyle]="{'font-size.px':fontSize}">Sem {{i+1}} {{c.semobt }} / {{c.semoutof}}</p>
-            <p [ngStyle]="{'font-size.px':fontSize}">SGPA {{c.SGPA }} </p>
-            <p [ngStyle]="{'font-size.px':fontSize}">{{c.yrtermcode}}</p>
-            <p [ngStyle]="{'font-size.px':fontSize}">{{ c.withheld!=" " ? c.remark1 : ""}}</p>
-            <p [ngStyle]="{'font-size.px':fontSize}">{{ c.withheld!=" " ? c.remark2 : ""}}</p>
-            
+        <ng-container *ngFor="let c of studetail.consolidateddata;index as i">
+
+      
+        <div class="col-2" *ngIf="c.semresult=='PASS'" >
+            <!-- <div > -->
+
+                <p [ngStyle]="{'font-size.px':fontSize}">Sem {{i+1}} {{c.semobt }} / {{c.semoutof}}</p>
+                <p [ngStyle]="{'font-size.px':fontSize}">SGPA {{c.SGPA }} </p>
+                <p [ngStyle]="{'font-size.px':fontSize}">{{c.yrtermcode}}</p>
+                <p [ngStyle]="{'font-size.px':fontSize}">{{ c.withheld!=" " ? c.remark1 : ""}}</p>
+                <p [ngStyle]="{'font-size.px':fontSize}">{{ c.withheld!=" " ? c.remark2 : ""}}</p>
+                <p [ngStyle]="{'font-size.px':fontSize}">{{ c.withheld!=" " ? c.semresult : ""}}</p>
+            <!-- </div> -->
         </div>
+        </ng-container>
         <div class="col-2" >
             <p [ngStyle]="{'font-size.px':fontSize}">Grand Total {{agrtotobtn }} / {{agrtotout}}</p>
             <p [ngStyle]="{'font-size.px':fontSize}">Result {{agrtotobtn }} / {{agrtotout}}</p>
