@@ -149,7 +149,8 @@ export class SearchComponent {
                 this.detail = {
                   "study": response.data,
                   "student": data.data,
-                  "consolidateddata": res.data
+                  "consolidateddata": res.data,
+                  "sem":processData.sem
                   // "subject":subject.data
                 };
                 // console.log("detail:", this.detail);

@@ -147,6 +147,8 @@ export class CollegeMasterComponent {
       "tablename": tablename,
       "type": "college"
     };
+    console.log("senddata=",sendata);
+    
     // this.dialog.open(ImportdialogComponent, {
     //   width: "800px",
     //   data: sendata,

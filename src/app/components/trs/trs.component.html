@@ -346,7 +346,7 @@
         <ng-container *ngFor="let c of studetail.consolidateddata;index as i">
 
       
-        <div class="col-2" *ngIf="c.semresult=='PASS'" >
+        <div class="col-2" *ngIf="i < studetail.sem" >
             <!-- <div > -->
 
                 <p [ngStyle]="{'font-size.px':fontSize}">Sem {{i+1}} {{c.semobt }} / {{c.semoutof}}</p>

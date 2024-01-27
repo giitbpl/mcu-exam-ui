@@ -67,7 +67,7 @@ this.fontSize++;
 
     this.subscription = this.sharing.data.subscribe((result:any) => {
       // dtInstance.clear();
-      console.log("result: " , result.student);
+      console.log("result: " , result.sem);
       let length=result.consolidateddata.length;
       this.agrtotobtn=result.consolidateddata[length-1].agrtotobtn;
       this.agrtotout=result.consolidateddata[length-1].agrtotout;
