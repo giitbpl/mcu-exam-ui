@@ -42,6 +42,7 @@ this.fontSize++;
   agrtotout:any;
   CGPA:any;
   result:any;
+  agrdiv:any;
   subscription: Subscription;
   constructor(private sharing: SharingeDataService,private snakebar: MatSnackBar,private router: Router, private toastservice: ToastService,private jwt:JwtTokenService,private userservice: UserService) {
     console.log("studedetail=>", this.studetail);
@@ -73,6 +74,7 @@ this.fontSize++;
       this.agrtotout=result.consolidateddata[length-1].agrtotout;
       this.CGPA=result.consolidateddata[length-1].CGPA;
       this.result=result.consolidateddata[length-1].CGPA;
+      this.agrdiv=result.consolidateddata[length-1].agrdiv;
     
       this.studetail = result;
       this.showdata=true;
