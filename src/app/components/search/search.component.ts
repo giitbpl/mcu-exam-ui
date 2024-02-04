@@ -114,14 +114,14 @@ export class SearchComponent {
           subcode=subcode.join(",");
           console.log("subcode=>", subcode);
           this.searchservice.getSubjectsDetailByCodeList(subcode).subscribe((subject: any) => {
-            console.log("subject length=", subject.data.length);
+            console.log("subject length=", subject.data);
             console.log("data length=",data.data.length);
-
+            data.data[0].examname = subject.data[0].EXAM_NAME;
             for (let i = 0; i < data.data.length; i++) {
               subject.data.forEach((element: any) => {
                 if (data.data[i].subcode == element.SUBJE) {
                   data.data[i].subname = element.SUBJECT_NAME;
-                  data.data[i].examname = element.EXAM_NAME;
+                
                   data.data[i].tmax = element.THEORY_MAX_MARKS;
                   data.data[i].tmin = element.THEORY_MIN_MARKS;
                   data.data[i].pmax = element.PRACTICAL_MAX_MARKS;

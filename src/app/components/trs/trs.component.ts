@@ -45,10 +45,9 @@ this.fontSize++;
   agrdiv:any;
   subscription: Subscription;
   constructor(private sharing: SharingeDataService,private snakebar: MatSnackBar,private router: Router, private toastservice: ToastService,private jwt:JwtTokenService,private userservice: UserService) {
-    console.log("studedetail=>", this.studetail);
     let token = jwt.getToken();
     userservice.getUserDetailByToken(token).subscribe((result: any) => {
-      console.log("user detail=>",result);
+      // console.log("user detail=>",result);
       if(result.error=="true")
       {
           toastservice.open(result.message,"error").afterClosed().subscribe(()=>{
@@ -58,7 +57,7 @@ this.fontSize++;
       }
       else
       {
-        console.log(result);
+        // console.log(result);
         this.ipaddress = result.data.ipaddress;
         this.username=result.data.name;
         this.email=result.data.email;
@@ -77,6 +76,8 @@ this.fontSize++;
       this.agrdiv=result.consolidateddata[length-1].agrdiv;
     
       this.studetail = result;
+      console.log("studedetail=>", this.studetail);
+
       this.showdata=true;
       // this.loadData = true;
 
