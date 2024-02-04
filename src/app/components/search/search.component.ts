@@ -87,7 +87,7 @@ export class SearchComponent {
       "envno": this.myform.controls.envno.value,
       "sem": this.myform.controls.sem.value
     };
-    console.log("processdata=>",processData);
+    console.log("processdata=>", processData);
 
     this.searchservice.search(processData).subscribe((data: any) => {
       console.log("search: ", data);
@@ -97,89 +97,101 @@ export class SearchComponent {
         // this.userlist = data.data;
 
         // console.log(data.data[0].stdcent);
-        this.searchservice.getStudieCenterDetailByCode(data.data[0].stdcent, session_name).subscribe((response: any) => {
+        this.searchservice.getCourseNameByCode(processData.coursecode).subscribe((res: any) => {
+            console.log("course name=>",res);
+            
+          if(res.error=="false")
+          {
+            
+            this.searchservice.getStudieCenterDetailByCode(data.data[0].stdcent, session_name).subscribe((response: any) => {
 
-          // this.detail["study"]=response.data;
-          // this.detail["data"]=data.data;
-          // data.data.
-          // console.log("result data=>",data);
-          let subcode: any = [];
-          data.data.forEach((element: any) => {
-            // console.log(element.subcode);
-            subcode.push(element.subcode);
-          });
-          let s = new Set(subcode);
-          let it = s.values();
-          subcode=Array.from(it);
-          subcode=subcode.join(",");
-          console.log("subcode=>", subcode);
-          this.searchservice.getSubjectsDetailByCodeList(subcode).subscribe((subject: any) => {
-            console.log("subject length=", subject.data);
-            console.log("data length=",data.data.length);
-            data.data[0].examname = subject.data[0].EXAM_NAME;
-            for (let i = 0; i < data.data.length; i++) {
-              subject.data.forEach((element: any) => {
-                if (data.data[i].subcode == element.SUBJE) {
-                  data.data[i].subname = element.SUBJECT_NAME;
-                
-                  data.data[i].tmax = element.THEORY_MAX_MARKS;
-                  data.data[i].tmin = element.THEORY_MIN_MARKS;
-                  data.data[i].pmax = element.PRACTICAL_MAX_MARKS;
-                  data.data[i].pmin = element.PRACTICAL_MIN_MARKS;
-                  // data.data[i].pmin = element.PRACTICAL_MIN_MARKS;
-                  data.data[i].smax = element.SESSIONAL_MAX_MARKS;
-                  data.data[i].smin = element.SESSIONAL_MIN_MARKS;
-                  // data.data[i].thobt = element.THOBT;
-
-                  return;
+              // this.detail["study"]=response.data;
+              // this.detail["data"]=data.data;
+              // data.data.
+              // console.log("result data=>",data);
+              let subcode: any = [];
+              data.data.forEach((element: any) => {
+                // console.log(element.subcode);
+                subcode.push(element.subcode);
+              });
+              let s = new Set(subcode);
+              let it = s.values();
+              subcode = Array.from(it);
+              subcode = subcode.join(",");
+              console.log("subcode=>", subcode);
+              this.searchservice.getSubjectsDetailByCodeList(subcode).subscribe((subject: any) => {
+                console.log("subject length=", subject.data);
+                console.log("data length=", data.data);
+                data.data[0].examname =res.data[0].fullname;
+                console.log("exam name=", subject.data[0].EXAM_NAME);
+    
+                for (let i = 0; i < data.data.length; i++) {
+                  subject.data.forEach((element: any) => {
+                    if (data.data[i].subcode == element.SUBJE) {
+                      data.data[i].subname = element.SUBJECT_NAME;
+    
+                      data.data[i].tmax = element.THEORY_MAX_MARKS;
+                      data.data[i].tmin = element.THEORY_MIN_MARKS;
+                      data.data[i].pmax = element.PRACTICAL_MAX_MARKS;
+                      data.data[i].pmin = element.PRACTICAL_MIN_MARKS;
+                      // data.data[i].pmin = element.PRACTICAL_MIN_MARKS;
+                      data.data[i].smax = element.SESSIONAL_MAX_MARKS;
+                      data.data[i].smin = element.SESSIONAL_MIN_MARKS;
+                      // data.data[i].thobt = element.THOBT;
+    
+                      return;
+                    }
+                  });
+    
+                }
+                console.log("update data=>", data);
+    
+    
+              });
+              //     if (this.myform.controls.sem.value == this.lastsem) {
+              // console.log("lastsem");
+              this.searchservice.getConsolidateResults(processData).subscribe((res: any) => {
+                console.log("consolidate response=>", res);
+                if (res.error == "false") {
+                  // this.consolidateddata=res.data;
+                  this.detail = {
+                    "study": response.data,
+                    "student": data.data,
+                    "consolidateddata": res.data,
+                    "sem": processData.sem
+                    // "subject":subject.data
+                  };
+                  // console.log("detail:", this.detail);
+                  this.studetail = this.detail;
+                  this.sharing.changeMessage(this.detail);
+                  this.loaddata = true;
+                }
+                else {
+                  this.snackBar.open(data.message, "error");
                 }
               });
-
-            }
-            console.log("update data=>", data);
-
-           
-          });
-     //     if (this.myform.controls.sem.value == this.lastsem) {
-            // console.log("lastsem");
-            this.searchservice.getConsolidateResults(processData).subscribe((res: any) => {
-              console.log("consolidate response=>",res);
-              if (res.error == "false") {
-                // this.consolidateddata=res.data;
-                this.detail = {
-                  "study": response.data,
-                  "student": data.data,
-                  "consolidateddata": res.data,
-                  "sem":processData.sem
-                  // "subject":subject.data
-                };
-                // console.log("detail:", this.detail);
-                this.studetail = this.detail;
-                this.sharing.changeMessage(this.detail);
-                this.loaddata = true;
-              }
-              else
-              {
-                this.snackBar.open(data.message, "error");
-              }
+    
+              //    }
+              //    else
+              //  {
+              // // this.detail = {
+              // //   "study": response.data,
+              // //   "student": data.data,
+              // //   "consolidateddata":[]
+              // //   // "subject":subject.data
+              // // };
+              // console.log("detail:", this.detail);
+              // this.studetail = this.detail;
+              // this.sharing.changeMessage(this.detail);
+              // this.loaddata = true;
+              //  }
+    
             });
+          }
 
-      //    }
-      //    else
-        //  {
-            // // this.detail = {
-            // //   "study": response.data,
-            // //   "student": data.data,
-            // //   "consolidateddata":[]
-            // //   // "subject":subject.data
-            // // };
-            // console.log("detail:", this.detail);
-            // this.studetail = this.detail;
-            // this.sharing.changeMessage(this.detail);
-            // this.loaddata = true;
-        //  }
-
+      
         });
+    
 
       }
       else {
@@ -199,7 +211,7 @@ export class SearchComponent {
     // console.log(this.myform.value);
 
     if (this.myform.valid == true) {
-      
+
       this.searchservice.getSessionListByEnrollment(this.myform.value).subscribe((data: any) => {
         // console.log(data);
         if (data.error == "false") {
@@ -235,8 +247,7 @@ export class SearchComponent {
     }
     return range;
   }
-  reload()
-  {
+  reload() {
     location.reload();
   }
 }

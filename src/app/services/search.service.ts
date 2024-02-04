@@ -47,4 +47,11 @@ export class SearchService {
         "coursecode":data.coursecode
       });
    }
+   getCourseNameByCode(code:any)
+   {
+    return this.http.post(this.BaseUrl+"course/getCourseNameByCode",{
+      "code":code,
+   //   "coursecode":data.coursecode
+    });
+   }
 }
