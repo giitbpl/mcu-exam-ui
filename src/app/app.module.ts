@@ -55,6 +55,7 @@ import { TrcsemisterComponent } from './components/trcsemister/trcsemister.compo
 import { TrcAllSemisterReportComponent } from './components/trc-all-semister-report/trc-all-semister-report.component';
 import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
 import { UpdateComponent } from './components/update/update.component';
+import { UserLogComponent } from './components/user-log/user-log.component';
 // import { NgxSpinnerModule } from 'ngx-spinner';
 
 // import {SelectModule} from 'ng2-select'
@@ -90,6 +91,7 @@ export function initConfig(appConfig: AppconfigService) {
     TrcsemisterComponent,
     TrcAllSemisterReportComponent,
     UpdateComponent,
+    UserLogComponent,
     // LogTableComponent
   ],
   imports: [

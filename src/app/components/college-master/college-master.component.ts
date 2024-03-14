@@ -26,7 +26,7 @@ export class CollegeMasterComponent {
   public years: any;
   public tables= new Array();
   constructor(private importService: ImportService, private snackBar: ToastService, private dialog: MatDialog, private route: ActivatedRoute) {
-    this.years = Array.from(Array(new Date().getFullYear() - 2011), (_, i) => (i + 2012).toString())
+    this.years = Array.from(Array(new Date().getFullYear() - 2000), (_, i) => (i + 2001).toString())
     // console.log("years=>", years)
     importService.getExportDirectoryName().subscribe((response: any) => {
       console.log("directory name=", response);
@@ -57,9 +57,10 @@ export class CollegeMasterComponent {
       var index, value:string, result;
       for (index = 0; index < data.data.length; ++index) {
           value = data.data[index].Tables_in_mcuexam;
-          // console.log(value);
+          console.log(value);
           
-          if (value.substring(0, 3) === "col") {
+          // if (value.substring(0, 3) === "col") {
+          if (value === "college_master") {
               // You've found it, the full text is in `value`.
               // So you might grab it and break the loop, although
               // really what you do having found it depends on
@@ -138,14 +139,17 @@ export class CollegeMasterComponent {
       this.rowcount = response.data;
     });
   }
-  import(filename: any, sheetname: any, tablename: any) {
+  import(filename: any, sheetname: any, tablename: any,session:any,year:any) {
+    console.log(session+" "+year);
+    let s=session +"-" + year;
     // this.importService.
     let sendata = {
       "sheetname": sheetname,
       "filename": filename,
       "rowcount": this.rowcount,
       "tablename": tablename,
-      "type": "college"
+      "type": "college",
+      "session_name": s
     };
     console.log("senddata=",sendata);
     
@@ -154,7 +158,8 @@ export class CollegeMasterComponent {
     //   data: sendata,
     //   hasBackdrop: false
     // });
-    this.importService.importRow(sendata.filename, sendata.sheetname, sendata.rowcount, sendata.tablename, sendata.type).subscribe((response: any) => {
+    // this.importService.importRow(sendata.filename, sendata.sheetname,sendata.rowcount, sendata.tablename,sendata.type, sendata.session_name);
+    this.importService.importRow(sendata.filename, sendata.sheetname, sendata.rowcount, sendata.tablename, sendata.type,s).subscribe((response: any) => {
       if (response.error == "false") {
         this.sheetvarify = true;
         this.snackBar.open(response.message).afterClosed().subscribe(() => {

@@ -1,10 +1,10 @@
 <h1 class="text-center text-danger fw-bolder">College or Exam Center</h1>
 <div class="row container-fluid text-center">
-    <div class="col-6 shadow-sm rounded-3">
+    <!-- <div class="col-6 shadow-sm rounded-3">
       <div class="card h-100" >
         <h2 class="card-header  display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 1)</span> Create new college / exam center database <span class="text-danger">(Recommended)</span></h2>
   
-        <!-- <h5 class="card-header">Featured</h5> -->
+     
         <div class="card-body ">
           <div class="d-flex justify-content-center">
             <div class="form-floating">
@@ -32,7 +32,7 @@
         </div>
       </div>
    
-  </div>
+  </div> -->
     <div class="col-6  shadow-sm rounded-3">
       <div class="card h-100" >
         <h2 class="card-header display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 2)</span> Upload
@@ -90,7 +90,7 @@
   
      
     </div>
-    <div class="col-6 mb-4  shadow-sm rounded-3">
+    <div class="col-12 mb-4  shadow-sm rounded-3">
       <div class="card">
         <h1 class="card-header display-5 fw-bold text-body-emphasis"><span class="text-success">(Step - 4)</span> Please select a Sheet
         </h1>
@@ -106,6 +106,20 @@
                 </select>
               <label for="session">Select Sheet</label>
             </div>
+            <div class="form-floating">
+              <select #session class="form-select" style="width: 300px;" id="session" aria-label="Floating label select example">
+                <option value="JUN">June </option>
+                <option value="DEC">December</option>
+              </select>
+              <label for="session">Session</label>
+            </div>
+            <div class="form-floating">
+              <select #year class="form-select" style="width: 300px;" id="year" aria-label="Floating label select example">
+                <option selected="{{isLast==true}}" value="{{y}}" *ngFor="let y of years;let ind = index;last as isLast">{{y}}</option>
+           
+              </select>
+              <label for="year">Session</label>
+            </div>  
             <div class="form-floating">
               <select  class="form-select" [disabled]="!sheetvarify" style="width: 300px;" id="tablename" #tablename aria-label="Floating label select example">
                 <option selected="{{isLast==true}}" value="{{t}}" *ngFor="let t of tables;let ind = index;last as isLast">{{t}}</option>
@@ -126,7 +140,7 @@
         <div class="card-footer text-body-secondary">
           <!-- 2 days ago -->
           <button class="btn btn-primary mt-3" [disabled]="sheetlistflag" (click)="verify(n.value,sheetname.value)">Verify</button>
-          <button class="btn btn-primary mt-3" [disabled]="!sheetvarify" (click)="import(n.value,sheetname.value,tablename.value)">Import</button>
+          <button class="btn btn-primary mt-3" [disabled]="!sheetvarify" (click)="import(n.value,sheetname.value,tablename.value,session.value,year.value)">Import</button>
         </div>
       </div>
   

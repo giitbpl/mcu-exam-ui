@@ -47,7 +47,7 @@ export class ImportdialogComponent {
         });
         break;
       }
-      let a: any = await lastValueFrom(this.importservice.importRow(this.filename, this.sheetname, i,this.tablename,this.type));
+      let a: any = await lastValueFrom(this.importservice.importRow(this.filename, this.sheetname, i,this.tablename,this.type,""));
       if (a.error == "false") {
         this.value = (i + 1);
 

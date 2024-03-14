@@ -3,7 +3,7 @@
 export const environment=
 {
     appTitle:"Data Verification Services",
-    version:"1.0.0",
+    version:"1.1.1",
     // BaseUrl: 'http://localhost:3001/',
     BaseUrl: 'http://localhost:3000/',
     // BaseUrl: 'http://192.168.1.200:3000/',

@@ -47,14 +47,15 @@ export class ImportService {
       "sheetname": sheetname
     });
   }
-  importRow(filename:string,sheetname:string,recordno:number,tablename:any,type:string) 
+  importRow(filename:string,sheetname:string,recordno:number,tablename:any,type:string,session_name:any) 
   {
     return this.http.post(this.BaseUrl + "import/import2",{
       "filename": filename,
       "sheetname": sheetname,
       "recordno": recordno,
       "tablename": tablename,
-      "type": type
+      "type": type,
+      "session": session_name
     });
   }
   verify(filename:string,sheetname:string,type:string)

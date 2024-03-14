@@ -23,7 +23,7 @@ export class SearchComponent {
   consolidateddata: any;
   loadCourse(coursetype: any) {
     this.courseserice.getCourseNameByType(coursetype).subscribe((data: any) => {
-      // console.log(data);
+      // //console.log(data);
       this.courselist = data.data;
     });
     // throw new Error('Method not implemented.');
@@ -31,12 +31,12 @@ export class SearchComponent {
   // selectedcoursetext: string = ""
   getSelectedIndex(event: any) {
 
-    // console.log(event.target['options'].selectedIndex);
+    // //console.log(event.target['options'].selectedIndex);
     let index = event.target['options'].selectedIndex;
-    // console.log(this.courselist[index].max_sem);
+    // //console.log(this.courselist[index].max_sem);
     this.lastsem = this.courselist[index].max_sem.substring(0, 1);
     this.sems = this.range(this.lastsem);
-    // console.log(this.sems);
+    // //console.log(this.sems);
 
     // [event.target['options'].selectedIndex].text);
     // this.selectedcoursetext=event.target['options'][event.target['options'].selectedIndex].text;
@@ -98,7 +98,7 @@ export class SearchComponent {
 
         // console.log(data.data[0].stdcent);
         this.searchservice.getCourseNameByCode(processData.coursecode).subscribe((res: any) => {
-            console.log("course name=>",res);
+            // console.log("course name=>",res);
             
           if(res.error=="false")
           {
@@ -118,12 +118,12 @@ export class SearchComponent {
               let it = s.values();
               subcode = Array.from(it);
               subcode = subcode.join(",");
-              console.log("subcode=>", subcode);
+              // console.log("subcode=>", subcode);
               this.searchservice.getSubjectsDetailByCodeList(subcode).subscribe((subject: any) => {
-                console.log("subject length=", subject.data);
-                console.log("data length=", data.data);
+                // console.log("subject length=", subject.data);
+                // console.log("data length=", data.data);
                 data.data[0].examname =res.data[0].fullname;
-                console.log("exam name=", subject.data[0].EXAM_NAME);
+                // console.log("exam name=", subject.data[0].EXAM_NAME);
     
                 for (let i = 0; i < data.data.length; i++) {
                   subject.data.forEach((element: any) => {
@@ -144,14 +144,14 @@ export class SearchComponent {
                   });
     
                 }
-                console.log("update data=>", data);
+                // console.log("update data=>", data);
     
     
               });
               //     if (this.myform.controls.sem.value == this.lastsem) {
               // console.log("lastsem");
               this.searchservice.getConsolidateResults(processData).subscribe((res: any) => {
-                console.log("consolidate response=>", res);
+                // console.log("consolidate response=>", res);
                 if (res.error == "false") {
                   // this.consolidateddata=res.data;
                   this.detail = {

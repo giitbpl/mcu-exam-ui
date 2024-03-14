@@ -18,6 +18,7 @@ import { CourseComponent } from './components/course/course.component';
 import { SubjectComponent } from './components/subject/subject.component';
 import { TrcsemisterComponent } from './components/trcsemister/trcsemister.component';
 import { UpdateComponent } from './components/update/update.component';
+import { UserLogComponent } from './components/user-log/user-log.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -44,6 +45,7 @@ const routes: Routes = [
       { path: 'search', component: SearchComponent },
       { path: 'tools', component: ToolsComponent },
       { path: 'update', component: UpdateComponent },
+      { path: 'user-log', component: UserLogComponent },
 
     ]
   },
