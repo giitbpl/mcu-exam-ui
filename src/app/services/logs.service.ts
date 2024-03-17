@@ -23,4 +23,8 @@ export class LogsService {
       "duration":duration
     });
    }
+   getuseractivity()
+   {
+    return this.http.get(this.BaseUrl +"logs/getuseractivity");
+   }
 }

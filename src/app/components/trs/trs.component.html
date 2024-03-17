@@ -349,7 +349,7 @@
         <div class="col-2" *ngIf="i < studetail.sem" >
             <!-- <div > -->
 
-                <p [ngStyle]="{'font-size.px':fontSize}">Sem {{i+1}} {{c.semobt }} / {{c.semoutof}}</p>
+                <p [ngStyle]="{'font-size.px':fontSize}">Sem {{c.examname.substring(0, 1)}} {{c.semobt }} / {{c.semoutof}}</p>
                 <p [ngStyle]="{'font-size.px':fontSize}">SGPA {{c.SGPA }} </p>
                 <p [ngStyle]="{'font-size.px':fontSize}">{{c.yrtermcode}}</p>
                 <p [ngStyle]="{'font-size.px':fontSize}">{{ c.withheld!=" " ? c.remark1 : ""}}</p>
@@ -358,7 +358,7 @@
             <!-- </div> -->
         </div>
         </ng-container>
-        <div class="col-2" >
+        <div class="col-2"  *ngIf="consolidate_showing==true">
             <p [ngStyle]="{'font-size.px':fontSize}">Grand Total: {{agrtotobtn }} / {{agrtotout}}</p>
             <p [ngStyle]="{'font-size.px':fontSize}">Result: {{agrtotobtn }} / {{agrtotout}}</p>
             <p [ngStyle]="{'font-size.px':fontSize}">CGPA: {{CGPA }} </p>

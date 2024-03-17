@@ -39,6 +39,7 @@ this.fontSize++;
   ipaddress:string;
   email:string;
   agrtotobtn:any;
+  consolidate_showing:boolean = false;
   agrtotout:any;
   CGPA:any;
   result:any;
@@ -69,7 +70,14 @@ this.fontSize++;
 
     this.subscription = this.sharing.data.subscribe((result:any) => {
       // dtInstance.clear();
-      console.log("result: " , result.sem);
+      result.consolidateddata.forEach((item:any)=>{
+        console.log("item=>",item);
+        if(item.agrdiv==="FIRST" || item.agrdiv==="SECOND")
+        {
+          this.consolidate_showing=true;
+        }
+      });
+      console.log("result: " , result.consolidateddata);
       let length=result.consolidateddata.length;
       this.agrtotobtn=result.consolidateddata[length-1].agrtotobtn;
       this.agrtotout=result.consolidateddata[length-1].agrtotout;
