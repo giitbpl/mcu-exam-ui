@@ -137,7 +137,7 @@ export class UpdateComponent {
       this.rowcount = response.data;
     });
   }
-  import(filename: any, sheetname: any) {
+  update(filename: any, sheetname: any) {
     // this.importService.
     let sendata = {
       "sheetname": sheetname,
@@ -151,7 +151,7 @@ export class UpdateComponent {
     //   data: sendata,
     //   hasBackdrop: false
     // });
-    this.importService.importRow(sendata.filename, sendata.sheetname, sendata.rowcount, sendata.tablename, sendata.type,"").subscribe((response: any) => {
+    this.importService.update(sendata.filename, sendata.sheetname, sendata.rowcount, sendata.tablename, sendata.type,"").subscribe((response: any) => {
       if (response.error == "false") {
         this.sheetvarify = true;
         this.snackBar.open(response.message).afterClosed().subscribe(() => {
@@ -187,7 +187,6 @@ export class UpdateComponent {
       }
       else {
         this.snackBar.open(response.message, "success");
-
       }
     });
 

@@ -13,7 +13,6 @@ export class ImportService {
 
   constructor(private http: HttpClient,private appconfig: AppconfigService) {
     this.BaseUrl=appconfig.getConfig().serverIp;
-
   }
   getExportDirectoryName() {
     return this.http.get(this.BaseUrl + "import/getexportdir");
@@ -89,5 +88,16 @@ export class ImportService {
   getAllTables()
   {
     return this.http.get(this.BaseUrl +"import/getalltablesname");
+  }
+  update(filename:string,sheetname:string,recordno:number,tablename:any,type:string,session_name:any) 
+  {
+    return this.http.post(this.BaseUrl + "import/update",{
+      "filename": filename,
+      "sheetname": sheetname,
+      "recordno": recordno,
+      "tablename": tablename,
+      "type": type,
+      "session": session_name
+    });
   }
 }
